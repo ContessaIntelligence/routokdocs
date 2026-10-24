@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>routok 使用说明</title>
+  <meta name="description" content="routok API 快速接入和 AI 工具配置说明">
+  <style>
+    :root { color-scheme: light; --ink: #172033; --muted: #667085; --line: #e5e7eb; --brand: #2457d6; --soft: #f5f7fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--soft); font: 16px/1.7 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+    .wrap { width: min(960px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 56px 0 40px; color: #fff; background: linear-gradient(135deg, #173b96, #3274df); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; }
+    header p { margin-bottom: 20px; color: #dbe7ff; }
+    .brand { font-size: 1.15rem; font-weight: 700; letter-spacing: .04em; }
+    .button { display: inline-block; padding: 9px 16px; border-radius: 8px; color: #fff; background: #1b45a9; text-decoration: none; font-weight: 600; }
+    .button.light { color: #173b96; background: #fff; }
+    main { padding: 28px 0 56px; }
+    section { margin-bottom: 22px; padding: 26px; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 8px 24px rgba(20, 35, 70, .05); }
+    h2 { margin-bottom: 14px; font-size: 1.45rem; }
+    h3 { margin-bottom: 6px; font-size: 1.05rem; }
+    .steps { display: grid; gap: 14px; counter-reset: step; }
+    .step { position: relative; padding: 16px 16px 16px 58px; border: 1px solid var(--line); border-radius: 10px; }
+    .step::before { content: counter(step); counter-increment: step; position: absolute; top: 16px; left: 16px; width: 28px; height: 28px; border-radius: 50%; color: #fff; background: var(--brand); text-align: center; line-height: 28px; font-weight: 700; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    a { color: var(--brand); }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 8px; color: #eaf0ff; background: #172033; font-size: .9rem; }
+    .note { padding: 12px 14px; border-left: 4px solid #f2a900; background: #fff8e6; }
+    footer { padding: 24px 0 36px; color: var(--muted); text-align: center; font-size: .9rem; }
+    @media (max-width: 640px) { header .wrap { display: block; } header .button { margin-top: 12px; } section { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div>
+        <div class="brand">routok</div>
+        <h1>API 使用说明</h1>
+        <p>按下面步骤创建令牌，并将 routok 接入 Codex、Claude 或 Gemini。</p>
+        <a class="button light" href="https://routok.com/console/token" target="_blank" rel="noreferrer">打开令牌管理</a>
+      </div>
+      <a class="button" href="https://routok.com/" target="_blank" rel="noreferrer">访问 routok.com</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>一、创建 API 令牌</h2>
+      <div class="steps">
+        <div class="step"><h3>登录 routok 后台</h3><p>打开 <a href="https://routok.com/console/token" target="_blank" rel="noreferrer">令牌管理</a>，点击“添加”，创建一个新令牌。</p></div>
+        <div class="step"><h3>选择模型分组</h3><p>按实际需要选择 Codex、Claude 或 Gemini 分组，并保存令牌。请妥善保管密钥，不要公开分享。</p></div>
+        <div class="step"><h3>充值账户</h3><p>支持在线充值和兑换码充值。充值完成后，再进行下方工具配置。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、配置 AI 工具</h2>
+      <p>先安装 <a href="https://nodejs.org/" target="_blank" rel="noreferrer">Node.js 22 或更高版本</a>，再按所用工具配置。</p>
+
+      <h3>Codex</h3>
+      <p>安装并验证：</p>
+      <pre>npm install -g @openai/codex --registry=https://registry.npmmirror.com
+codex --version</pre>
+      <p>编辑 <code>~/.codex/config.toml</code>：</p>
+      <pre>model_provider = "routok"
+model = "gpt-5.4"
+
+[model_providers.routok]
+name = "routok"
+wire_api = "responses"
+requires_openai_auth = true
+base_url = "https://routok.com/v1"</pre>
+      <p>编辑 <code>~/.codex/auth.json</code>，将令牌填入：</p>
+      <pre>{ "OPENAI_API_KEY": "你的令牌" }</pre>
+
+      <h3>Claude</h3>
+      <p>安装并验证：</p>
+      <pre>npm install -g @anthropic-ai/claude-code
+claude --version</pre>
+      <p>在 <code>~/.claude/settings.json</code> 中填入令牌和服务地址：</p>
+      <pre>{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "你的令牌",
+    "ANTHROPIC_BASE_URL": "https://api.routok.com"
+  }
+}</pre>
+
+      <h3>Gemini CLI</h3>
+      <p>安装并验证：</p>
+      <pre>npm install -g @google/gemini-cli
+gemini --version</pre>
+      <p>在 <code>~/.gemini/.env</code> 中填入：</p>
+      <pre>GEMINI_API_KEY="你的令牌"
+GOOGLE_GEMINI_BASE_URL="https://routok.com"</pre>
+    </section>
+
+    <section>
+      <h2>三、图形化工具（可选）</h2>
+      <p>不熟悉命令行时，可以使用一键配置工具或 CC-Switch，按工具提示选择 routok 并粘贴令牌。</p>
+      <div class="links">
+        <a class="button" href="#" target="_blank" rel="noreferrer">一键配置工具</a>
+        <a class="button" href="#" target="_blank" rel="noreferrer">CC-Switch 下载</a>
+        <a class="button" href="#" target="_blank" rel="noreferrer">下载 Claude Code</a>
+        <a class="button" href="https://apps.microsoft.com/detail/9plm9xgg6vks?hl=zh-CN&amp;gl=CN" target="_blank" rel="noreferrer">下载 Codex</a>
+        <a class="button" href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">下载 VS Code</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>常见问题</h2>
+      <p class="note"><strong>认证失败：</strong>检查令牌是否完整、是否过期，并确认配置文件中的地址没有多余空格。</p>
+      <p class="note"><strong>连接失败：</strong>保存配置后重新打开终端或工具；确认使用的是对应工具的配置文件。</p>
+      <p class="note"><strong>更换模型：</strong>修改配置中的模型名称，使用 routok 后台当前支持的模型。</p>
+    </section>
+  </main>
+
+  <footer>routok · <a href="https://routok.com/" target="_blank" rel="noreferrer">routok.com</a></footer>
+</body>
+</html>
