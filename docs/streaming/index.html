@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>读取流式响应 · RouTok 文档</title><meta name="description" content="流式响应让应用逐步显示输出。建议先用同一模型完成非流式调用，再开启流式，便于区分模型配置与传输问题。">
+<link rel="canonical" href="https://docs.routok.com/docs/streaming/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html" aria-current="page">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html" aria-current="page">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="读取流式响应">读取流式响应</h1>
+<p>流式响应让应用逐步显示输出。建议先用同一模型完成非流式调用，再开启流式，便于区分模型配置与传输问题。</p>
+
+<h2 id="发起请求">发起请求</h2>
+<p>先完成<a href="/docs/quickstart/index.html#%E5%87%86%E5%A4%87%E6%8E%A5%E5%85%A5%E4%BF%A1%E6%81%AF">环境变量设置</a>。以下示例用于 Bash，<code>-N</code> 关闭 curl 输出缓冲：</p>
+
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">curl --fail-with-body -N &quot;$NEW_API_BASE_URL/v1/chat/completions&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &quot;{\&quot;model\&quot;:\&quot;$NEW_API_MODEL\&quot;,\&quot;messages\&quot;:[{\&quot;role\&quot;:\&quot;user\&quot;,\&quot;content\&quot;:\&quot;Hello!\&quot;}],\&quot;stream\&quot;:true}&quot;</code></pre></div>
+<p>Chat Completions 的事件结构示例：</p>
+
+<div class="code"><div class="code-bar"><span>text</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-text">data: {&quot;choices&quot;:[{&quot;index&quot;:0,&quot;delta&quot;:{&quot;role&quot;:&quot;assistant&quot;,&quot;content&quot;:&quot;Hello&quot;},&quot;finish_reason&quot;:null}]}
+
+data: {&quot;choices&quot;:[{&quot;index&quot;:0,&quot;delta&quot;:{},&quot;finish_reason&quot;:&quot;stop&quot;}]}
+
+data: [DONE]</code></pre></div>
+<p>以上为简化示例，各事件之间有一个空行。</p>
+
+<h2 id="使用-sdk-读取">使用 SDK 读取</h2>
+<p>在<a href="/docs/sdk/index.html#python">Python SDK 示例</a>的 client 初始化之后，可以这样读取增量：</p>
+
+<div class="code"><div class="code-bar"><span>python</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-python">stream = client.chat.completions.create(
+    model=os.environ[&quot;NEW_API_MODEL&quot;],
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello!&quot;}],
+    stream=True,
+)
+for chunk in stream:
+    if chunk.choices:
+        print(chunk.choices[0].delta.content or &quot;&quot;, end=&quot;&quot;, flush=True)
+print()</code></pre></div>
+<p>Windows 用户可使用此 SDK 示例，避免 PowerShell 的普通 JSON 读取方式缓冲整个响应。</p>
+
+<h2 id="解析与完成判断">解析与完成判断</h2>
+<p>Chat 流通常使用 SSE，从 <code>data:</code> 行解析 JSON，文本增量位于 <code>choices[].delta.content</code>。一次网络读取可能只包含半个事件，应使用 SDK 或完整的 SSE 解析器。</p>
+
+<p>Responses、Messages 和 Gemini 使用不同的事件结构。工具调用参数也可能分片到达，需要完整收集并校验后执行。</p>
+
+<p>应用应区分正常结束、输出截断、上游错误和连接中断。HTTP 已返回成功状态后，流中仍可能发生错误。</p>
+
+<h2 id="用量与排查">用量与排查</h2>
+<p>仅在渠道及上游支持时，流中才会返回用量；缺少 usage 不能解释为零费用。</p>
+
+<p>若所有文字最后一次性出现，先对比命令行与客户端。若长回复中断，核对超时设置和代理链路，见<a href="/docs/troubleshooting/index.html">错误排查</a>。取消连接后重新请求前，先检查日志，避免重复消耗。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/protocols/index.html">← 上一篇<br>协议与兼容性</a><a href="/docs/tools/index.html">下一篇 →<br>完成一轮工具调用</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#发起请求">发起请求</a><a class="depth-2" href="#使用-sdk-读取">使用 SDK 读取</a><a class="depth-2" href="#解析与完成判断">解析与完成判断</a><a class="depth-2" href="#用量与排查">用量与排查</a></nav></aside></div>
+</body></html>

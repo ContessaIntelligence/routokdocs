@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>推理模型与提示缓存 · RouTok 文档</title><meta name="description" content="推理能力帮助模型处理复杂任务；提示缓存用于复用符合上游条件的输入。两者的参数、返回内容和用量分类需要分别验证。">
+<link rel="canonical" href="https://docs.routok.com/docs/reasoning-cache/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html" aria-current="page">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html" aria-current="page">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="推理模型与提示缓存">推理模型与提示缓存</h1>
+<p>推理能力帮助模型处理复杂任务；提示缓存用于复用符合上游条件的输入。两者的参数、返回内容和用量分类需要分别验证。</p>
+
+<h2 id="接入推理模型">接入推理模型</h2>
+<ol>
+<li>用普通文本请求确认模型可用。</li>
+<li>根据目标模型和协议，添加支持的推理控制参数。</li>
+<li>检查最终回答、完成状态及用量明细。</li>
+<li>使用工具或多轮对话时，验证推理内容、签名和历史消息能否正确回传。</li>
+</ol>
+
+<p>部分模型不支持温度参数，或对输出上限有独立要求。字段被拒绝时，先查模型说明，再逐项调整。</p>
+
+<h2 id="使用提示缓存">使用提示缓存</h2>
+<p>缓存命中通常由上游决定，可能依赖相同前缀、模型、缓存标记和有效期。网关提供缓存计量和费用处理，并不意味着所有请求都会自动缓存。</p>
+
+<p>对采用前缀缓存的模型，可将稳定的系统提示和参考内容放在前面，将变化的问题放在后面。需要显式缓存标记的模型，应按相应协议设置。</p>
+
+<h2 id="核对用量">核对用量</h2>
+<p>在<a href="https://routok.com/usage-logs">用量日志</a>查看实际记录的缓存读取、写入和其他分类，并结合<a href="https://routok.com/pricing">模型价格</a>核对费用。</p>
+
+<p>不同上游的总输入是否包含缓存输入并不一致，不能把全部分类再次相加。缺少缓存字段也不足以证明没有命中。</p>
+
+<h2 id="评估是否适合你的场景">评估是否适合你的场景</h2>
+<p>使用同一模型和代表性输入，分别观察质量、延迟和费用。缓存折扣、命中条件和推理消耗均以本站配置及实际记录为准，见<a href="/docs/costs/index.html">费用说明</a>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/structured-output/index.html">← 上一篇<br>获取结构化输出</a><a href="/docs/multimodal/index.html">下一篇 →<br>图片理解与多模态输入</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#接入推理模型">接入推理模型</a><a class="depth-2" href="#使用提示缓存">使用提示缓存</a><a class="depth-2" href="#核对用量">核对用量</a><a class="depth-2" href="#评估是否适合你的场景">评估是否适合你的场景</a></nav></aside></div>
+</body></html>

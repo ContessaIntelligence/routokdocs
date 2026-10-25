@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>完成第一次 API 调用 · RouTok 文档</title><meta name="description" content="本页带你查询可用模型并获得一次文本回复。需要已登录的 RouTok 账号、可用额度，以及支持 Chat Completions 的模型。">
+<link rel="canonical" href="https://docs.routok.com/docs/quickstart/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html" aria-current="page">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html" aria-current="page">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="完成第一次-api-调用">完成第一次 API 调用</h1>
+<p>本页带你查询可用模型并获得一次文本回复。需要已登录的 RouTok 账号、可用额度，以及支持 Chat Completions 的模型。</p>
+
+<h2 id="准备接入信息">准备接入信息</h2>
+<p>在<a href="https://routok.com/keys">API 密钥</a>页面创建密钥，并从 <strong>API 地址</strong> 复制接入地址。下面的 <code>NEW_API_BASE_URL</code> 表示 <strong>API 根地址，不含末尾的 /v1</strong>。</p>
+
+<p>选择与你终端对应的写法，替换示例域名和密钥。环境变量仅对当前终端有效。</p>
+
+<div class="code-group"><details open><summary>macOS / Linux</summary><div class="code"><div class="code-bar"><span>macOS / Linux</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">export NEW_API_BASE_URL=&#39;https://gateway.example.com&#39;
+export NEW_API_KEY=&#39;replace-with-your-new-api-key&#39;</code></pre></div></details><details open><summary>Windows PowerShell</summary><div class="code"><div class="code-bar"><span>Windows PowerShell</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-powershell">$env:NEW_API_BASE_URL = &#39;https://gateway.example.com&#39;
+$env:NEW_API_KEY = &#39;replace-with-your-new-api-key&#39;</code></pre></div></details></div>
+<p>不要将包含真实密钥的命令、截图或终端历史发送给他人。共享设备使用结束后关闭终端，并按需要清理历史记录。</p>
+
+<h2 id="第一步-查询可用模型">第一步：查询可用模型</h2>
+<div class="code-group"><details open><summary>macOS / Linux</summary><div class="code"><div class="code-bar"><span>macOS / Linux</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/models&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot;</code></pre></div></details><details open><summary>Windows PowerShell</summary><div class="code"><div class="code-bar"><span>Windows PowerShell</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-powershell">$headers = @{ Authorization = &quot;Bearer $env:NEW_API_KEY&quot; }
+$models = Invoke-RestMethod &quot;$env:NEW_API_BASE_URL/v1/models&quot; -Headers $headers
+$models.data | Select-Object id</code></pre></div></details></div>
+<p>JSON 响应结构示例：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;object&quot;: &quot;list&quot;,
+  &quot;data&quot;: [
+    { &quot;id&quot;: &quot;your-enabled-model&quot;, &quot;object&quot;: &quot;model&quot; }
+  ]
+}</code></pre></div>
+<p>从实际返回的 <code>id</code> 中选择一个支持聊天的模型。列表可见不代表该模型支持所有接口，可在<a href="https://routok.com/pricing">模型广场</a>核对能力。</p>
+
+<h2 id="第二步-发送消息">第二步：发送消息</h2>
+<p>将 <code>your-enabled-model</code> 换成上一步选中的模型 ID。</p>
+
+<div class="code-group"><details open><summary>macOS / Linux</summary><div class="code"><div class="code-bar"><span>macOS / Linux</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">export NEW_API_MODEL=&#39;your-enabled-model&#39;
+curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/chat/completions&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &quot;{\&quot;model\&quot;:\&quot;$NEW_API_MODEL\&quot;,\&quot;messages\&quot;:[{\&quot;role\&quot;:\&quot;user\&quot;,\&quot;content\&quot;:\&quot;Hello!\&quot;}]}&quot;</code></pre></div></details><details open><summary>Windows PowerShell</summary><div class="code"><div class="code-bar"><span>Windows PowerShell</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-powershell">$env:NEW_API_MODEL = &#39;your-enabled-model&#39;
+$body = @{
+  model = $env:NEW_API_MODEL
+  messages = @(@{ role = &#39;user&#39;; content = &#39;Hello!&#39; })
+} | ConvertTo-Json -Depth 10
+$result = Invoke-RestMethod &quot;$env:NEW_API_BASE_URL/v1/chat/completions&quot; `
+  -Method Post -Headers $headers -ContentType &#39;application/json&#39; -Body $body
+$result.choices[0].message.content</code></pre></div></details></div>
+<p>非流式成功响应通常包含以下结构，实际文字和用量会不同：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;id&quot;: &quot;chatcmpl-example&quot;,
+  &quot;object&quot;: &quot;chat.completion&quot;,
+  &quot;model&quot;: &quot;your-enabled-model&quot;,
+  &quot;choices&quot;: [
+    {
+      &quot;index&quot;: 0,
+      &quot;message&quot;: { &quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Hello! How can I help?&quot; },
+      &quot;finish_reason&quot;: &quot;stop&quot;
+    }
+  ],
+  &quot;usage&quot;: { &quot;prompt_tokens&quot;: 10, &quot;completion_tokens&quot;: 8, &quot;total_tokens&quot;: 18 }
+}</code></pre></div>
+<h2 id="确认调用成功">确认调用成功</h2>
+<p>读取 <code>choices[0].message.content</code>，再到<a href="https://routok.com/usage-logs">用量日志</a>核对时间、模型和费用。完成这一步后，即可使用同一组配置继续<a href="/docs/sdk/index.html">SDK 接入</a>。</p>
+
+<table>
+<thead>
+<tr>
+<th>结果</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401</td>
+<td>检查模型密钥是否完整且有效</td>
+</tr>
+<tr>
+<td>404</td>
+<td>检查 API 根地址是否重复包含 /v1</td>
+</tr>
+<tr>
+<td>模型列表为空</td>
+<td>检查密钥模型限制和分组</td>
+</tr>
+<tr>
+<td>没有可用渠道</td>
+<td>确认模型与分组后联系支持</td>
+</tr>
+<tr>
+<td>额度不足</td>
+<td>核对账户、密钥和套餐状态</td>
+</tr>
+</tbody></table>
+
+<p>完整排查路径见<a href="/docs/troubleshooting/index.html">调用失败排查</a>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/clients/index.html">← 上一篇<br>连接聊天软件与应用</a><a href="/docs/sdk/index.html">下一篇 →<br>Python 与 JavaScript SDK</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#准备接入信息">准备接入信息</a><a class="depth-2" href="#第一步-查询可用模型">第一步：查询可用模型</a><a class="depth-2" href="#第二步-发送消息">第二步：发送消息</a><a class="depth-2" href="#确认调用成功">确认调用成功</a></nav></aside></div>
+</body></html>

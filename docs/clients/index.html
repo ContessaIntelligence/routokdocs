@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>连接聊天软件与应用 · RouTok 文档</title><meta name="description" content="准备 API 地址、模型 API 密钥、模型 ID，即可配置支持自定义接口的软件。建议先完成一次在线测试，再验证客户端连接。">
+<link rel="canonical" href="https://docs.routok.com/docs/clients/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html" aria-current="page">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html" aria-current="page">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="连接聊天软件与应用">连接聊天软件与应用</h1>
+<p>准备 <strong>API 地址、模型 API 密钥、模型 ID</strong>，即可配置支持自定义接口的软件。建议先完成一次<a href="/docs/playground/index.html">在线测试</a>，再验证客户端连接。</p>
+
+<h2 id="准备三个配置值">准备三个配置值</h2>
+<table>
+<thead>
+<tr>
+<th>客户端字段</th>
+<th>填写内容</th>
+<th>获取位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API Key／Token</td>
+<td>本站签发的完整模型密钥</td>
+<td><a href="https://routok.com/keys">API 密钥</a></td>
+</tr>
+<tr>
+<td>Base URL／API 地址</td>
+<td>与客户端协议匹配的接入地址</td>
+<td>密钥页面的 <strong>API 地址</strong></td>
+</tr>
+<tr>
+<td>Model／模型 ID</td>
+<td>完整模型标识</td>
+<td><a href="https://routok.com/pricing">模型广场</a>或模型列表 API</td>
+</tr>
+</tbody></table>
+
+<p>服务商名称可填写“RouTok”。Provider／接口类型应选择模型支持的协议，例如 OpenAI 兼容。</p>
+
+<h2 id="地址是否需要-v1">地址是否需要 /v1</h2>
+<p>以根地址 <code>https://gateway.example.com</code> 为例：</p>
+
+<table>
+<thead>
+<tr>
+<th>客户端要求</th>
+<th>应填写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenAI SDK 的 base_url／baseURL</td>
+<td><code>https://gateway.example.com/v1</code></td>
+</tr>
+<tr>
+<td>自动添加 /v1 的服务商模板</td>
+<td><code>https://gateway.example.com</code></td>
+</tr>
+<tr>
+<td>明确要求完整 Chat Completions 地址</td>
+<td><code>https://gateway.example.com/v1/chat/completions</code></td>
+</tr>
+</tbody></table>
+
+<p>示例域名需要替换。若本站提供独立 API 域名，请使用 <strong>API 地址</strong> 中的值，而非直接复制控制台网址。</p>
+
+<h2 id="cherry-studio">Cherry Studio</h2>
+<ol>
+<li>打开设置中的模型服务商页面，选择或创建兼容服务商。</li>
+<li>使用内置 <strong>New API</strong> 模板时，按模板提示填写本站根地址。</li>
+<li>填入模型 API 密钥并启用服务商。</li>
+<li>获取模型列表，或手动添加从本站复制的模型 ID。</li>
+<li>新建会话并选择该服务商的模型，发送一条短消息。</li>
+</ol>
+
+<p>OpenAI 模板和不同客户端版本的补路径规则可能不同，以字段提示为准。配置入口可参考 <a href="https://cherryai.com.cn/docs/zh-cn/pre-basic/settings/providers/">Cherry Studio 官方说明</a>。</p>
+
+<h2 id="dify-与工作流应用">Dify 与工作流应用</h2>
+<p>由工作区管理员添加支持自定义地址的模型服务商，再在工作流节点中选择对应模型。聊天、向量和重排序节点分别需要支持该任务的模型。配置入口见 <a href="https://docs.dify.ai/en/cloud/use-dify/workspace/model-providers">Dify 官方说明</a>。</p>
+
+<h2 id="确认连接成功">确认连接成功</h2>
+<p>完成一条消息，收到回复，并在 RouTok <a href="https://routok.com/usage-logs">用量日志</a>找到对应记录。客户端的“连接成功”提示有时只验证密钥或模型列表，仍需实际生成一次内容。</p>
+
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>检查方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401</td>
+<td>核对完整密钥及有效期，确认未填写密码或 PAT</td>
+</tr>
+<tr>
+<td>404</td>
+<td>检查是否重复添加 /v1，或误填完整接口路径</td>
+</tr>
+<tr>
+<td>模型不存在</td>
+<td>使用模型 ID，避免填写展示名称</td>
+</tr>
+<tr>
+<td>网页正常，软件失败</td>
+<td>核对密钥的分组和模型限制</td>
+</tr>
+</tbody></table>
+
+<p>其他情况见<a href="/docs/troubleshooting/index.html">错误排查</a>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/security/index.html">← 上一篇<br>账号安全与访问管理</a><a href="/docs/quickstart/index.html">下一篇 →<br>完成第一次 API 调用</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#准备三个配置值">准备三个配置值</a><a class="depth-2" href="#地址是否需要-v1">地址是否需要 /v1</a><a class="depth-2" href="#cherry-studio">Cherry Studio</a><a class="depth-2" href="#dify-与工作流应用">Dify 与工作流应用</a><a class="depth-2" href="#确认连接成功">确认连接成功</a></nav></aside></div>
+</body></html>

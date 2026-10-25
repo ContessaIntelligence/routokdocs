@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python 与 JavaScript SDK · RouTok 文档</title><meta name="description" content="使用 OpenAI SDK 可以完成本站兼容接口的请求和响应处理。先完成首次调用，在同一个终端保留 NEW_API_BASE_URL、NEW_API_KEY 和 NEW_API_MODEL。">
+<link rel="canonical" href="https://docs.routok.com/docs/sdk/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html" aria-current="page">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html" aria-current="page">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="python-与-javascript-sdk">Python 与 JavaScript SDK</h1>
+<p>使用 OpenAI SDK 可以完成本站兼容接口的请求和响应处理。先完成<a href="/docs/quickstart/index.html">首次调用</a>，在同一个终端保留 <code>NEW_API_BASE_URL</code>、<code>NEW_API_KEY</code> 和 <code>NEW_API_MODEL</code>。</p>
+
+<p>本页的 <code>NEW_API_BASE_URL</code> 始终为 <strong>不含 /v1 的 API 根地址</strong>，程序会追加版本路径。示例固定依赖版本，便于复现；升级 SDK 后请重新验证实际使用的能力。</p>
+
+<h2 id="python">Python</h2>
+<p>创建虚拟环境并安装依赖：</p>
+
+<div class="code-group"><details open><summary>macOS / Linux</summary><div class="code"><div class="code-bar"><span>macOS / Linux</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">python -m venv .venv
+. .venv/bin/activate
+python -m pip install openai==3.35.1</code></pre></div></details><details open><summary>Windows PowerShell</summary><div class="code"><div class="code-bar"><span>Windows PowerShell</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-powershell">python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install openai==3.35.1</code></pre></div></details></div>
+<p>将以下内容保存为 <code>demo.py</code>：</p>
+
+<div class="code"><div class="code-bar"><span>python</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-python">import os
+from urllib.parse import urlsplit
+from openai import OpenAI
+
+base_url = os.environ[&quot;NEW_API_BASE_URL&quot;].rstrip(&quot;/&quot;)
+origin = urlsplit(base_url)
+if (origin.scheme not in (&quot;http&quot;, &quot;https&quot;) or not origin.netloc
+        or origin.path or origin.query or origin.fragment
+        or origin.username or origin.password):
+    raise ValueError(&quot;NEW_API_BASE_URL must be an API origin without /v1&quot;)
+
+client = OpenAI(
+    base_url=base_url + &quot;/v1&quot;,
+    api_key=os.environ[&quot;NEW_API_KEY&quot;],
+    timeout=60.0,
+    max_retries=0,
+)
+response = client.chat.completions.create(
+    model=os.environ[&quot;NEW_API_MODEL&quot;],
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello!&quot;}],
+)
+print(response.choices[0].message.content)</code></pre></div>
+<p>macOS／Linux 在已激活的虚拟环境中运行 <code>python demo.py</code>；Windows 运行 <code>.\.venv\Scripts\python.exe demo.py</code>，无需修改 PowerShell 执行策略。</p>
+
+<h2 id="javascript">JavaScript</h2>
+<p>在应用目录安装固定版本：</p>
+
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">bun add --exact openai@7.39.0</code></pre></div>
+<p>将以下内容保存为 <code>demo.mjs</code>：</p>
+
+<div class="code"><div class="code-bar"><span>javascript</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-javascript">import OpenAI from &#39;openai&#39;
+
+const { NEW_API_BASE_URL, NEW_API_KEY, NEW_API_MODEL } = process.env
+if (!NEW_API_BASE_URL || !NEW_API_KEY || !NEW_API_MODEL) {
+  throw new Error(&#39;Set NEW_API_BASE_URL, NEW_API_KEY and NEW_API_MODEL first&#39;)
+}
+const origin = new URL(NEW_API_BASE_URL)
+if (![&#39;http:&#39;, &#39;https:&#39;].includes(origin.protocol) || origin.pathname !== &#39;/&#39;
+    || origin.search || origin.hash || origin.username || origin.password) {
+  throw new Error(&#39;NEW_API_BASE_URL must be an API origin without /v1&#39;)
+}
+
+const client = new OpenAI({
+  baseURL: origin.origin + &#39;/v1&#39;,
+  apiKey: NEW_API_KEY,
+  timeout: 60_000,
+  maxRetries: 0,
+})
+const response = await client.chat.completions.create({
+  model: NEW_API_MODEL,
+  messages: [{ role: &#39;user&#39;, content: &#39;Hello!&#39; }],
+})
+console.log(response.choices[0].message.content)</code></pre></div>
+<p>运行 <code>bun demo.mjs</code>。该示例也适合 TypeScript 服务端项目，使用 Node.js 时可通过 <code>node demo.mjs</code> 运行。</p>
+
+<h2 id="确认结果与处理错误">确认结果与处理错误</h2>
+<p>终端输出回复，并且本站用量日志出现对应记录，即完成 SDK 接入。</p>
+
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>检查方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>找不到 openai 模块</td>
+<td>安装依赖与执行程序是否使用同一环境或目录</td>
+</tr>
+<tr>
+<td>缺少环境变量</td>
+<td>是否在设置变量的同一终端运行</td>
+</tr>
+<tr>
+<td>地址校验失败或 404</td>
+<td>根地址不要包含 /v1 或完整接口路径</td>
+</tr>
+<tr>
+<td>请求超时</td>
+<td>查看日志后再决定是否重试</td>
+</tr>
+</tbody></table>
+
+<p>示例关闭自动重试，便于观察原始错误。生产应用可以对可恢复错误采用有上限的退避，同时评估 SDK、应用和网关的重试叠加。</p>
+
+<h2 id="用于实际应用">用于实际应用</h2>
+<p>密钥保存在服务端或可信客户端中。网页前端和移动端资源不能安全保存长期密钥，浏览器业务请求应通过自己的服务端进行受控转发。</p>
+
+<p>本页示例在 Python 3.12、Node.js 24／Bun 1.4 环境中进行本地模拟响应验证，不能替代真实模型的兼容性测试。流式用法见<a href="/docs/streaming/index.html">流式响应</a>，其他协议见<a href="/docs/api-reference/index.html">API 参考</a>。</p>
+
+<p>本地验证覆盖请求路径、鉴权头、模型与消息参数、回复读取，以及服务端错误不自动重试、根地址误含 <code>/v1</code> 时阻止发送。这里使用模拟服务，不会产生真实模型调用费用。</p>
+
+<p>SDK 用法可参考 <a href="https://developers.openai.com/api/reference/python">OpenAI Python 文档</a>和 <a href="https://developers.openai.com/api/reference/typescript">JavaScript 文档</a>。上游文档描述的完整能力不代表本站全部开放。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/quickstart/index.html">← 上一篇<br>完成第一次 API 调用</a><a href="/docs/protocols/index.html">下一篇 →<br>协议与兼容性</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#python">Python</a><a class="depth-2" href="#javascript">JavaScript</a><a class="depth-2" href="#确认结果与处理错误">确认结果与处理错误</a><a class="depth-2" href="#用于实际应用">用于实际应用</a></nav></aside></div>
+</body></html>

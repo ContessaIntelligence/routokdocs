@@ -1,0 +1,21 @@
+{
+  "reviewedAt": "2026-10-21",
+  "sourceRevision": "058c8231b68c51ee02abee15befcd720fee9f4a2",
+  "platformPaths": [
+    "/dashboard",
+    "/pricing",
+    "/keys",
+    "/playground",
+    "/wallet",
+    "/usage-logs",
+    "/rankings",
+    "/profile",
+    "/security",
+    "/sign-in",
+    "/forgot-password",
+    "/about"
+  ],
+  "siteUrl": "https://docs.routok.com",
+  "platformUrl": "https://routok.com",
+  "migrationSource": "022756a50ee75692ddcf62d0fd531c38f8a48364"
+}

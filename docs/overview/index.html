@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RouTok 使用指南 · RouTok 文档</title><meta name="description" content="从选择模型到完成调用，再到核对费用，这份指南帮助你把 AI 接入日常工作和自己的应用。">
+<link rel="canonical" href="https://docs.routok.com/docs/overview/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html" aria-current="page">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html" aria-current="page">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="routok-使用指南">RouTok 使用指南</h1>
+<p>从选择模型到完成调用，再到核对费用，这份指南帮助你把 AI 接入日常工作和自己的应用。</p>
+
+<h2 id="选择你的起点">选择你的起点</h2>
+<table>
+<thead>
+<tr>
+<th>我想做什么</th>
+<th>从这里开始</th>
+<th>完成后可以</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>先体验 AI</td>
+<td><a href="/docs/playground/index.html">在线测试</a></td>
+<td>在网页中选择模型并获得回复</td>
+</tr>
+<tr>
+<td>接入聊天软件</td>
+<td><a href="/docs/keys/index.html">创建密钥</a> → <a href="/docs/clients/index.html">客户端接入</a></td>
+<td>在常用软件中使用本站模型</td>
+</tr>
+<tr>
+<td>开发自己的应用</td>
+<td><a href="/docs/quickstart/index.html">首次调用</a> → <a href="/docs/sdk/index.html">SDK 示例</a></td>
+<td>发起请求并读取结果</td>
+</tr>
+<tr>
+<td>了解费用</td>
+<td><a href="/docs/wallet/index.html">钱包与套餐</a> → <a href="/docs/costs/index.html">计费说明</a></td>
+<td>看懂余额、预算和调用费用</td>
+</tr>
+<tr>
+<td>解决调用问题</td>
+<td><a href="/docs/troubleshooting/index.html">错误排查</a></td>
+<td>根据现象定位下一步</td>
+</tr>
+</tbody></table>
+
+<p>尚未注册？先完成<a href="/docs/account/index.html">注册与登录</a>。已经有账号的用户可以直接打开<a href="https://routok.com/dashboard">控制台</a>。</p>
+
+<h2 id="接入前准备三个值">接入前准备三个值</h2>
+<ul>
+<li><strong>API 地址</strong>：在<a href="https://routok.com/keys">API 密钥页面</a>打开“API 地址”，复制本站提供的接入地址。</li>
+<li><strong>API 密钥</strong>：为当前应用创建的模型调用凭据。</li>
+<li><strong>模型 ID</strong>：从<a href="https://routok.com/pricing">模型广场</a>选择，或用该密钥查询模型列表。</li>
+</ul>
+
+<p>网站登录密码、个人访问令牌 PAT 和上游服务商的密钥不能替代本站模型 API 密钥。详细区别见<a href="/docs/concepts/index.html">核心概念</a>。</p>
+
+<h2 id="如何使用本指南">如何使用本指南</h2>
+<p>操作入口以当前账号可见页面为准。支付方式、套餐和模型能力由本站实际配置决定；遇到缺少入口或权限提示时，可通过<a href="/docs/support/index.html">站内支持</a>确认。</p>
+
+<p>代码中的 <code>https://gateway.example.com</code>、<code>your-enabled-model</code> 和示例 ID 均为占位符，使用前需要替换。示例响应用于解释结构，不代表本站承诺开放的模型、价格或服务结果。</p>
+
+<h2 id="文档版本与适用范围">文档版本与适用范围</h2>
+<p>本轮内容核验日期为 <strong>2026-10-21</strong>，依据 New API 源码提交 <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">058c8231b</a>。接口路径和页面入口已按该版本核对；示例未连接真实上游进行全量验证。模型兼容性请结合<a href="/docs/protocols/index.html">协议说明</a>和实际调用结果判断。</p>
+
+<h2 id="new-api-文档与项目归属">New API 文档与项目归属</h2>
+<p>New API 是由 QuantumNous 维护的开源 AI 网关。RouTok 使用该项目提供的平台能力。项目资料：<a href="https://docs.newapi.ai/zh/docs">官方文档</a>、<a href="https://github.com/QuantumNous/new-api">源码</a>、<a href="https://github.com/QuantumNous/new-api/releases">发布记录</a>。实际可用服务和价格以 RouTok 页面为准。</p>
+<nav class="pagination" aria-label="文章导航"><span></span><a href="/docs/account/index.html">下一篇 →<br>注册与登录</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#选择你的起点">选择你的起点</a><a class="depth-2" href="#接入前准备三个值">接入前准备三个值</a><a class="depth-2" href="#如何使用本指南">如何使用本指南</a><a class="depth-2" href="#文档版本与适用范围">文档版本与适用范围</a><a class="depth-2" href="#new-api-文档与项目归属">New API 文档与项目归属</a></nav></aside></div>
+</body></html>

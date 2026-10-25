@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在线测试模型 · RouTok 文档</title><meta name="description" content="通过在线测试，可以在浏览器中体验模型并核对调用结果。测试会使用当前账号的可用额度，开始前请查看模型价格。">
+<link rel="canonical" href="https://docs.routok.com/docs/playground/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html" aria-current="page">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html" aria-current="page">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="在线测试模型">在线测试模型</h1>
+<p>通过<a href="https://routok.com/playground">在线测试</a>，可以在浏览器中体验模型并核对调用结果。测试会使用当前账号的可用额度，开始前请查看<a href="https://routok.com/pricing">模型价格</a>。</p>
+
+<h2 id="完成一次测试">完成一次测试</h2>
+<ol>
+<li>登录并打开在线测试，选择模型和可用分组。</li>
+<li>保持默认参数，输入一个简短问题，例如“用三句话解释什么是 API”。</li>
+<li>发送后等待回复结束。</li>
+<li>打开<a href="https://routok.com/usage-logs">用量日志</a>，核对模型、用量和费用。</li>
+</ol>
+
+<p>收到完整回复并找到对应记录，即可确认这次测试成功。没有模型可选时，先检查可用分组，再联系支持确认开放范围。</p>
+
+<h2 id="调整参数">调整参数</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>系统提示</td>
+<td>描述任务、回答风格和约束</td>
+</tr>
+<tr>
+<td>温度</td>
+<td>调整输出变化程度，需模型支持</td>
+</tr>
+<tr>
+<td>最大输出长度</td>
+<td>限制单次输出上限，不代表一定生成该长度</td>
+</tr>
+<tr>
+<td>上下文</td>
+<td>本次请求带给模型的历史消息</td>
+</tr>
+</tbody></table>
+
+<p>每次只调整一个参数，并用相同问题比较，便于判断变化来源。</p>
+
+<h2 id="继续对话与重新生成">继续对话与重新生成</h2>
+<p>追问可能携带历史消息，增加输入用量。重新生成或编辑后重发属于新请求，可能产生新费用。停止等待或关闭网页不保证上游立即停止。</p>
+
+<p>需要保存的内容请及时导出或复制。浏览器聊天记录不应作为唯一备份。</p>
+
+<h2 id="网页可用-客户端不可用">网页可用，客户端不可用</h2>
+<p>网页测试使用登录账号，客户端使用 API 密钥，两者的分组和访问限制可能不同。按<a href="/docs/clients/index.html">客户端接入</a>核对地址、密钥、模型和分组。</p>
+
+<p>侧边栏中额外配置的聊天入口可能指向第三方网站。使用前确认目标来源及隐私规则，避免分享含密钥的链接。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/concepts/index.html">← 上一篇<br>接入前需要了解的概念</a><a href="/docs/models/index.html">下一篇 →<br>查询和选择模型</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#完成一次测试">完成一次测试</a><a class="depth-2" href="#调整参数">调整参数</a><a class="depth-2" href="#继续对话与重新生成">继续对话与重新生成</a><a class="depth-2" href="#网页可用-客户端不可用">网页可用，客户端不可用</a></nav></aside></div>
+</body></html>

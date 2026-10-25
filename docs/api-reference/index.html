@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>模型 API 参考 · RouTok 文档</title><meta name="description" content="本页说明常用接口的请求与响应结构。所有路径相对于本站 API 根地址；完整接入步骤见首次调用。">
+<link rel="canonical" href="https://docs.routok.com/docs/api-reference/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html" aria-current="page">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html" aria-current="page">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="模型-api-参考">模型 API 参考</h1>
+<p>本页说明常用接口的请求与响应结构。所有路径相对于本站 API 根地址；完整接入步骤见<a href="/docs/quickstart/index.html">首次调用</a>。</p>
+
+<h2 id="通用约定">通用约定</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>约定</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>鉴权</td>
+<td>Authorization: Bearer 本站模型API密钥</td>
+</tr>
+<tr>
+<td>JSON 请求</td>
+<td>Content-Type: application/json</td>
+</tr>
+<tr>
+<td>文件上传</td>
+<td>使用 multipart，由客户端生成 boundary</td>
+</tr>
+<tr>
+<td>模型名称</td>
+<td>使用本站提供的模型 ID</td>
+</tr>
+<tr>
+<td>流式响应</td>
+<td>按所选协议解析 SSE 事件</td>
+</tr>
+<tr>
+<td>WebSocket</td>
+<td>使用支持升级连接的客户端</td>
+</tr>
+</tbody></table>
+
+<p>以下 JSON 为最小结构示例，模型名和 ID 均需替换。可选字段是否受支持，取决于模型、渠道和协议转换路径。</p>
+
+<h2 id="模型列表">模型列表</h2>
+<p><code>GET /v1/models</code></p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;object&quot;: &quot;list&quot;,
+  &quot;data&quot;: [
+    { &quot;id&quot;: &quot;your-enabled-model&quot;, &quot;object&quot;: &quot;model&quot; }
+  ]
+}</code></pre></div>
+<p>使用 <code>data[].id</code> 发起调用。<code>GET /v1/models/{model}</code> 可查询单个模型；附加字段与协议模式有关。列表可见性不保证当前生成请求一定成功。</p>
+
+<h2 id="chat-completions">Chat Completions</h2>
+<p><code>POST /v1/chat/completions</code></p>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>model</td>
+<td>string</td>
+<td>必填，本站模型 ID</td>
+</tr>
+<tr>
+<td>messages</td>
+<td>array</td>
+<td>必填，消息序列</td>
+</tr>
+<tr>
+<td>messages[].role</td>
+<td>string</td>
+<td>例如 user、assistant；工具消息按工具协议填写</td>
+</tr>
+<tr>
+<td>messages[].content</td>
+<td>string／内容数组</td>
+<td>按消息角色、模态和模型要求填写</td>
+</tr>
+<tr>
+<td>stream</td>
+<td>boolean</td>
+<td>可选，true 启用流式</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>array</td>
+<td>可选，需模型支持</td>
+</tr>
+<tr>
+<td>response_format</td>
+<td>object</td>
+<td>可选，需模型支持相应输出格式</td>
+</tr>
+<tr>
+<td>max_tokens／max_completion_tokens</td>
+<td>integer</td>
+<td>可选输出上限，按模型选择，不要任意同时设置</td>
+</tr>
+</tbody></table>
+
+<p>最小请求：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;model&quot;: &quot;your-enabled-model&quot;,
+  &quot;messages&quot;: [{ &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello!&quot; }]
+}</code></pre></div>
+<p>响应的核心字段：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;choices&quot;: [
+    {
+      &quot;index&quot;: 0,
+      &quot;message&quot;: { &quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Hello!&quot; },
+      &quot;finish_reason&quot;: &quot;stop&quot;
+    }
+  ],
+  &quot;usage&quot;: { &quot;prompt_tokens&quot;: 10, &quot;completion_tokens&quot;: 3, &quot;total_tokens&quot;: 13 }
+}</code></pre></div>
+<p>读取 <code>choices[].message</code>，并检查 finish_reason。工具调用可能返回 tool_calls；达到输出上限时内容可能不完整。流式改为读取 <code>choices[].delta</code>，详见<a href="/docs/streaming/index.html">流式响应</a>、<a href="/docs/tools/index.html">工具调用</a>和<a href="/docs/structured-output/index.html">结构化输出</a>。</p>
+
+<h2 id="responses">Responses</h2>
+<p><code>POST /v1/responses</code></p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{&quot;model&quot;:&quot;your-enabled-model&quot;,&quot;input&quot;:&quot;Hello!&quot;}</code></pre></div>
+<p>input 可为字符串或协议支持的内容项。简化响应：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;id&quot;: &quot;resp_example&quot;,
+  &quot;object&quot;: &quot;response&quot;,
+  &quot;status&quot;: &quot;completed&quot;,
+  &quot;output&quot;: [
+    {
+      &quot;type&quot;: &quot;message&quot;,
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;content&quot;: [{ &quot;type&quot;: &quot;output_text&quot;, &quot;text&quot;: &quot;Hello!&quot; }]
+    }
+  ]
+}</code></pre></div>
+<p>遍历 output 中的 message 及 output_text 内容项，不要按 Chat 的 choices 解析。SDK 可能提供 output_text 便利属性。格式约束使用 text.format，流式使用命名事件。</p>
+
+<p><code>background: true</code> 和 <code>GET /v1/responses/{response_id}</code> 仅在支持该模式的任务插件路径下适用；普通 relay 返回的响应 ID 不保证可由本站检索。保留原始返回 ID，并使用对应协议的查询入口。</p>
+
+<h2 id="anthropic-messages">Anthropic Messages</h2>
+<p><code>POST /v1/messages</code></p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;model&quot;: &quot;your-messages-model&quot;,
+  &quot;max_tokens&quot;: 256,
+  &quot;messages&quot;: [{ &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello!&quot; }]
+}</code></pre></div>
+<p>max_tokens 为正整数输出上限，需符合模型及网关限制。兼容 Anthropic 客户端时，使用本站密钥填写 x-api-key，并按客户端协议发送 anthropic-version；直接 HTTP 调用也可使用本站支持的 Bearer 鉴权。</p>
+
+<p>简化响应：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;id&quot;: &quot;msg_example&quot;,
+  &quot;type&quot;: &quot;message&quot;,
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;content&quot;: [{ &quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;Hello!&quot; }],
+  &quot;stop_reason&quot;: &quot;end_turn&quot;,
+  &quot;usage&quot;: { &quot;input_tokens&quot;: 10, &quot;output_tokens&quot;: 3 }
+}</code></pre></div>
+<p>按 content 块类型处理文本、工具等结果。<code>/v1/messages/count_tokens</code> 当前未启用。</p>
+
+<h2 id="gemini">Gemini</h2>
+<p><code>POST /v1beta/models/{model}:generateContent</code></p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;contents&quot;: [
+    { &quot;role&quot;: &quot;user&quot;, &quot;parts&quot;: [{ &quot;text&quot;: &quot;Hello!&quot; }] }
+  ]
+}</code></pre></div>
+<p>模型名位于路径中。简化响应：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;candidates&quot;: [
+    {
+      &quot;content&quot;: { &quot;role&quot;: &quot;model&quot;, &quot;parts&quot;: [{ &quot;text&quot;: &quot;Hello!&quot; }] },
+      &quot;finishReason&quot;: &quot;STOP&quot;
+    }
+  ]
+}</code></pre></div>
+<p>读取 candidates 中的 content.parts，按类型处理。流式 action 为 streamGenerateContent，SSE 客户端通常使用 ?alt=sse。</p>
+
+<p>鉴权可使用本站支持的 Bearer 或兼容客户端的 x-goog-api-key。优先使用请求头，避免密钥进入 URL 日志。countTokens 当前未实现。</p>
+
+<h2 id="媒体与任务">媒体与任务</h2>
+<table>
+<thead>
+<tr>
+<th>方法与路径</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST /v1/images/generations</td>
+<td>图片生成</td>
+<td><a href="/docs/images/index.html">生成图片</a></td>
+</tr>
+<tr>
+<td>POST /v1/images/edits</td>
+<td>图片编辑</td>
+<td><a href="/docs/images/index.html#%E7%BC%96%E8%BE%91%E5%9B%BE%E7%89%87">编辑图片</a></td>
+</tr>
+<tr>
+<td>POST /v1/audio/speech</td>
+<td>语音合成，通常返回二进制</td>
+<td><a href="/docs/audio-embeddings/index.html">音频接口</a></td>
+</tr>
+<tr>
+<td>POST /v1/audio/transcriptions</td>
+<td>语音识别</td>
+<td><a href="/docs/audio-embeddings/index.html">音频接口</a></td>
+</tr>
+<tr>
+<td>POST /v1/audio/translations</td>
+<td>音频翻译，需模型支持</td>
+<td><a href="/docs/audio-embeddings/index.html">音频接口</a></td>
+</tr>
+<tr>
+<td>POST /v1/embeddings</td>
+<td>生成向量</td>
+<td><a href="/docs/audio-embeddings/index.html#%E7%94%9F%E6%88%90%E5%90%91%E9%87%8F">向量示例</a></td>
+</tr>
+<tr>
+<td>POST /v1/rerank</td>
+<td>文档重排序</td>
+<td><a href="/docs/audio-embeddings/index.html#%E9%87%8D%E6%8E%92%E5%BA%8F">重排序示例</a></td>
+</tr>
+<tr>
+<td>POST /v1/videos</td>
+<td>兼容插件的视频任务提交</td>
+<td><a href="/docs/tasks/index.html">完整任务流程</a></td>
+</tr>
+<tr>
+<td>GET /v1/videos/{taskId}</td>
+<td>查询视频任务</td>
+<td><a href="/docs/tasks/index.html#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E6%9F%A5%E8%AF%A2%E7%8A%B6%E6%80%81">任务状态</a></td>
+</tr>
+<tr>
+<td>GET /v1/videos/{taskId}/content</td>
+<td>获取视频内容</td>
+<td><a href="/docs/tasks/index.html#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E4%B8%8B%E8%BD%BD%E7%BB%93%E6%9E%9C">下载结果</a></td>
+</tr>
+<tr>
+<td>POST /v1/tasks/{pluginKey}</td>
+<td>通用提交，请求体由插件定义</td>
+<td><a href="/docs/tasks/index.html">任务说明</a></td>
+</tr>
+<tr>
+<td>GET /v1/tasks/{taskId}</td>
+<td>查询自己的任务</td>
+<td><a href="/docs/tasks/index.html#%E9%80%9A%E7%94%A8%E4%BB%BB%E5%8A%A1%E6%9F%A5%E8%AF%A2">通用查询</a></td>
+</tr>
+<tr>
+<td>GET /v1/tasks/{taskId}/artifacts</td>
+<td>查询结果文件列表</td>
+<td><a href="/docs/tasks/index.html#%E5%85%B6%E4%BB%96%E4%BB%BB%E5%8A%A1%E4%B8%8E%E7%BB%93%E6%9E%9C%E6%96%87%E4%BB%B6">结果文件</a></td>
+</tr>
+</tbody></table>
+
+<h2 id="错误响应">错误响应</h2>
+<p>错误可能由网关、上游或代理返回。OpenAI 兼容错误通常具有 error 对象，例如：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;error&quot;: {
+    &quot;message&quot;: &quot;Example error message&quot;,
+    &quot;type&quot;: &quot;invalid_request_error&quot;,
+    &quot;code&quot;: &quot;example_code&quot;
+  }
+}</code></pre></div>
+<p>以上为结构示意，不是固定错误文案。Messages、Gemini 和插件接口可能使用各自格式；message、type、code 也不保证全部存在。</p>
+
+<p>保留 HTTP 状态、协议错误字段和实际返回的请求标识。HTML 错误页通常需要进一步检查代理或接入地址。具体处理见<a href="/docs/troubleshooting/index.html">调用失败排查</a>。</p>
+
+<h2 id="能力边界与补充资料">能力边界与补充资料</h2>
+<p>文件管理、微调、图片 variations 和模型删除等占位接口不属于可用能力。上游完整字段应参考对应服务商官方协议，同时核对本站模型与渠道支持范围。</p>
+
+<p><a href="https://docs.newapi.ai/zh/docs/api">New API 官方 API 文档</a>提供项目层面的补充参考，RouTok 服务范围以本站为准。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/support/index.html">← 上一篇<br>联系支持</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#通用约定">通用约定</a><a class="depth-2" href="#模型列表">模型列表</a><a class="depth-2" href="#chat-completions">Chat Completions</a><a class="depth-2" href="#responses">Responses</a><a class="depth-2" href="#anthropic-messages">Anthropic Messages</a><a class="depth-2" href="#gemini">Gemini</a><a class="depth-2" href="#媒体与任务">媒体与任务</a><a class="depth-2" href="#错误响应">错误响应</a><a class="depth-2" href="#能力边界与补充资料">能力边界与补充资料</a></nav></aside></div>
+</body></html>

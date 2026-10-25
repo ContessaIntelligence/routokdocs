@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>查看用量与调用记录 · RouTok 文档</title><meta name="description" content="用量日志用于确认请求是否到达本站、定位调用问题，以及核对实际费用。">
+<link rel="canonical" href="https://docs.routok.com/docs/logs/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html" aria-current="page">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html" aria-current="page">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="查看用量与调用记录">查看用量与调用记录</h1>
+<p><a href="https://routok.com/usage-logs">用量日志</a>用于确认请求是否到达本站、定位调用问题，以及核对实际费用。</p>
+
+<h2 id="找到一条记录">找到一条记录</h2>
+<ol>
+<li>选择包含请求时间的时间范围。</li>
+<li>按模型、密钥名称等条件筛选。</li>
+<li>找到对应记录，查看用量、耗时和费用。</li>
+<li>有详情入口时展开，核对计费明细或失败原因。</li>
+</ol>
+
+<p><img src="/assets/images/usage-logs.zh-CN.jpg" alt="New API 用量日志示例，展示时间、模型、Token 和费用列" loading="lazy"></p>
+
+<p><em>① 按时间和模型筛选，② 核对调用模型，③ 查看耗时与详情。截图为项目模拟数据，包含管理员可见列；普通用户仅能查看自己的记录。</em></p>
+
+<h2 id="常见字段">常见字段</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型</td>
+<td>此次请求记录的模型标识</td>
+</tr>
+<tr>
+<td>输入／输出</td>
+<td>模型处理量，Token 不能直接当作字数</td>
+</tr>
+<tr>
+<td>缓存明细</td>
+<td>支持时展示缓存读取、写入等分类</td>
+</tr>
+<tr>
+<td>耗时</td>
+<td>请求时间指标；首字延迟与总耗时分别反映不同阶段</td>
+</tr>
+<tr>
+<td>费用／额度</td>
+<td>按页面单位展示的消耗</td>
+</tr>
+<tr>
+<td>状态／失败原因</td>
+<td>用于判断权限、参数、额度或上游问题</td>
+</tr>
+</tbody></table>
+
+<p>图片和视频可能另有任务记录。任务尚未结束时，最终费用也可能尚未产生。</p>
+
+<h2 id="找不到记录">找不到记录</h2>
+<p>先核对账号、API 地址、时间范围和筛选条件，再刷新页面。部分请求在进入处理前被拒绝，因此没有日志并不等于请求没有发送。</p>
+
+<p>对照客户端日志时，请注明时区，例如“北京时间 2026-10-21 14:30”。</p>
+
+<h2 id="对费用有疑问">对费用有疑问</h2>
+<p>提供发生时间、模型和记录标识，通过<a href="/docs/support/index.html">站内支持</a>核对。截图中保留必要的用量与状态信息，遮住完整密钥、私人提示词和文件内容。计费单位的解释见<a href="/docs/costs/index.html">费用说明</a>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/costs/index.html">← 上一篇<br>看懂用量与费用</a><a href="/docs/settings/index.html">下一篇 →<br>个人设置与通知</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#找到一条记录">找到一条记录</a><a class="depth-2" href="#常见字段">常见字段</a><a class="depth-2" href="#找不到记录">找不到记录</a><a class="depth-2" href="#对费用有疑问">对费用有疑问</a></nav></aside></div>
+</body></html>

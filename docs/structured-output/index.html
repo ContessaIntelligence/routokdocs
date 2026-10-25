@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>获取结构化输出 · RouTok 文档</title><meta name="description" content="当应用需要读取固定字段时，优先选择支持 JSON Schema 的模型。JSON 模式与严格 Schema 约束属于不同能力，接入前需分别确认。">
+<link rel="canonical" href="https://docs.routok.com/docs/structured-output/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html" aria-current="page">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html" aria-current="page">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="获取结构化输出">获取结构化输出</h1>
+<p>当应用需要读取固定字段时，优先选择支持 JSON Schema 的模型。JSON 模式与严格 Schema 约束属于不同能力，接入前需分别确认。</p>
+
+<h2 id="json-模式">JSON 模式</h2>
+<p>将以下请求发送到 <code>POST /v1/chat/completions</code>，替换模型 ID，并在提示中明确要求 JSON：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;model&quot;: &quot;your-json-capable-model&quot;,
+  &quot;messages&quot;: [
+    { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Return a JSON object with name and tags for a notebook.&quot; }
+  ],
+  &quot;response_format&quot;: { &quot;type&quot;: &quot;json_object&quot; }
+}</code></pre></div>
+<p>这种模式不规定必须有哪些字段，应用仍需校验结构。</p>
+
+<h2 id="json-schema">JSON Schema</h2>
+<p>以下是完整的 Chat Completions 请求示例：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;model&quot;: &quot;your-schema-capable-model&quot;,
+  &quot;messages&quot;: [
+    { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Extract the product name: a blue notebook.&quot; }
+  ],
+  &quot;response_format&quot;: {
+    &quot;type&quot;: &quot;json_schema&quot;,
+    &quot;json_schema&quot;: {
+      &quot;name&quot;: &quot;item&quot;,
+      &quot;strict&quot;: true,
+      &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: { &quot;name&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;required&quot;: [&quot;name&quot;],
+        &quot;additionalProperties&quot;: false
+      }
+    }
+  }
+}</code></pre></div>
+<p>成功时，<code>choices[0].message.content</code> 通常是一段 JSON 字符串，例如：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{&quot;name&quot;:&quot;blue notebook&quot;}</code></pre></div>
+<h2 id="使用-responses">使用 Responses</h2>
+<p>Responses 将格式定义放在 <code>text.format</code>，不能直接复制 Chat 的顶层 response_format：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;model&quot;: &quot;your-schema-capable-model&quot;,
+  &quot;input&quot;: &quot;Extract the product name: a blue notebook.&quot;,
+  &quot;text&quot;: {
+    &quot;format&quot;: {
+      &quot;type&quot;: &quot;json_schema&quot;,
+      &quot;name&quot;: &quot;item&quot;,
+      &quot;strict&quot;: true,
+      &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: { &quot;name&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;required&quot;: [&quot;name&quot;],
+        &quot;additionalProperties&quot;: false
+      }
+    }
+  }
+}</code></pre></div>
+<p>将请求发送到 <code>POST /v1/responses</code>。从 output 中的 output_text 内容项读取文本，或使用 SDK 提供的便利属性。</p>
+
+<h2 id="接收结果后">接收结果后</h2>
+<p>先检查完成状态，再解析 JSON、验证 Schema 和业务约束。拒答、截断、空内容或上游错误应作为独立分支处理，不能通过补括号把不完整结果当成成功。</p>
+
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>读取前检查</th>
+<th>文本位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chat Completions</td>
+<td>检查 HTTP 状态、finish_reason 和 message.refusal；输出截断或拒答时停止解析</td>
+<td>choices[].message.content</td>
+</tr>
+<tr>
+<td>Responses</td>
+<td>检查 HTTP 状态及 status；仅在 completed 时读取，并单独处理 content 中的 refusal 项</td>
+<td>output 中 message 的 output_text 内容项</td>
+</tr>
+</tbody></table>
+
+<p>即使 JSON 能解析，也要验证字段是否符合业务要求；格式正确不代表内容准确。</p>
+
+<p>上游拒绝格式字段时，先确认模型能力与转换路径，避免静默删除约束后继续接受未校验结果。协议细节见 <a href="https://developers.openai.com/api/docs/guides/structured-outputs">OpenAI 结构化输出文档</a>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/tools/index.html">← 上一篇<br>完成一轮工具调用</a><a href="/docs/reasoning-cache/index.html">下一篇 →<br>推理模型与提示缓存</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#json-模式">JSON 模式</a><a class="depth-2" href="#json-schema">JSON Schema</a><a class="depth-2" href="#使用-responses">使用 Responses</a><a class="depth-2" href="#接收结果后">接收结果后</a></nav></aside></div>
+</body></html>

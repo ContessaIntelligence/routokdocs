@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>调用失败排查 · RouTok 文档</title><meta name="description" content="先保留 发生时间、HTTP 状态码和脱敏错误信息。按下表定位问题，通常比反复更换配置更快。">
+<link rel="canonical" href="https://docs.routok.com/docs/troubleshooting/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html" aria-current="page">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html" aria-current="page">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="调用失败排查">调用失败排查</h1>
+<p>先保留 <strong>发生时间、HTTP 状态码和脱敏错误信息</strong>。按下表定位问题，通常比反复更换配置更快。</p>
+
+<h2 id="根据错误定位">根据错误定位</h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>优先检查</th>
+<th>后续处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401／未授权</td>
+<td>密钥是否完整、有效，是否由本站签发</td>
+<td>检查<a href="/docs/keys/index.html">密钥设置</a></td>
+</tr>
+<tr>
+<td>403／无权限</td>
+<td>模型、IP、分组和账号权限</td>
+<td>核对访问范围，必要时联系支持</td>
+</tr>
+<tr>
+<td>404／接口不存在</td>
+<td>地址是否重复 /v1、接口是否开放</td>
+<td>对照<a href="/docs/protocols/index.html">协议路径</a></td>
+</tr>
+<tr>
+<td>400／参数错误</td>
+<td>模型 ID、字段类型、参数支持情况</td>
+<td>使用最小请求复测</td>
+</tr>
+<tr>
+<td>413／请求过大</td>
+<td>文件和请求体大小</td>
+<td>减少内容，核对模型限制</td>
+</tr>
+<tr>
+<td>429／触发限制</td>
+<td>请求频率、并发、套餐或上游配额</td>
+<td>根据错误内容查看<a href="/docs/limits/index.html">限制说明</a></td>
+</tr>
+<tr>
+<td>5xx／服务错误</td>
+<td>网关、上游或代理是否暂时异常</td>
+<td>保留请求标识，查询日志后再决定是否重试</td>
+</tr>
+<tr>
+<td>没有可用渠道</td>
+<td>模型 ID、密钥分组和模型范围</td>
+<td>按<a href="/docs/models/index.html">模型指南</a>检查</td>
+</tr>
+<tr>
+<td>余额不足／额度不足</td>
+<td>账户、密钥及套餐各自状态</td>
+<td>依次核对<a href="/docs/wallet/index.html">钱包</a>和密钥额度</td>
+</tr>
+</tbody></table>
+
+<p>状态码只是定位线索，具体原因以响应内容为准。</p>
+
+<h2 id="网页能用-软件不能用">网页能用，软件不能用</h2>
+<ol>
+<li>核对软件使用的是本站提供的 API 地址。</li>
+<li>确认填写的是模型 API 密钥，且没有多余空格。</li>
+<li>使用完整模型 ID，并核对密钥分组。</li>
+<li>去掉可选参数，发送一条短文本请求。</li>
+<li>检查客户端是否自动补充 <code>/v1</code>。</li>
+</ol>
+
+<p>可以用<a href="/docs/quickstart/index.html">首次调用示例</a>对照。命令行成功而软件失败时，重点检查客户端的地址拼接和参数。</p>
+
+<h2 id="流式输出集中在最后出现">流式输出集中在最后出现</h2>
+<p>使用<a href="/docs/streaming/index.html">流式示例</a>对比。命令行正常时，检查软件读取与显示逻辑；各客户端都异常时，反馈给支持人员检查代理缓冲和网络链路。</p>
+
+<h2 id="超时后是否重新提交">超时后是否重新提交</h2>
+<p>先查询任务或日志。请求可能已到达上游，直接重发可能创建独立任务并产生额外费用。未获得任务 ID 时，也应保留时间和请求标识以便核对。</p>
+
+<h2 id="仍未解决">仍未解决</h2>
+<p>使用<a href="/docs/support/index.html#%E6%8F%90%E4%BE%9B%E6%8E%92%E6%9F%A5%E4%BF%A1%E6%81%AF">反馈模板</a>提交最小复现。保留服务端实际返回的 Request ID；完整密钥和私人内容请替换为 <code>REDACTED</code>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/limits/index.html">← 上一篇<br>限流、额度与超时</a><a href="/docs/faq/index.html">下一篇 →<br>常见问题</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#根据错误定位">根据错误定位</a><a class="depth-2" href="#网页能用-软件不能用">网页能用，软件不能用</a><a class="depth-2" href="#流式输出集中在最后出现">流式输出集中在最后出现</a><a class="depth-2" href="#超时后是否重新提交">超时后是否重新提交</a><a class="depth-2" href="#仍未解决">仍未解决</a></nav></aside></div>
+</body></html>

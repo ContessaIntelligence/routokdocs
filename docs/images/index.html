@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图片生成与编辑 · RouTok 文档</title><meta name="description" content="先在模型广场确认图片模型、支持的接口和计费单位。图片请求可能由普通 relay 或任务插件处理，参数范围和等待方式依模型而定。">
+<link rel="canonical" href="https://docs.routok.com/docs/images/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html" aria-current="page">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html" aria-current="page">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="图片生成与编辑">图片生成与编辑</h1>
+<p>先在<a href="https://routok.com/pricing">模型广场</a>确认图片模型、支持的接口和计费单位。图片请求可能由普通 relay 或任务插件处理，参数范围和等待方式依模型而定。</p>
+
+<h2 id="生成图片">生成图片</h2>
+<p>先完成<a href="/docs/quickstart/index.html#%E5%87%86%E5%A4%87%E6%8E%A5%E5%85%A5%E4%BF%A1%E6%81%AF">环境变量设置</a>，将模型 ID 替换后在 Bash 中执行：</p>
+
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/images/generations&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{&quot;model&quot;:&quot;your-image-model&quot;,&quot;prompt&quot;:&quot;A small green house in a garden&quot;,&quot;n&quot;:1}&#39;</code></pre></div>
+<p>常见响应结构示例：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;created&quot;: 1792540800,
+  &quot;data&quot;: [
+    { &quot;url&quot;: &quot;https://media.example.com/generated-image.png&quot; }
+  ]
+}</code></pre></div>
+<p>实际结果可能使用 <code>data[].url</code> 或 <code>data[].b64_json</code>。URL 结果按有效期及时下载；Base64 结果需要解码后保存。以实际返回的图片内容为准。</p>
+
+<h2 id="编辑图片">编辑图片</h2>
+<p>支持 multipart 编辑的模型可使用：</p>
+
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/images/edits&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot; \
+  -F &#39;model=your-image-edit-model&#39; \
+  -F &#39;prompt=Change the background to a garden&#39; \
+  -F &#39;image=@input.png&#39;</code></pre></div>
+<p>将 input.png 替换为本地文件路径。由客户端生成 multipart boundary，不要手动填写 Content-Type。多图、mask、尺寸、质量和格式只在模型支持时添加。</p>
+
+<h2 id="确认结果">确认结果</h2>
+<p>打开生成文件，并在<a href="https://routok.com/usage-logs">用量日志</a>核对模型与费用。某些下载地址会过期，重要结果请及时保存。</p>
+
+<h2 id="请求等待较长或失败">请求等待较长或失败</h2>
+<p>部分插件会等待上游任务完成后返回。超时不代表生成任务已停止，先查<a href="/docs/tasks/index.html">任务状态</a>和日志，再决定是否重发。</p>
+
+<p>生成数量、质量和尺寸可能影响费用。首次测试建议单张生成；<code>/v1/images/variations</code> 当前未实现。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/multimodal/index.html">← 上一篇<br>图片理解与多模态输入</a><a href="/docs/audio-embeddings/index.html">下一篇 →<br>音频、向量与重排序</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#生成图片">生成图片</a><a class="depth-2" href="#编辑图片">编辑图片</a><a class="depth-2" href="#确认结果">确认结果</a><a class="depth-2" href="#请求等待较长或失败">请求等待较长或失败</a></nav></aside></div>
+</body></html>

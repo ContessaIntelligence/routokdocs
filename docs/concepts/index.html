@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>接入前需要了解的概念 · RouTok 文档</title><meta name="description" content="一次模型调用通常经过：你的应用 → RouTok（基于 New API）→ 模型服务商。先理解地址、密钥、模型和额度，接入时就更容易定位问题。">
+<link rel="canonical" href="https://docs.routok.com/docs/concepts/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html" aria-current="page">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html" aria-current="page">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="接入前需要了解的概念">接入前需要了解的概念</h1>
+<p>一次模型调用通常经过：<strong>你的应用 → RouTok（基于 New API）→ 模型服务商</strong>。先理解地址、密钥、模型和额度，接入时就更容易定位问题。</p>
+
+<h2 id="三种凭据">三种凭据</h2>
+<table>
+<thead>
+<tr>
+<th>凭据</th>
+<th>签发方</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>上游 API Key</td>
+<td>模型服务商</td>
+<td>管理员配置渠道</td>
+</tr>
+<tr>
+<td>模型 API 密钥</td>
+<td>当前 New API 实例</td>
+<td>应用调用聊天、图片等模型接口</td>
+</tr>
+<tr>
+<td>个人访问令牌 PAT</td>
+<td>当前 New API 实例</td>
+<td>自动化调用管理 API，受 scope 和账号权限限制</td>
+</tr>
+</tbody></table>
+
+<p>浏览器登录凭据用于控制台会话，不应作为应用的长期 API Key。普通客户端使用本站的模型 API 密钥。</p>
+
+<h2 id="api-地址与完整路径">API 地址与完整路径</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>示例</th>
+<th>用在哪里</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API 根地址</td>
+<td><code>https://gateway.example.com</code></td>
+<td>本指南的 <code>NEW_API_BASE_URL</code></td>
+</tr>
+<tr>
+<td>SDK 基础地址</td>
+<td><code>https://gateway.example.com/v1</code></td>
+<td>OpenAI SDK 的 <code>base_url</code>／<code>baseURL</code></td>
+</tr>
+<tr>
+<td>完整接口地址</td>
+<td><code>https://gateway.example.com/v1/chat/completions</code></td>
+<td>直接 HTTP 请求</td>
+</tr>
+</tbody></table>
+
+<p>部分软件会自动添加版本路径。请按<a href="/docs/clients/index.html">客户端配置说明</a>填写，避免重复出现 <code>/v1/v1</code>。</p>
+
+<h2 id="模型-渠道与分组">模型、渠道与分组</h2>
+<ul>
+<li><strong>模型 ID</strong>：请求中的模型标识，通常填写在 <code>model</code> 字段。以本站提供的 ID 为准。</li>
+<li><strong>渠道</strong>：网站通往上游服务的配置，包含地址、凭据和支持的模型。</li>
+<li><strong>分组</strong>：影响密钥可访问的渠道和价格。模型存在，但所选分组没有可用渠道时，仍无法调用。</li>
+<li><strong>模型映射</strong>：管理员可把本站模型名映射为上游模型名或部署 ID。</li>
+<li><strong>优先级与权重</strong>：网站用于选择渠道的配置，通常由管理员维护。</li>
+</ul>
+
+<h2 id="额度与-token">额度与 Token</h2>
+<p><strong>额度是预算，Token 是用量，API Token 是凭据。</strong> 三者名称接近，含义不同。</p>
+
+<p>账户余额、密钥额度、套餐限制和上游余额分别生效。某一层不足都可能阻止调用，排查时应结合具体错误，而不是只看账户余额。</p>
+
+<p>下一步：<a href="/docs/quickstart/index.html">完成首次调用</a>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/console/index.html">← 上一篇<br>认识控制台</a><a href="/docs/playground/index.html">下一篇 →<br>在线测试模型</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#三种凭据">三种凭据</a><a class="depth-2" href="#api-地址与完整路径">API 地址与完整路径</a><a class="depth-2" href="#模型-渠道与分组">模型、渠道与分组</a><a class="depth-2" href="#额度与-token">额度与 Token</a></nav></aside></div>
+</body></html>

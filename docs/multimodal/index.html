@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图片理解与多模态输入 · RouTok 文档</title><meta name="description" content="图片理解是把图片交给视觉模型分析；生成图片请使用图片生成接口。本页展示 Chat Completions 的图片输入格式。">
+<link rel="canonical" href="https://docs.routok.com/docs/multimodal/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html" aria-current="page">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html" aria-current="page">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="图片理解与多模态输入">图片理解与多模态输入</h1>
+<p>图片理解是把图片交给视觉模型分析；生成图片请使用<a href="/docs/images/index.html">图片生成接口</a>。本页展示 Chat Completions 的图片输入格式。</p>
+
+<h2 id="发送一张图片">发送一张图片</h2>
+<p>选择支持视觉输入的模型，将以下 JSON 发送到 <code>POST /v1/chat/completions</code>：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;model&quot;: &quot;your-vision-model&quot;,
+  &quot;messages&quot;: [
+    {
+      &quot;role&quot;: &quot;user&quot;,
+      &quot;content&quot;: [
+        { &quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;Describe this image.&quot; },
+        {
+          &quot;type&quot;: &quot;image_url&quot;,
+          &quot;image_url&quot;: { &quot;url&quot;: &quot;https://media.example.com/example.png&quot; }
+        }
+      ]
+    }
+  ]
+}</code></pre></div>
+<p>模型 ID 和图片 URL 均需替换。图片应为上游能够访问、且你有权使用的 HTTPS 资源。鉴权与响应读取方式见<a href="/docs/quickstart/index.html">首次调用</a>。</p>
+
+<h2 id="使用本地图片">使用本地图片</h2>
+<p>模型支持时，可以将图片编码为 Data URL，填入 image_url.url。格式为 <code>data:image/png;base64,图片编码</code>，其中 MIME 类型必须与实际文件一致。</p>
+
+<p>Base64 会增加请求体大小。处理较大文件前，先用一张小图片确认格式和模型能力。</p>
+
+<h2 id="其他媒体与文件">其他媒体与文件</h2>
+<p>图片格式、分辨率、数量以及音视频长度受到模型和网关共同限制。PDF、音频、视频需要对应协议与渠道支持，不能只替换图片示例中的文件类型。</p>
+
+<p>当前文件管理 API 未实现，不能把任意 file_id 当成已上传资源。需要文件输入时，请先确认该模型支持的传入方式。</p>
+
+<h2 id="图片无法读取">图片无法读取</h2>
+<table>
+<thead>
+<tr>
+<th>输入方式</th>
+<th>优先检查</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>图片 URL</td>
+<td>上游能否访问、是否要求登录、是否存在失效链接或重定向</td>
+</tr>
+<tr>
+<td>Data URL</td>
+<td>MIME 类型、Base64 编码和请求体大小</td>
+</tr>
+<tr>
+<td>多图输入</td>
+<td>模型是否支持、图片数量是否超限</td>
+</tr>
+</tbody></table>
+
+<p>反馈问题时使用无敏感内容的示例图片，避免公开私人图片或完整 Data URL。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/reasoning-cache/index.html">← 上一篇<br>推理模型与提示缓存</a><a href="/docs/images/index.html">下一篇 →<br>图片生成与编辑</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#发送一张图片">发送一张图片</a><a class="depth-2" href="#使用本地图片">使用本地图片</a><a class="depth-2" href="#其他媒体与文件">其他媒体与文件</a><a class="depth-2" href="#图片无法读取">图片无法读取</a></nav></aside></div>
+</body></html>

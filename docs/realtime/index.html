@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实时连接与 WebSocket · RouTok 文档</title><meta name="description" content="实时音频等双向交互可以使用 WebSocket。仅需要逐步显示文本时，优先采用HTTP 流式响应。">
+<link rel="canonical" href="https://docs.routok.com/docs/realtime/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html" aria-current="page">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html">提交生成任务并获取结果</a><a href="/docs/realtime/index.html" aria-current="page">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="实时连接与-websocket">实时连接与 WebSocket</h1>
+<p>实时音频等双向交互可以使用 WebSocket。仅需要逐步显示文本时，优先采用<a href="/docs/streaming/index.html">HTTP 流式响应</a>。</p>
+
+<h2 id="选择接口">选择接口</h2>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET /v1/realtime</td>
+<td>兼容上游的 Realtime 会话，例如实时音频</td>
+</tr>
+<tr>
+<td>GET /v1/responses</td>
+<td>Responses WebSocket 交互</td>
+</tr>
+</tbody></table>
+
+<p>两者都需要升级连接，但事件和会话规则不同。HTTPS 根地址对应的 WebSocket 地址通常使用 wss://。</p>
+
+<h2 id="接入前确认">接入前确认</h2>
+<ol>
+<li>本站模型和渠道支持所选 WebSocket 协议。</li>
+<li>客户端支持该协议的鉴权、初始化和输入事件。</li>
+<li>代理及网络允许 WebSocket 升级和持续连接。</li>
+<li>应用能够处理增量输出、错误、完成和关闭事件。</li>
+</ol>
+
+<p>HTTP POST /v1/responses 成功，只能证明该 HTTP 路径可用，还需要单独验证 WebSocket。</p>
+
+<h2 id="密钥放在哪里">密钥放在哪里</h2>
+<p>先使用可信服务端客户端验证连接。面向浏览器访客的应用应采用服务端控制的接入方案，不应把长期 API 密钥放入公开前端代码。本指南不假设本站提供临时客户端凭据签发接口。</p>
+
+<h2 id="定位连接问题">定位连接问题</h2>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>检查方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401／403</td>
+<td>凭据、有效期和模型权限</td>
+</tr>
+<tr>
+<td>升级失败</td>
+<td>协议、代理设置及接口开放情况</td>
+</tr>
+<tr>
+<td>已连接但无输出</td>
+<td>是否发送了协议要求的初始化与输入事件</td>
+</tr>
+<tr>
+<td>中途断开</td>
+<td>超时、网络、会话限制及错误事件</td>
+</tr>
+</tbody></table>
+
+<p>反馈时提供连接时间、模型、客户端版本和脱敏事件类型，见<a href="/docs/support/index.html">联系支持</a>。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/tasks/index.html">← 上一篇<br>提交生成任务并获取结果</a><a href="/docs/limits/index.html">下一篇 →<br>限流、额度与超时</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#选择接口">选择接口</a><a class="depth-2" href="#接入前确认">接入前确认</a><a class="depth-2" href="#密钥放在哪里">密钥放在哪里</a><a class="depth-2" href="#定位连接问题">定位连接问题</a></nav></aside></div>
+</body></html>

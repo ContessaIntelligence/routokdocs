@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>提交生成任务并获取结果 · RouTok 文档</title><meta name="description" content="图片和视频生成可能采用异步任务：提交后获得任务 ID，再查询状态并下载结果。请保存本站返回的 ID，后续查询应使用同一账号的有效密钥。">
+<link rel="canonical" href="https://docs.routok.com/docs/tasks/index.html">
+<link rel="stylesheet" href="/assets/site.css"><script type="module" src="/assets/site.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#content">跳到正文</a>
+<header><a class="brand" href="/index.html">RouTok <span>文档</span></a><nav aria-label="网站导航"><a href="/docs/quickstart/index.html">首次调用</a><a href="https://routok.com">返回平台 ↗</a></nav></header>
+<div class="layout"><aside class="sidebar"><nav class="desktop-navigation" aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html" aria-current="page">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav><details class="mobile-navigation"><summary>文档目录</summary><nav aria-label="文档目录"><section><h2>开始使用</h2><a href="/docs/overview/index.html">RouTok 使用指南</a><a href="/docs/account/index.html">注册与登录</a><a href="/docs/console/index.html">认识控制台</a><a href="/docs/concepts/index.html">接入前需要了解的概念</a></section><section><h2>平台功能</h2><a href="/docs/playground/index.html">在线测试模型</a><a href="/docs/models/index.html">查询和选择模型</a><a href="/docs/keys/index.html">创建与管理 API 密钥</a><a href="/docs/wallet/index.html">余额、充值与套餐</a><a href="/docs/costs/index.html">看懂用量与费用</a><a href="/docs/logs/index.html">查看用量与调用记录</a><a href="/docs/settings/index.html">个人设置与通知</a><a href="/docs/security/index.html">账号安全与访问管理</a></section><section><h2>接入 AI</h2><a href="/docs/clients/index.html">连接聊天软件与应用</a><a href="/docs/quickstart/index.html">完成第一次 API 调用</a><a href="/docs/sdk/index.html">Python 与 JavaScript SDK</a><a href="/docs/protocols/index.html">协议与兼容性</a></section><section><h2>进阶能力</h2><a href="/docs/streaming/index.html">读取流式响应</a><a href="/docs/tools/index.html">完成一轮工具调用</a><a href="/docs/structured-output/index.html">获取结构化输出</a><a href="/docs/reasoning-cache/index.html">推理模型与提示缓存</a><a href="/docs/multimodal/index.html">图片理解与多模态输入</a><a href="/docs/images/index.html">图片生成与编辑</a><a href="/docs/audio-embeddings/index.html">音频、向量与重排序</a><a href="/docs/tasks/index.html" aria-current="page">提交生成任务并获取结果</a><a href="/docs/realtime/index.html">实时连接与 WebSocket</a></section><section><h2>帮助与排查</h2><a href="/docs/limits/index.html">限流、额度与超时</a><a href="/docs/troubleshooting/index.html">调用失败排查</a><a href="/docs/faq/index.html">常见问题</a><a href="/docs/support/index.html">联系支持</a></section><section><h2>接口参考</h2><a href="/docs/api-reference/index.html">模型 API 参考</a></section></nav></details></aside>
+<main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
+<section id="results" aria-label="搜索结果" hidden></section>
+<article><h1 id="提交生成任务并获取结果">提交生成任务并获取结果</h1>
+<p>图片和视频生成可能采用异步任务：提交后获得任务 ID，再查询状态并下载结果。请保存本站返回的 ID，后续查询应使用同一账号的有效密钥。</p>
+
+<h2 id="示例适用范围">示例适用范围</h2>
+<p>以下流程针对项目 <strong>Sora 插件 1.1.0</strong> 提供的 OpenAI Video 协议。需要本站已开放相应模型和渠道；模型 ID、时长及尺寸以实际配置为准。本例的 4 秒、720×1280 参数仅用于演示该插件路径。</p>
+
+<p>先按<a href="/docs/quickstart/index.html#%E5%87%86%E5%A4%87%E6%8E%A5%E5%85%A5%E4%BF%A1%E6%81%AF">首次调用</a>设置环境变量。下面使用 Bash；Windows 用户可通过 Python 或 HTTP 客户端发送同样的请求。</p>
+
+<h2 id="第一步-提交一次任务">第一步：提交一次任务</h2>
+<p>将 <code>your-video-model</code> 替换为本站提供的对应模型 ID：</p>
+
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/videos&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{&quot;model&quot;:&quot;your-video-model&quot;,&quot;prompt&quot;:&quot;A small green house in a garden, static camera&quot;,&quot;seconds&quot;:&quot;4&quot;,&quot;size&quot;:&quot;720x1280&quot;}&#39;</code></pre></div>
+<p>成功提交的简化响应示例：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;id&quot;: &quot;task_example&quot;,
+  &quot;object&quot;: &quot;video&quot;,
+  &quot;model&quot;: &quot;your-video-model&quot;,
+  &quot;status&quot;: &quot;queued&quot;,
+  &quot;progress&quot;: 0,
+  &quot;created_at&quot;: 1792540800
+}</code></pre></div>
+<p>保存实际返回的 <code>id</code>。提交成功表示任务已创建，尚不代表生成完成。</p>
+
+<h2 id="第二步-查询状态">第二步：查询状态</h2>
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">export NEW_API_TASK_ID=&#39;replace-with-returned-task-id&#39;
+curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/videos/$NEW_API_TASK_ID&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot;</code></pre></div>
+<p>此接口使用 <code>queued</code>、<code>in_progress</code>、<code>completed</code>、<code>failed</code> 等状态。建议每隔数秒查询，并在应用中设置总等待上限；到达等待上限后保留 ID，稍后继续查询。</p>
+
+<h2 id="第三步-下载结果">第三步：下载结果</h2>
+<p>状态为 <code>completed</code> 后，调用内容接口：</p>
+
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/videos/$NEW_API_TASK_ID/content&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot; \
+  --output result.mp4</code></pre></div>
+<p>确认 HTTP 成功、返回类型及文件内容后再使用。使用 <code>--fail-with-body</code> 时，错误正文也可能保存到文件中，应先处理非零退出码。</p>
+
+<h2 id="通用任务查询">通用任务查询</h2>
+<p>对本站签发的网关任务 ID，也可以使用：</p>
+
+<div class="code"><div class="code-bar"><span>bash</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-bash">curl --fail-with-body &quot;$NEW_API_BASE_URL/v1/tasks/$NEW_API_TASK_ID&quot; \
+  -H &quot;Authorization: Bearer $NEW_API_KEY&quot;</code></pre></div>
+<p>通用接口与 Video 接口的状态名称不同：</p>
+
+<table>
+<thead>
+<tr>
+<th>通用任务状态</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NOT_START／SUBMITTED／QUEUED</td>
+<td>未开始、已提交或等待处理</td>
+</tr>
+<tr>
+<td>IN_PROGRESS</td>
+<td>处理中</td>
+</tr>
+<tr>
+<td>SUCCESS</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>FAILURE</td>
+<td>已失败，查看 fail_reason</td>
+</tr>
+<tr>
+<td>UNKNOWN</td>
+<td>暂时无法识别状态</td>
+</tr>
+</tbody></table>
+
+<p>简化响应示例：</p>
+
+<div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
+  &quot;task_id&quot;: &quot;task_example&quot;,
+  &quot;platform&quot;: &quot;sora&quot;,
+  &quot;status&quot;: &quot;SUCCESS&quot;,
+  &quot;progress&quot;: &quot;100%&quot;,
+  &quot;fail_reason&quot;: &quot;&quot;,
+  &quot;created_at&quot;: 1792540800,
+  &quot;finished_at&quot;: 1792540860
+}</code></pre></div>
+<p><code>created_at</code> 和 <code>finished_at</code> 为 Unix 秒级时间戳；未完成时 finished_at 可能为 0。不要将上游私有 ID、Responses ID 和网关任务 ID 混用。</p>
+
+<h2 id="其他任务与结果文件">其他任务与结果文件</h2>
+<p>通用提交入口为 <code>POST /v1/tasks/{pluginKey}</code>，请求体由插件定义，不能直接套用任意厂商参数。</p>
+
+<p>支持结果文件的任务可调用 <code>GET /v1/tasks/{taskId}/artifacts</code>，从 <code>artifacts[].content_url</code> 获取文件地址。地址可能带有效期，应妥善保存并及时下载。列表为空时，按该模型的协议说明获取结果。</p>
+
+<p>部分同步图片结果仅在原请求中返回，之后未必可以重新获取。超时或关闭网页不等于取消任务；先查状态与<a href="/docs/logs/index.html">费用记录</a>，再决定是否重新提交。</p>
+<nav class="pagination" aria-label="文章导航"><a href="/docs/audio-embeddings/index.html">← 上一篇<br>音频、向量与重排序</a><a href="/docs/realtime/index.html">下一篇 →<br>实时连接与 WebSocket</a></nav></article>
+<footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#示例适用范围">示例适用范围</a><a class="depth-2" href="#第一步-提交一次任务">第一步：提交一次任务</a><a class="depth-2" href="#第二步-查询状态">第二步：查询状态</a><a class="depth-2" href="#第三步-下载结果">第三步：下载结果</a><a class="depth-2" href="#通用任务查询">通用任务查询</a><a class="depth-2" href="#其他任务与结果文件">其他任务与结果文件</a></nav></aside></div>
+</body></html>
