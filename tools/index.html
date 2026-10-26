@@ -6,20 +6,20 @@
   <title>routok 使用说明</title>
   <meta name="description" content="routok API 快速接入和 AI 工具配置说明">
   <style>
-    :root { color-scheme: light; --ink: #172033; --muted: #667085; --line: #e5e7eb; --brand: #2457d6; --soft: #f5f7fb; }
+    :root { color-scheme: light; --ink: #172c27; --muted: #5c6b64; --line: #dbe2da; --brand: #23654d; --soft: #f7f8f4; }
     * { box-sizing: border-box; }
-    body { margin: 0; color: var(--ink); background: var(--soft); font: 16px/1.7 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+    body { margin: 0; color: var(--ink); background: var(--soft); font: 15px/1.9 Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
     .wrap { width: min(960px, calc(100% - 32px)); margin: 0 auto; }
-    header { padding: 56px 0 40px; color: #fff; background: linear-gradient(135deg, #173b96, #3274df); }
+    header { padding: 56px 0 40px; color: #fff; background: #203f32; }
     header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { margin-bottom: 8px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; }
-    header p { margin-bottom: 20px; color: #dbe7ff; }
-    .brand { font-size: 1.15rem; font-weight: 700; letter-spacing: .04em; }
-    .button { display: inline-block; padding: 9px 16px; border-radius: 8px; color: #fff; background: #1b45a9; text-decoration: none; font-weight: 600; }
-    .button.light { color: #173b96; background: #fff; }
+    header p { margin-bottom: 20px; color: #c5d7be; }
+    .brand { font-size: 1.4rem; font-weight: 650; letter-spacing: -.055em; }
+    .button { display: inline-block; padding: 9px 16px; border-radius: 8px; color: #fff; background: #23654d; text-decoration: none; font-weight: 600; }
+    .button.light { color: #203421; background: #d4ee97; }
     main { padding: 28px 0 56px; }
-    section { margin-bottom: 22px; padding: 26px; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 8px 24px rgba(20, 35, 70, .05); }
+    section { margin-bottom: 22px; padding: 26px; border: 1px solid var(--line); border-radius: 12px; background: #fff;  }
     h2 { margin-bottom: 14px; font-size: 1.45rem; }
     h3 { margin-bottom: 6px; font-size: 1.05rem; }
     .steps { display: grid; gap: 14px; counter-reset: step; }
@@ -28,9 +28,15 @@
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     a { color: var(--brand); }
     code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
-    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 8px; color: #eaf0ff; background: #172033; font-size: .9rem; }
-    .note { padding: 12px 14px; border-left: 4px solid #f2a900; background: #fff8e6; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 8px; color: #d9e6d9; background: #1b2822; font-size: .9rem; }
+    .note { padding: 12px 14px; border-left: 3px solid var(--brand); background: #e8eee6; }
     footer { padding: 24px 0 36px; color: var(--muted); text-align: center; font-size: .9rem; }
+    a:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+    header a:focus-visible { outline-color: #d4ee97; }
+    a:hover { text-underline-offset: 4px; }
+    .button:hover { filter: brightness(1.08); }
+    code { overflow-wrap: anywhere; }
+    pre { overflow-wrap: normal; }
     @media (max-width: 640px) { header .wrap { display: block; } header .button { margin-top: 12px; } section { padding: 20px; } }
   </style>
 </head>
