@@ -18,7 +18,7 @@
   var modal = document.getElementById('salesModal');
   var salesBtn = document.getElementById('salesBtn');
   var copyBtn = document.getElementById('smCopy');
-  var EMAIL = 'sales@codeflux.ai';
+  var EMAIL = 'sales@routok.com';
   function openModal() { modal.hidden = false; document.body.style.overflow = 'hidden'; }
   function closeModal() { modal.hidden = true; document.body.style.overflow = ''; }
   salesBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
