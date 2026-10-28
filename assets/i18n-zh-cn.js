@@ -4,7 +4,7 @@ window.CF_I18N['zh-CN'] = {
   'meta.desc': 'CodeFlux 是运行在 macOS、Windows 与 Linux 上的 AI 编程智能体：理解你的项目、自主规划、编写代码、运行测试，让想法直接变成可运行的软件。',
   'hero.dlos': '下载 {os} 版',
   'nav.features': '功能', 'nav.how': '工作方式', 'nav.contact': '联系销售', 'nav.reviews': '用户评价', 'nav.faq': '常见问题',
-  'nav.login': '登录', 'nav.download': '免费下载',
+  'nav.login': '登录', 'nav.download': '免费下载', 'nav.docs': '文档', 'nav.about': '关于',
   'hero.badge': '<b>NEW</b> CodeFlux v0.1.1 现已发布 · 支持 macOS / Windows / Linux',
   'hero.h1': '让代码<span class="grad-text">像水一样流动</span><br>你的桌面 AI 编程智能体',
   'hero.sub': '用一句话描述需求，CodeFlux 会读懂你的项目、规划步骤、编写代码、运行测试并自动修复问题。从想法到可运行的软件，只需一杯咖啡的时间。',

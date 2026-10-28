@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation · CodeFlux</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="CodeFlux documentation: installation, connecting local or remote models by URL, model ID and API key, protocol formats, vendor reference, workspace usage, MCP, privacy and troubleshooting.">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('cf-lang');
+        if (l === 'zh-Hant' || l === 'zh-CN') {
+          document.documentElement.lang = l;
+          document.documentElement.className += ' i18n-wait';
+          setTimeout(function () { document.documentElement.className = document.documentElement.className.replace(' i18n-wait', ''); }, 2500);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-sections.css">
+  <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-pages.css">
+</head>
+<body>
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36">
+        <span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact Sales</a>
+        <a href="index.html#reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="docs.html" aria-current="page" data-i18n="nav.docs">Docs</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang" id="lang">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg>
+            <span id="lang-cur">English</span>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="zh-Hant">繁體中文</button>
+            <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
+          </div>
+        </div>
+        <a href="index.html#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero" style="padding-bottom:40px">
+    <div class="grid-bg"></div>
+    <div class="wrap">
+      <div class="crumbs reveal"><a href="index.html" data-i18n="ab.crumb.home">Home</a> / <span data-i18n="nav.docs">Docs</span></div>
+      <h1 class="reveal" data-i18n="dc.h1">CodeFlux <span class="grad-text">Documentation</span></h1>
+      <p class="lead reveal" data-i18n="dc.lead">Everything you need to install CodeFlux, connect a local or remote model, and get the most out of the agent.</p>
+      <div class="doc-meta reveal"><span data-i18n="dc.ver">Applies to CodeFlux v0.1.1</span><span>·</span><a href="https://github.com/ContessaIntelligence/codeflux/releases" target="_blank" rel="noopener" data-i18n="ft.log">Release notes</a></div>
+    </div>
+  </header>
+
+  <!-- DOCS -->
+  <div class="wrap docs-wrap">
+    <details class="doc-side" id="docSide" open>
+      <summary data-i18n="sd.title">On this page</summary>
+      <div class="doc-body">
+        <div class="doc-group">
+          <h5 data-i18n="sd.g1">Getting started</h5>
+          <a href="#overview" data-i18n="sd.overview">Overview</a>
+          <a href="#quickstart" data-i18n="sd.quickstart">Quick start</a>
+          <a href="#install" data-i18n="sd.install">Installation</a>
+          <a href="#install-win" class="sub">Windows</a>
+          <a href="#install-mac" class="sub">macOS</a>
+          <a href="#install-linux" class="sub">Linux</a>
+          <a href="#install-verify" class="sub" data-i18n="sd.verify">Verify your download</a>
+        </div>
+        <div class="doc-group">
+          <h5 data-i18n="sd.g2">Models</h5>
+          <a href="#models" data-i18n="sd.models">Connect a model</a>
+          <a href="#model-fields" class="sub" data-i18n="sd.fields">Configuration fields</a>
+          <a href="#protocols" class="sub" data-i18n="sd.protocols">Protocol formats</a>
+          <a href="#remote" class="sub" data-i18n="sd.remote">Remote vendor APIs</a>
+          <a href="#local" class="sub" data-i18n="sd.local">Local models</a>
+          <a href="#vendors" class="sub" data-i18n="sd.vendors">Vendor reference</a>
+          <a href="#switching" class="sub" data-i18n="sd.switching">Managing and switching</a>
+        </div>
+        <div class="doc-group">
+          <h5 data-i18n="sd.g3">Using CodeFlux</h5>
+          <a href="#use" data-i18n="sd.use">Everyday use</a>
+          <a href="#workspace" class="sub" data-i18n="sd.workspace">Projects and sessions</a>
+          <a href="#tasks" class="sub" data-i18n="sd.tasks">Giving tasks</a>
+          <a href="#commands" class="sub" data-i18n="sd.commands">Commands and references</a>
+          <a href="#review" class="sub" data-i18n="sd.review">Reviewing changes</a>
+          <a href="#advanced" data-i18n="sd.advanced">Advanced</a>
+          <a href="#mcp" class="sub">MCP</a>
+          <a href="#agents" class="sub" data-i18n="sd.agents">Multi-agent mode</a>
+        </div>
+        <div class="doc-group">
+          <h5 data-i18n="sd.g4">Reference</h5>
+          <a href="#privacy" data-i18n="sd.privacy">Privacy and security</a>
+          <a href="#troubleshooting" data-i18n="sd.trouble">Troubleshooting</a>
+          <a href="#support" data-i18n="sd.support">Getting help</a>
+        </div>
+      </div>
+    </details>
+
+    <article class="doc">
+
+      <!-- ============ OVERVIEW ============ -->
+      <section>
+        <h2 id="overview" data-i18n="dc.overview.h">Overview</h2>
+        <div data-i18n="dc.overview.b">
+          <p>CodeFlux is a <strong>local agent tool</strong>. It runs as a desktop application on your computer, works directly inside your project folders, and uses a large language model to understand your request, plan the work, edit files, run commands and check the results.</p>
+          <p>The model is entirely your choice. CodeFlux can use a <strong>model deployed on your own machine or network</strong>, or the <strong>API of a hosted model vendor</strong>. It is already adapted to the major vendors in China and abroad. To use one, you only fill in the vendor's address, a model ID and your key, and select the protocol format the vendor speaks.</p>
+          <div class="doc-cards">
+            <div><b>Local-first</b><span>Application, project index and session history live on your computer.</span></div>
+            <div><b>Model-agnostic</b><span>Local models and 50+ vendors, switchable at any time.</span></div>
+            <div><b>Ready to use</b><span>Install, add a model, open a project. No server or container to set up.</span></div>
+          </div>
+          <h3 id="concepts">Key concepts</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td>Provider</td><td>A model source: a hosted vendor (for example DeepSeek or OpenAI) or a local runtime (for example Ollama). Each provider has an address, a protocol and usually a key.</td></tr>
+              <tr><td>Model ID</td><td>The exact identifier of a model at that provider, such as <code>deepseek-chat</code>.</td></tr>
+              <tr><td>Protocol format</td><td>The API dialect used to talk to the provider. Most vendors use an OpenAI-compatible format.</td></tr>
+              <tr><td>Project / workspace</td><td>A local folder the agent is allowed to read and modify.</td></tr>
+              <tr><td>Session</td><td>One conversation and task thread. You can keep several sessions open in parallel.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <!-- ============ QUICK START ============ -->
+      <section>
+        <h2 id="quickstart" data-i18n="dc.quickstart.h">Quick start</h2>
+        <div data-i18n="dc.quickstart.b">
+          <p>Three steps from download to your first task.</p>
+          <ol class="doc-steps">
+            <li><b>Install CodeFlux</b>
+              <p>Download the package for your system from the <a href="index.html#download">download section</a> and install it. See <a href="#install">Installation</a> for platform-specific notes.</p></li>
+            <li><b>Add a model</b>
+              <p>Open the model settings, add a provider, choose its protocol, then enter the <strong>Base URL</strong>, <strong>Model ID</strong> and <strong>API key</strong>. For a local model, point the address at your local server instead. Details in <a href="#models">Connect a model</a>.</p></li>
+            <li><b>Open a project and start</b>
+              <p>Choose a project folder, then describe what you want in plain language, for example: <em>"Add an endpoint to the orders module that exports Excel, with date filtering, and write unit tests."</em></p></li>
+          </ol>
+          <div class="callout tip"><p>Not sure which model to start with? Any vendor with an OpenAI-compatible API works well for a first try. See the <a href="#vendors">vendor reference</a> for ready-to-use addresses.</p></div>
+        </div>
+      </section>
+
+      <!-- ============ INSTALLATION ============ -->
+      <section>
+        <h2 id="install" data-i18n="dc.install.h">Installation</h2>
+        <div data-i18n="dc.install.b">
+          <p>CodeFlux is available for Windows, macOS and Linux. All packages are published on the <a href="https://github.com/ContessaIntelligence/codeflux/releases/tag/v0.1.1" target="_blank" rel="noopener">GitHub release page</a>.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Platform</th><th>Architecture</th><th>Package</th></tr></thead>
+            <tbody>
+              <tr><td>Windows 10 / 11</td><td>x64</td><td>Installer <code>.exe</code> · Portable <code>.zip</code></td></tr>
+              <tr><td>macOS</td><td>Apple Silicon (arm64)</td><td><code>.app.tar</code></td></tr>
+              <tr><td>Linux</td><td>x86_64</td><td>AppImage · <code>.deb</code> · <code>.rpm</code></td></tr>
+            </tbody>
+          </table></div>
+          <div class="callout warn"><p>The current version is <strong>not yet code-signed</strong>, so your operating system may show a warning the first time you open it. The steps below explain how to proceed. Signed packages are planned for later releases.</p></div>
+
+          <h3 id="install-win">Windows</h3>
+          <ol>
+            <li>Download <code>CodeFlux-win-x64.exe</code> and run it.</li>
+            <li>If Windows shows <em>"Windows protected your PC"</em>, click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+            <li>Follow the installer, then start CodeFlux from the Start menu.</li>
+          </ol>
+          <p>Prefer no installation? Download <code>CodeFlux-windows-x64-portable.zip</code>, extract it to any folder and run the application inside.</p>
+
+          <h3 id="install-mac">macOS</h3>
+          <ol>
+            <li>Download <code>CodeFlux-mac-arm64.app.tar</code> and extract it (double-click it, or run the command below).</li>
+            <li>Move <code>CodeFlux.app</code> to your <code>Applications</code> folder.</li>
+            <li>Because the app is not signed yet, remove the quarantine flag once, then open it.</li>
+          </ol>
+<pre data-lang="bash"><code>tar -xf CodeFlux-mac-arm64.app.tar
+xattr -cr CodeFlux.app</code></pre>
+          <p>Only Apple Silicon (M-series) Macs are supported in this release.</p>
+
+          <h3 id="install-linux">Linux</h3>
+          <p>Choose the package that fits your distribution.</p>
+<pre data-lang="bash"><code># AppImage (any distribution)
+chmod +x CodeFlux-linux-x86_64.AppImage
+./CodeFlux-linux-x86_64.AppImage
+
+# Debian / Ubuntu
+sudo apt install ./CodeFlux-linux-amd64.deb
+
+# Fedora / RHEL
+sudo dnf install ./CodeFlux-linux-x86_64.rpm</code></pre>
+          <div class="callout"><p>If the AppImage does not start on a recent Ubuntu, install FUSE 2 support first: <code>sudo apt install libfuse2</code> (on Ubuntu 24.04: <code>libfuse2t64</code>).</p></div>
+
+          <h3 id="install-verify">Verify your download</h3>
+          <p>Every release includes a <code>SHA256SUMS.txt</code> file. Compare the checksum of your download with the matching line in that file.</p>
+<pre data-lang="shell"><code># Windows (PowerShell)
+Get-FileHash .\CodeFlux-win-x64.exe -Algorithm SHA256
+
+# macOS
+shasum -a 256 CodeFlux-mac-arm64.app.tar
+
+# Linux
+sha256sum -c SHA256SUMS.txt --ignore-missing</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ MODELS ============ -->
+      <section>
+        <h2 id="models" data-i18n="dc.models.h">Connect a model</h2>
+        <div data-i18n="dc.models.b">
+          <p>CodeFlux does not ship with a model of its own. Instead, you connect the models you want to use. Each connection is a <strong>provider</strong> made of a protocol, an address, a key and one or more model IDs. You can add as many providers as you like and mix local and remote ones.</p>
+          <div class="callout"><p>Menu names and field labels in the application may differ slightly between versions. The concepts and values below stay the same.</p></div>
+
+          <h3 id="model-fields">Configuration fields</h3>
+          <dl class="field-list">
+            <div><dt>Name<small>optional</small></dt><dd>A label for your own reference, such as "DeepSeek" or "Office GPU server".</dd></div>
+            <div><dt>Protocol<small>API format</small></dt><dd>The API dialect the provider speaks. See <a href="#protocols">Protocol formats</a>.</dd></div>
+            <div><dt>Base URL<small>API address</small></dt><dd>The provider's API address, as given in its documentation, usually ending in <code>/v1</code>. Do not append the endpoint path such as <code>/chat/completions</code>.</dd></div>
+            <div><dt>API key<small>secret</small></dt><dd>The credential issued by the vendor. Local runtimes usually do not check it; if the field cannot be left empty, enter any placeholder such as <code>local</code>.</dd></div>
+            <div><dt>Model ID<small>exact name</small></dt><dd>The identifier of the model at that provider, copied exactly from the vendor's model list, for example <code>deepseek-chat</code> or <code>qwen-plus</code>.</dd></div>
+          </dl>
+
+          <h3 id="protocols">Protocol formats</h3>
+          <p>Vendors expose their models through different API formats. CodeFlux supports several, so a model works as long as you select the format its provider uses.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Format</th><th>Typically used by</th><th>Example Base URL</th></tr></thead>
+            <tbody>
+              <tr><td>OpenAI-compatible</td><td>OpenAI, DeepSeek, Qwen, Kimi, Zhipu GLM, Doubao, Ollama, LM Studio, vLLM, most gateways and relay services</td><td><code>https://api.deepseek.com/v1</code></td></tr>
+              <tr><td>Anthropic</td><td>Claude, and services that offer an Anthropic-style endpoint</td><td><code>https://api.anthropic.com</code></td></tr>
+              <tr><td>Google Gemini</td><td>Gemini API</td><td><code>https://generativelanguage.googleapis.com</code></td></tr>
+            </tbody>
+          </table></div>
+          <div class="callout tip"><p><strong>Rule of thumb:</strong> read the vendor's API documentation and pick the format it describes. When a vendor offers several, the OpenAI-compatible one is the most widely supported and a safe default.</p></div>
+
+          <h3 id="remote">Remote vendor APIs</h3>
+          <ol class="doc-steps">
+            <li><b>Get your credentials</b>
+              <p>Create an API key in the vendor's console. Make sure the account has quota or balance, and that the model you want is enabled.</p></li>
+            <li><b>Add the provider</b>
+              <p>In CodeFlux, add a provider, pick the protocol, then paste the Base URL and API key.</p></li>
+            <li><b>Add the model ID</b>
+              <p>Enter the exact Model ID. A provider can hold several models, for example a fast one for simple edits and a stronger one for planning.</p></li>
+            <li><b>Test it</b>
+              <p>Start a session with the new model and send a short message. If it answers, the setup is complete.</p></li>
+          </ol>
+          <div class="callout warn"><p>Your API key is a password. Never share it or commit it to a repository. Prefer keys with limited permissions, and set a spending limit in the vendor's console.</p></div>
+
+          <h3 id="local">Local models</h3>
+          <p>To keep everything on your own hardware, run a model with a local runtime and point CodeFlux at it. Any runtime that provides an OpenAI-compatible API works, including <strong>Ollama</strong>, <strong>LM Studio</strong> and <strong>vLLM</strong>.</p>
+          <p>Example with Ollama:</p>
+<pre data-lang="bash"><code># 1. Download a model
+ollama pull qwen2.5-coder:7b
+
+# 2. Check the server is running and the model is listed
+curl http://localhost:11434/v1/models</code></pre>
+          <p>Then add a provider in CodeFlux with the following values:</p>
+          <dl class="field-list">
+            <div><dt>Protocol</dt><dd>OpenAI-compatible</dd></div>
+            <div><dt>Base URL</dt><dd><code>http://localhost:11434/v1</code></dd></div>
+            <div><dt>API key</dt><dd>Any placeholder, for example <code>ollama</code></dd></div>
+            <div><dt>Model ID</dt><dd><code>qwen2.5-coder:7b</code> (as shown by <code>ollama list</code>)</dd></div>
+          </dl>
+          <p>A model served on another machine in your network works the same way: replace <code>localhost</code> with that machine's address and make sure its server listens on the network interface and its firewall allows the port.</p>
+          <div class="callout tip"><p><strong>Choosing a local model.</strong> The agent relies on tool calling and long context. Pick a model that supports function / tool calling and offers a context window of at least 32K tokens. Very small models can chat well but may struggle with multi-step tasks.</p></div>
+
+          <h3 id="vendors">Vendor reference</h3>
+          <p>Common addresses to get you started. Model IDs change often, so always check the vendor's current model list.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Vendor</th><th>Protocol</th><th>Base URL</th><th>Example Model ID</th></tr></thead>
+            <tbody>
+              <tr><td>OpenAI</td><td>OpenAI-compatible</td><td><code>https://api.openai.com/v1</code></td><td><code>gpt-4o</code></td></tr>
+              <tr><td>Anthropic (Claude)</td><td>Anthropic</td><td><code>https://api.anthropic.com</code></td><td><code>claude-sonnet-4-5</code></td></tr>
+              <tr><td>Google Gemini</td><td>Google Gemini</td><td><code>https://generativelanguage.googleapis.com</code></td><td><code>gemini-2.5-pro</code></td></tr>
+              <tr><td>DeepSeek</td><td>OpenAI-compatible</td><td><code>https://api.deepseek.com/v1</code></td><td><code>deepseek-chat</code></td></tr>
+              <tr><td>Qwen (Alibaba Cloud)</td><td>OpenAI-compatible</td><td><code>https://dashscope.aliyuncs.com/compatible-mode/v1</code></td><td><code>qwen-plus</code></td></tr>
+              <tr><td>Kimi (Moonshot)</td><td>OpenAI-compatible</td><td><code>https://api.moonshot.cn/v1</code></td><td><code>moonshot-v1-32k</code></td></tr>
+              <tr><td>Zhipu GLM</td><td>OpenAI-compatible</td><td><code>https://open.bigmodel.cn/api/paas/v4</code></td><td><code>glm-4-plus</code></td></tr>
+              <tr><td>Doubao (Volcano Engine)</td><td>OpenAI-compatible</td><td><code>https://ark.cn-beijing.volces.com/api/v3</code></td><td><code>ep-…</code> (your endpoint ID)</td></tr>
+              <tr><td>Ollama</td><td>OpenAI-compatible</td><td><code>http://localhost:11434/v1</code></td><td>as listed by <code>ollama list</code></td></tr>
+              <tr><td>LM Studio</td><td>OpenAI-compatible</td><td><code>http://localhost:1234/v1</code></td><td>shown in LM Studio</td></tr>
+              <tr><td>vLLM</td><td>OpenAI-compatible</td><td><code>http://localhost:8000/v1</code></td><td>the <code>--model</code> name you served</td></tr>
+            </tbody>
+          </table></div>
+          <p>Vendors not listed here, including gateways, aggregators and your company's internal model service, work the same way: use the address and protocol from their documentation.</p>
+
+          <h3 id="switching">Managing and switching</h3>
+          <ul>
+            <li>Add several providers and models, then choose which one each session uses.</li>
+            <li>Switch models at any time without leaving your project. Use a strong model for planning and a fast, inexpensive one for routine edits.</li>
+            <li>To rotate a key, edit the provider and paste the new one. Existing sessions pick it up automatically.</li>
+            <li>Remove providers you no longer use to keep the list tidy.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ USE ============ -->
+      <section>
+        <h2 id="use" data-i18n="dc.use.h">Everyday use</h2>
+        <div data-i18n="dc.use.b">
+          <h3 id="workspace">Projects and sessions</h3>
+          <p>Open a project by choosing its folder. The agent reads and edits files inside that folder only, so it always works against your real code. Each task lives in its own <strong>session</strong>, shown as a tab. You can run several sessions in parallel and switch between them without them interfering.</p>
+
+          <h3 id="tasks">Giving tasks</h3>
+          <p>Describe the outcome you want, not the keystrokes. Good requests state the goal, the scope and how you will judge success.</p>
+          <ul>
+            <li><em>"Fix the login timeout bug. Start from the auth middleware and add a regression test."</em></li>
+            <li><em>"Upgrade the dependencies in this project and make sure the build still passes."</em></li>
+          </ul>
+          <p>For larger work, CodeFlux first analyzes the codebase and drafts a plan you can edit. It starts only after you confirm. It then edits files, runs commands and tests, and repairs its own errors along the way.</p>
+          <div class="callout tip"><p>Attach screenshots, documents or error messages when they help. The more concrete the context, the fewer rounds you need.</p></div>
+
+          <h3 id="commands">Commands and references</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Input</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><kbd>/</kbd></td><td>Opens the command list so you can run built-in actions without leaving the input box.</td></tr>
+              <tr><td><kbd>@</kbd></td><td>Adds a file or folder from the project to the conversation as precise context.</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3 id="review">Reviewing changes</h3>
+          <p>Every change is shown as a diff, so you can read exactly what was modified, line by line. You can then accept it, roll it back, or commit it to Git. Because each step can be undone, you stay in control even when the agent makes many edits.</p>
+          <div class="callout"><p>Use Git in your project. A clean working tree before a big task makes it trivial to compare, review and revert.</p></div>
+        </div>
+      </section>
+
+      <!-- ============ ADVANCED ============ -->
+      <section>
+        <h2 id="advanced" data-i18n="dc.advanced.h">Advanced</h2>
+        <div data-i18n="dc.advanced.b">
+          <h3 id="mcp">MCP</h3>
+          <p>The Model Context Protocol (MCP) lets CodeFlux use external tools and data sources, such as GitHub, databases, Figma, a browser or Docker. Each integration is an <strong>MCP server</strong> that you add once and the agent can then call when relevant.</p>
+          <ol>
+            <li>Find the MCP server you want and note its launch command or its URL.</li>
+            <li>Add it in CodeFlux's MCP settings and supply its command, arguments and any environment variables (such as an access token).</li>
+            <li>Confirm the server's tools appear, then ask the agent to use them.</li>
+          </ol>
+          <p>Most servers document a configuration like this one:</p>
+<pre data-lang="json"><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "&lt;your-token&gt;" }
+    }
+  }
+}</code></pre>
+          <div class="callout warn"><p>MCP servers can read data and take actions on your behalf. Install only servers you trust, and grant tokens the minimum permissions they need.</p></div>
+
+          <h3 id="agents">Multi-agent mode</h3>
+          <p>For complex tasks, CodeFlux can split the work between specialised roles that advance in parallel: a <strong>planner</strong> that drafts the approach, a <strong>coder</strong> that implements it, a <strong>tester</strong> that writes and runs tests, and a <strong>reviewer</strong> that checks the result. Each role can use whichever model suits it best, so you can combine a strong planning model with a fast coding model.</p>
+        </div>
+      </section>
+
+      <!-- ============ PRIVACY ============ -->
+      <section>
+        <h2 id="privacy" data-i18n="dc.privacy.h">Privacy and security</h2>
+        <div data-i18n="dc.privacy.b">
+          <p>CodeFlux is designed so that you decide where your data goes.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Data</th><th>Where it lives</th></tr></thead>
+            <tbody>
+              <tr><td>Project files, index, session history</td><td>On your computer. Nothing is uploaded proactively.</td></tr>
+              <tr><td>Provider settings and API keys</td><td>On your computer.</td></tr>
+              <tr><td>Request context (prompts and relevant code)</td><td>Sent only to the model provider you selected, and only when you use it.</td></tr>
+              <tr><td>Requests to a local model</td><td>Stay on your machine or inside your network. You can work fully offline.</td></tr>
+            </tbody>
+          </table></div>
+          <h4>Recommendations</h4>
+          <ul>
+            <li>For sensitive code, use a local model or a model service hosted inside your organization.</li>
+            <li>Review the data policy of any hosted vendor before sending proprietary code.</li>
+            <li>Use dedicated, limited keys and rotate them regularly.</li>
+            <li>Keep your project under version control so every change can be reviewed and reverted.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ TROUBLESHOOTING ============ -->
+      <section>
+        <h2 id="troubleshooting" data-i18n="dc.trouble.h">Troubleshooting</h2>
+        <div data-i18n="dc.trouble.b">
+          <h3 id="ts-model">Model connection</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Symptom</th><th>Likely cause</th><th>What to do</th></tr></thead>
+            <tbody>
+              <tr><td><code>401</code> / <code>403</code></td><td>Wrong, expired or unauthorised key; wrong region or account.</td><td>Re-copy the key without spaces or quotes. Check that it belongs to this vendor and that the model is enabled for your account.</td></tr>
+              <tr><td><code>404</code> / "model not found"</td><td>Wrong Base URL path or Model ID.</td><td>Use the address from the vendor's docs, usually ending in <code>/v1</code> and without <code>/chat/completions</code>. Copy the Model ID exactly.</td></tr>
+              <tr><td><code>429</code></td><td>Rate limit or exhausted quota.</td><td>Wait and retry, check balance and limits in the vendor console, or switch to another model.</td></tr>
+              <tr><td>Timeout / connection refused</td><td>Network, proxy or firewall problem; local server not running.</td><td>Open the Base URL in a browser or with <code>curl</code>. For local models, confirm the runtime is running and the port is correct.</td></tr>
+              <tr><td>Format or "unsupported parameter" errors</td><td>Protocol format does not match the provider.</td><td>Switch the protocol to the one the vendor documents. When unsure, try OpenAI-compatible.</td></tr>
+              <tr><td>The agent answers but never edits files or runs tools</td><td>The model lacks tool calling, or its context window is too small.</td><td>Choose a model that supports tool / function calling with a context of at least 32K tokens.</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3 id="ts-install">Installation and startup</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Symptom</th><th>What to do</th></tr></thead>
+            <tbody>
+              <tr><td>Windows: "Windows protected your PC"</td><td>The build is unsigned. Click <strong>More info</strong>, then <strong>Run anyway</strong>.</td></tr>
+              <tr><td>macOS: the app cannot be opened or "is damaged"</td><td>Extract it and run <code>xattr -cr CodeFlux.app</code> in Terminal, then open it again.</td></tr>
+              <tr><td>Linux: the AppImage does not start</td><td>Make it executable with <code>chmod +x</code>, and install <code>libfuse2</code> if your distribution requires it.</td></tr>
+              <tr><td>Checksum does not match</td><td>Download the file again, preferably over a stable connection, and compare with <code>SHA256SUMS.txt</code> from the same release.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <!-- ============ SUPPORT ============ -->
+      <section>
+        <h2 id="support" data-i18n="dc.support.h">Getting help</h2>
+        <div data-i18n="dc.support.b">
+          <p>Still stuck? When you contact us, include your CodeFlux version, your operating system, the provider and protocol you are using, and the exact error message. <strong>Never include your API key.</strong></p>
+          <ul>
+            <li>Technical support: <a href="mailto:support@codeflux.ai">support@codeflux.ai</a></li>
+            <li>Sales, teams and private deployment: <a href="mailto:sales@codeflux.ai">sales@codeflux.ai</a></li>
+            <li>Releases and source: <a href="https://github.com/ContessaIntelligence/codeflux" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+        <div class="doc-foot">
+          <div><b data-i18n="dc.foot.t">Ready to try it?</b><span data-i18n="dc.foot.s">Download CodeFlux and connect your first model in minutes.</span></div>
+          <a href="index.html#download" class="btn btn-primary" data-i18n="ab.cta.b1">Download CodeFlux</a>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo"><img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36"><span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span></a>
+          <p data-i18n="ft.p">Your desktop AI coding agent. Helping everyone turn ideas into running software.</p>
+        </div>
+        <div><h5 data-i18n="ft.prod">Product</h5><ul><li><a href="index.html#features" data-i18n="nav.features">Features</a></li><li><a href="index.html#download" data-i18n="ft.dl">Download</a></li><li><a href="index.html#contact" data-i18n="nav.contact">Contact Sales</a></li></ul></div>
+        <div><h5 data-i18n="ft.res">Resources</h5><ul><li><a href="docs.html" data-i18n="ft.docs">Documentation</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux/releases" target="_blank" rel="noopener" data-i18n="ft.log">Release notes</a></li><li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li></ul></div>
+        <div><h5 data-i18n="ft.contact">Contact</h5><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="mailto:sales@codeflux.ai">sales@codeflux.ai</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+      </div>
+      <div class="copy"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n-zh-hant.js"></script>
+  <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n-docs.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/pages.js"></script>
+</body>
+</html>

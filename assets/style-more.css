@@ -156,3 +156,19 @@ html.i18n-wait body { visibility: hidden; }
   .nav-cta .btn-primary { padding: 8px 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* Nav: current page marker + room for 7 links */
+.nav-links { gap: 26px; }
+.nav-links a[aria-current="page"] { color: var(--ink); position: relative; }
+.nav-links a[aria-current="page"]::after { content: ''; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; border-radius: 2px; background: var(--grad); }
+
+/* Hamburger menu from 1120px down so the longer nav never wraps */
+@media (max-width: 1120px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 24px 20px;
+    background: rgba(7,8,13,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 16px; }
+  .nav-links a[aria-current="page"]::after { display: none; }
+  .nav.menu-open { background: rgba(7,8,13,.96); }
+}

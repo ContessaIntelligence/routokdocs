@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About · CodeFlux by Contessa Intelligence Tech Limited</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="CodeFlux is a local-first AI agent tool from Contessa Intelligence Tech Limited. Use local models or any vendor's API, connect with just a URL, model ID and key, and start working right after installation.">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('cf-lang');
+        if (l === 'zh-Hant' || l === 'zh-CN') {
+          document.documentElement.lang = l;
+          document.documentElement.className += ' i18n-wait';
+          setTimeout(function () { document.documentElement.className = document.documentElement.className.replace(' i18n-wait', ''); }, 2500);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-sections.css">
+  <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-pages.css">
+</head>
+<body>
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36">
+        <span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact Sales</a>
+        <a href="index.html#reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="docs.html" data-i18n="nav.docs">Docs</a>
+        <a href="about.html" aria-current="page" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang" id="lang">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg>
+            <span id="lang-cur">English</span>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="zh-Hant">繁體中文</button>
+            <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
+          </div>
+        </div>
+        <a href="index.html#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="grid-bg"></div>
+    <div class="wrap">
+      <div class="crumbs reveal"><a href="index.html" data-i18n="ab.crumb.home">Home</a> / <span data-i18n="nav.about">About</span></div>
+      <h1 class="reveal" data-i18n="ab.h1">An AI agent that lives on <span class="grad-text">your own machine</span>, powered by any model you choose</h1>
+      <p class="lead reveal" data-i18n="ab.lead">CodeFlux is a local-first agent tool built by Contessa Intelligence Tech Limited. Run a model on your own hardware or connect any vendor's API, install the app and get to work.</p>
+    </div>
+  </header>
+
+  <!-- COMPANY -->
+  <section class="block" id="company" style="padding-top:40px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// Company</span>
+        <h2 data-i18n="ab.co.h2">Who we are</h2>
+      </div>
+      <div class="company">
+        <div class="company-card reveal">
+          <div class="label" data-i18n="ab.co.label">Company</div>
+          <h3>知繹智聯科技有限公司</h3>
+          <div class="en-name">Contessa Intelligence Tech Limited</div>
+          <dl>
+            <div><dt data-i18n="ab.co.k1">Brand</dt><dd>ROUTOK</dd></div>
+            <div><dt data-i18n="ab.co.k2">Product</dt><dd>CodeFlux</dd></div>
+            <div><dt data-i18n="ab.co.k3">Focus</dt><dd data-i18n="ab.co.v3">AI agent tools and developer productivity</dd></div>
+            <div><dt data-i18n="ab.co.k4">Business</dt><dd><a href="mailto:sales@codeflux.ai">sales@codeflux.ai</a></dd></div>
+            <div><dt data-i18n="ab.co.k5">Support</dt><dd><a href="mailto:support@codeflux.ai">support@codeflux.ai</a></dd></div>
+            <div><dt>GitHub</dt><dd><a href="https://github.com/ContessaIntelligence" target="_blank" rel="noopener">ContessaIntelligence</a></dd></div>
+          </dl>
+        </div>
+        <div class="company-text reveal" data-i18n="ab.co.text">
+          <p><strong>Contessa Intelligence Tech Limited</strong> (知繹智聯科技有限公司) is a software company focused on AI agent tools. We believe the real value of AI is not in a single model, but in helping people use whichever models they trust, on their own terms.</p>
+          <p>Our brand name <strong>ROUTOK</strong> comes from our motto, <em>Reach Out Universal, Transfer Of Knowledge</em>: connect every model and every tool, and let knowledge flow to the people who need it. In Chinese it reads 联通寰宇，绎知传智.</p>
+          <p><strong>CodeFlux</strong> is our flagship product, a desktop agent that works directly inside your local projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND -->
+  <section class="block" id="brand" style="padding-top:20px">
+    <div class="wrap">
+      <div class="prose reveal">
+        <div class="brand-word" aria-label="ROUTOK">
+          <span><b>R</b>each</span><span><b>O</b>ut</span><span><b>U</b>niversal</span><span><b>T</b>ransfer</span><span><b>O</b>f</span><span><b>K</b>nowledge</span>
+        </div>
+        <p data-i18n="ab.brand.p1">Every letter of ROUTOK is a promise. <strong>Reach Out Universal</strong> means no model, vendor or deployment style should be out of reach. <strong>Transfer Of Knowledge</strong> means what an agent learns about your project should help you ship, not stay locked inside someone else's cloud.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="block" id="product" style="padding-top:20px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// Product</span>
+        <h2 data-i18n="ab.pr.h2">CodeFlux: one agent, <span class="grad-text">every model</span></h2>
+        <p data-i18n="ab.pr.sub">CodeFlux is a local agent tool. It reads, edits and runs things in your own projects, and it talks to whichever model you point it at.</p>
+      </div>
+
+      <div class="diagram reveal">
+        <div class="dg-col">
+          <div class="dg-box"><b data-i18n="ab.dg.l1t">Your projects</b><span data-i18n="ab.dg.l1d">Code, files, Git</span></div>
+          <div class="dg-box"><b data-i18n="ab.dg.l2t">Your tools</b><span data-i18n="ab.dg.l2d">Terminal, MCP servers</span></div>
+        </div>
+        <div class="dg-arrow both" aria-hidden="true"></div>
+        <div class="dg-core">
+          <img src="assets/logo.png" alt="" width="44" height="44">
+          <b>CodeFlux</b>
+          <span data-i18n="ab.dg.core">Agent runtime on your computer · Model settings: URL + model ID + key</span>
+        </div>
+        <div class="dg-arrow both" aria-hidden="true"></div>
+        <div class="dg-col">
+          <div class="dg-box"><b data-i18n="ab.dg.r1t">Local models</b><span>Ollama · LM Studio · vLLM</span></div>
+          <div class="dg-box"><b data-i18n="ab.dg.r2t">Vendor APIs</b><span data-i18n="ab.dg.r2d">Claude · GPT · Gemini · DeepSeek · Qwen …</span></div>
+        </div>
+      </div>
+      <p class="dg-cap" data-i18n="ab.dg.cap">YOUR MACHINE → YOUR CHOICE OF MODEL</p>
+
+      <div class="about-grid three" style="margin-top:56px">
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5l2 8M15.5 7.5l-2 8"/></svg></div>
+          <h3 data-i18n="ab.f1.t">Local or remote models</h3>
+          <p data-i18n="ab.f1.p">Run a model deployed on your own machine or network, or call a hosted API. Use whichever fits the task, the budget and the privacy requirements.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg></div>
+          <h3 data-i18n="ab.f2.t">Domestic and international vendors</h3>
+          <p data-i18n="ab.f2.p">Already adapted to the major model vendors in China and abroad, 50+ in total. A new vendor is a configuration away, not a software update.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="#10121b"/><circle cx="15" cy="12" r="2" fill="#10121b"/><circle cx="8" cy="18" r="2" fill="#10121b"/></svg></div>
+          <h3 data-i18n="ab.f3.t">Three fields to connect</h3>
+          <p data-i18n="ab.f3.p">Fill in the vendor's address, the model ID and your key. That is all it takes to bring a model into CodeFlux.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></div>
+          <h3 data-i18n="ab.f4.t">Multiple protocol formats</h3>
+          <p data-i18n="ab.f4.p">Different vendors speak different API dialects. CodeFlux supports several protocol formats, so you pick the one your vendor uses and keep going.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg></div>
+          <h3 data-i18n="ab.f5.t">Install and use</h3>
+          <p data-i18n="ab.f5.p">No server to set up, no containers to run. Install the app, add a model and open a project.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+          <h3 data-i18n="ab.f6.t">Local-first by design</h3>
+          <p data-i18n="ab.f6.p">Project files, indexes and session history stay on your computer. With a local model, nothing has to leave your network at all.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="block" id="principles" style="padding-top:20px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// Principles</span>
+        <h2 data-i18n="ab.pc.h2">What we build by</h2>
+      </div>
+      <div class="flow">
+        <div class="flow-item reveal"><div class="n grad-text">01</div><h4 data-i18n="ab.pc1.t">Open to every model</h4><p data-i18n="ab.pc1.p">We do not tie you to one vendor. Switch models whenever price, speed or quality changes.</p></div>
+        <div class="flow-item reveal"><div class="n grad-text">02</div><h4 data-i18n="ab.pc2.t">Your data stays yours</h4><p data-i18n="ab.pc2.p">Nothing is uploaded proactively. Context is sent only to the model you choose, and only when you use it.</p></div>
+        <div class="flow-item reveal"><div class="n grad-text">03</div><h4 data-i18n="ab.pc3.t">Simple by default</h4><p data-i18n="ab.pc3.p">A powerful tool should not need a manual to get started. The documentation is there for when you want more.</p></div>
+        <div class="flow-item reveal"><div class="n grad-text">04</div><h4 data-i18n="ab.pc4.t">You stay in control</h4><p data-i18n="ab.pc4.p">Plans can be reviewed, changes are shown as diffs, and every step can be undone.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="stats reveal">
+        <div class="stat"><div class="v grad-text">50+</div><div class="l" data-i18n="ab.s1">Model providers supported</div></div>
+        <div class="stat"><div class="v grad-text">3</div><div class="l" data-i18n="ab.s2">Desktop platforms</div></div>
+        <div class="stat"><div class="v grad-text">3</div><div class="l" data-i18n="ab.s3">Fields to connect a model</div></div>
+        <div class="stat"><div class="v grad-text">100%</div><div class="l" data-i18n="ab.s4">Code stored locally</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="block" id="contact-us" style="padding-top:20px">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2 data-i18n="ab.cta.h2">Try CodeFlux, or talk to us</h2>
+        <p data-i18n="ab.cta.p">Download it and be up and running in minutes. For team deployments, private models and custom needs, our team is happy to help.</p>
+        <div class="hero-cta">
+          <a href="index.html#download" class="btn btn-primary btn-lg" data-i18n="ab.cta.b1">Download CodeFlux</a>
+          <a href="docs.html" class="btn btn-ghost btn-lg" data-i18n="ab.cta.b2">Read the docs</a>
+          <a href="mailto:sales@codeflux.ai" class="btn btn-ghost btn-lg" data-i18n="ab.cta.b3">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo"><img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36"><span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span></a>
+          <p data-i18n="ft.p">Your desktop AI coding agent. Helping everyone turn ideas into running software.</p>
+        </div>
+        <div><h5 data-i18n="ft.prod">Product</h5><ul><li><a href="index.html#features" data-i18n="nav.features">Features</a></li><li><a href="index.html#download" data-i18n="ft.dl">Download</a></li><li><a href="index.html#contact" data-i18n="nav.contact">Contact Sales</a></li></ul></div>
+        <div><h5 data-i18n="ft.res">Resources</h5><ul><li><a href="docs.html" data-i18n="ft.docs">Documentation</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux/releases" target="_blank" rel="noopener" data-i18n="ft.log">Release notes</a></li><li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li></ul></div>
+        <div><h5 data-i18n="ft.contact">Contact</h5><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="mailto:sales@codeflux.ai">sales@codeflux.ai</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+      </div>
+      <div class="copy"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n-zh-hant.js"></script>
+  <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n-about.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/pages.js"></script>
+</body>
+</html>
