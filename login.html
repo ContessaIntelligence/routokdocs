@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in · CodeFlux</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="Sign in to your CodeFlux account to manage your plan, devices and settings.">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('cf-lang');
+        if (l === 'zh-Hant' || l === 'zh-CN') {
+          document.documentElement.lang = l;
+          document.documentElement.className += ' i18n-wait';
+          setTimeout(function () { document.documentElement.className = document.documentElement.className.replace(' i18n-wait', ''); }, 2500);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-sections.css">
+  <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-pages.css">
+  <link rel="stylesheet" href="assets/style-commerce.css">
+</head>
+<body data-page="login" data-title-zh-cn="登录 · CodeFlux" data-title-zh-hant="登入 · CodeFlux">
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36">
+        <span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="docs.html" data-i18n="nav.docs">Docs</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang" id="lang">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg>
+            <span id="lang-cur">English</span>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="zh-Hant">繁體中文</button>
+            <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
+          </div>
+        </div>
+        <a href="login.html" id="navAuth" class="btn btn-ghost btn-sm"><span class="t-in" data-i18n="nav.login">Sign in</span><span class="t-acct" data-i18n="nav.account">Account</span></a>
+        <a href="index.html#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="auth-wrap">
+    <div class="grid-bg"></div>
+    <div class="auth-card">
+      <h1 data-i18n="au.login.h1">Welcome back</h1>
+      <p class="auth-sub" data-i18n="au.login.sub">Sign in to manage your plan, devices and settings.</p>
+
+      <div id="oauthWrap" hidden>
+        <div class="oauth">
+          <button type="button" class="btn btn-ghost" data-oauth="github" hidden>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            <span data-i18n="au.gh">Continue with GitHub</span>
+          </button>
+          <button type="button" class="btn btn-ghost" data-oauth="oidc" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.63h6.45a5.52 5.52 0 01-2.39 3.62v3h3.87c2.27-2.09 3.57-5.17 3.57-8.8z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.07 7.93-2.91l-3.87-3a7.2 7.2 0 01-10.7-3.78H1.35v3.09A12 12 0 0012 24z"/><path fill="#FBBC05" d="M5.36 14.31a7.2 7.2 0 010-4.62V6.6H1.35a12 12 0 000 10.8l4.01-3.09z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.58 1.8l3.43-3.43A11.5 11.5 0 0012 0 12 12 0 001.35 6.6l4.01 3.09A7.16 7.16 0 0112 4.77z"/></svg>
+            <span data-i18n="au.gg">Continue with Google</span>
+          </button>
+        </div>
+        <div class="or" data-i18n="au.or">or use email</div>
+      </div>
+
+      <form class="form" id="loginForm" novalidate>
+        <div class="field">
+          <label for="email" data-i18n="au.email">Email</label>
+          <input class="input" id="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <div class="lbl"><label for="password" data-i18n="au.pw">Password</label><a href="forgot.html" data-i18n="au.forgot">Forgot password?</a></div>
+          <div class="pw">
+            <input class="input" id="password" type="password" autocomplete="current-password" required>
+            <button type="button" aria-label="Toggle password visibility"></button>
+          </div>
+        </div>
+        <div id="turnstile"></div>
+        <div class="msg-box" id="formMsg" role="alert" aria-live="polite"></div>
+        <button class="btn btn-primary btn-lg" id="submitBtn" type="submit" data-i18n="au.login.btn">Sign in</button>
+      </form>
+
+      <p class="auth-alt"><span data-i18n="au.login.alt">New to CodeFlux?</span> <a href="register.html" id="toRegister" data-i18n="au.login.alt.a">Create an account</a></p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="copy" style="margin-top:0;border-top:0;padding-top:0"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a> · <a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a> · <a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n-zh-hant.js"></script>
+  <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n-auth.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/pages.js"></script>
+  <script src="assets/auth.js"></script>
+</body>
+</html>

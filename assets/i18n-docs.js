@@ -298,7 +298,7 @@ curl http://localhost:11434/v1/models</code></pre>
           <p>仍然没能解决？联系我们时，请附上 CodeFlux 版本、操作系统、所使用的服务商和协议，以及完整的错误信息。<strong>请勿附上你的 API 密钥。</strong></p>
           <ul>
             <li>技术支持：<a href="mailto:support@routok.com">support@routok.com</a></li>
-            <li>销售、团队与私有化部署：<a href="mailto:sales@routok.com">sales@routok.com</a></li>
+            <li>价格、团队版与企业版：<a href="mailto:sales@routok.com">sales@routok.com</a></li>
             <li>版本发布与源码：<a href="https://github.com/ContessaIntelligence/codeflux" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         `,
@@ -604,7 +604,7 @@ curl http://localhost:11434/v1/models</code></pre>
           <p>仍然沒能解決？聯絡我們時，請附上 CodeFlux 版本、作業系統、所使用的服務商與協定，以及完整的錯誤訊息。<strong>請勿附上你的 API 金鑰。</strong></p>
           <ul>
             <li>技術支援：<a href="mailto:support@routok.com">support@routok.com</a></li>
-            <li>銷售、團隊與私有化部署：<a href="mailto:sales@routok.com">sales@routok.com</a></li>
+            <li>價格、團隊版與企業版：<a href="mailto:sales@routok.com">sales@routok.com</a></li>
             <li>版本發布與原始碼：<a href="https://github.com/ContessaIntelligence/codeflux" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         `,

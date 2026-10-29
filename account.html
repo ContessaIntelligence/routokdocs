@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My account · CodeFlux</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="Manage your CodeFlux plan, orders and signed-in devices.">
+  <meta name="robots" content="noindex">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('cf-lang');
+        if (l === 'zh-Hant' || l === 'zh-CN') {
+          document.documentElement.lang = l;
+          document.documentElement.className += ' i18n-wait';
+          setTimeout(function () { document.documentElement.className = document.documentElement.className.replace(' i18n-wait', ''); }, 2500);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-sections.css">
+  <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-pages.css">
+  <link rel="stylesheet" href="assets/style-commerce.css">
+</head>
+<body data-page="account" data-title-zh-cn="我的账号 · CodeFlux" data-title-zh-hant="我的帳號 · CodeFlux">
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36">
+        <span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="docs.html" data-i18n="nav.docs">Docs</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang" id="lang">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg>
+            <span id="lang-cur">English</span>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="zh-Hant">繁體中文</button>
+            <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
+          </div>
+        </div>
+        <a href="account.html" id="navAuth" class="btn btn-ghost btn-sm logged"><span class="t-in" data-i18n="nav.login">Sign in</span><span class="t-acct" data-i18n="nav.account">Account</span></a>
+        <a href="index.html#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero" style="padding-bottom:30px">
+    <div class="wrap">
+      <h1 class="reveal" data-i18n="ac.h1" style="font-size:clamp(30px,4vw,44px)">My account</h1>
+    </div>
+  </header>
+
+  <section class="block" style="padding-top:10px">
+    <div class="wrap">
+      <div class="loading-card" id="loading" data-i18n="ac.loading">Loading your account…</div>
+
+      <div class="acct" id="acct" hidden>
+        <aside class="acct-side">
+          <div class="avatar-lg" id="avatar">?</div>
+          <div class="em" id="uEmail"></div>
+          <span class="badge-plan" id="uPlan"></span>
+          <button type="button" class="btn btn-ghost" id="logoutBtn" data-i18n="ac.logout">Sign out</button>
+        </aside>
+
+        <div class="acct-main">
+          <!-- Details -->
+          <div class="panel">
+            <h2 data-i18n="ac.d.h">Account details</h2>
+            <p class="sub" data-i18n="ac.d.sub">Your sign-in and plan information.</p>
+            <dl class="kv">
+              <div><dt data-i18n="ac.d.email">Email</dt><dd id="kvEmail"></dd></div>
+              <div><dt data-i18n="ac.d.user">Username</dt><dd id="kvUser"></dd></div>
+              <div><dt data-i18n="ac.d.login">Sign-in methods</dt><dd id="kvLogin"></dd></div>
+              <div><dt data-i18n="ac.d.plan">Current plan</dt><dd id="kvPlan"></dd></div>
+              <div><dt data-i18n="ac.d.exp">Plan valid until</dt><dd id="kvExp"></dd></div>
+            </dl>
+          </div>
+
+          <!-- Upgrade -->
+          <div class="panel" id="upgrade" data-pro="0">
+            <h2><span class="up-new" data-i18n="ac.u.h">Upgrade to Pro</span><span class="up-renew" data-i18n="ac.u.h2">Renew Pro</span></h2>
+            <p class="sub" data-i18n="ac.u.sub">Parallel agents, project memory, checkpoints and more. Prepaid, with no automatic renewal.</p>
+            <div class="upg" id="planCards"></div>
+            <div class="upg-actions">
+              <button type="button" class="btn btn-primary btn-lg" id="checkoutBtn" disabled data-i18n="ac.u.btn">Continue to payment</button>
+              <span class="hint" data-i18n="ac.u.hint">By continuing you agree to the <a href="terms.html" target="_blank" rel="noopener" style="color:var(--accent2)">Terms of Service</a> and <a href="refund.html" target="_blank" rel="noopener" style="color:var(--accent2)">Refund Policy</a>. Need Team or Enterprise? <a href="mailto:sales@routok.com" style="color:var(--accent2)">Contact Sales</a>.</span>
+            </div>
+            <div class="msg-box" id="checkoutMsg" role="alert" aria-live="polite" style="margin-top:16px"></div>
+          </div>
+
+          <!-- Subscriptions -->
+          <div class="panel">
+            <h2 data-i18n="ac.o.h">Subscriptions</h2>
+            <p class="sub" data-i18n="ac.o.sub">Your plans and their validity periods. For invoices, email sales@routok.com.</p>
+            <span hidden id="thPlan" data-i18n="ac.o.plan">Plan</span><span hidden id="thStatus" data-i18n="ac.o.st">Status</span><span hidden id="thFrom" data-i18n="ac.o.from">Starts</span><span hidden id="thTo" data-i18n="ac.o.to">Ends</span>
+            <div id="subsBody"></div>
+          </div>
+
+          <!-- Security: change password -->
+          <div class="panel" id="pwPanel" hidden>
+            <h2 data-i18n="ac.p.h">Change password</h2>
+            <p class="sub" data-i18n="ac.p.sub">Enter your current password to set a new one. Your other devices will be signed out.</p>
+            <form class="form" id="pwForm" novalidate style="margin-top:0">
+              <div class="field">
+                <label for="curpw" data-i18n="ac.p.cur">Current password</label>
+                <div class="pw"><input class="input" id="curpw" type="password" autocomplete="current-password" required><button type="button" aria-label="Toggle password visibility"></button></div>
+              </div>
+              <div class="field">
+                <label for="newpw" data-i18n="ac.p.new">New password</label>
+                <div class="pw"><input class="input" id="newpw" type="password" autocomplete="new-password" required><button type="button" aria-label="Toggle password visibility"></button></div>
+                <div class="pw-meter" id="pwMeter" data-s="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                <span class="hint" data-i18n="au.pw.hint">At least 8 characters, with letters and numbers.</span>
+              </div>
+              <div class="field">
+                <label for="newpw2" data-i18n="au.pw2">Confirm password</label>
+                <div class="pw"><input class="input" id="newpw2" type="password" autocomplete="new-password" required><button type="button" aria-label="Toggle password visibility"></button></div>
+              </div>
+              <div class="msg-box" id="pwMsg" role="alert" aria-live="polite"></div>
+              <button class="btn btn-primary" id="pwBtn" type="submit" data-i18n="ac.p.btn">Update password</button>
+            </form>
+          </div>
+
+          <!-- Devices -->
+          <div class="panel">
+            <h2 data-i18n="ac.v.h">Signed-in devices</h2>
+            <p class="sub" data-i18n="ac.v.sub">Devices where you are signed in to the CodeFlux app.</p>
+            <div id="devicesBody"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="copy" style="margin-top:0;border-top:0;padding-top:0"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a> · <a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a> · <a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n-zh-hant.js"></script>
+  <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n-pricing.js"></script>
+  <script src="assets/i18n-auth.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/pages.js"></script>
+  <script src="assets/auth.js"></script>
+</body>
+</html>

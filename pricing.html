@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing · CodeFlux</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="CodeFlux pricing: start free and bring your own model. Upgrade to Pro for parallel agents, project memory and checkpoints, or talk to us about Team and Enterprise plans.">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('cf-lang');
+        if (l === 'zh-Hant' || l === 'zh-CN') {
+          document.documentElement.lang = l;
+          document.documentElement.className += ' i18n-wait';
+          setTimeout(function () { document.documentElement.className = document.documentElement.className.replace(' i18n-wait', ''); }, 2500);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-sections.css">
+  <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-pages.css">
+  <link rel="stylesheet" href="assets/style-commerce.css">
+</head>
+<body data-page="pricing" data-cycle="year">
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36">
+        <span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="pricing.html" aria-current="page" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="docs.html" data-i18n="nav.docs">Docs</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang" id="lang">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg>
+            <span id="lang-cur">English</span>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="zh-Hant">繁體中文</button>
+            <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
+          </div>
+        </div>
+        <a href="login.html" id="navAuth" class="btn btn-ghost btn-sm"><span class="t-in" data-i18n="nav.login">Sign in</span><span class="t-acct" data-i18n="nav.account">Account</span></a>
+        <a href="index.html#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="grid-bg"></div>
+    <div class="wrap">
+      <div class="crumbs reveal"><a href="index.html" data-i18n="ab.crumb.home">Home</a> / <span data-i18n="nav.pricing">Pricing</span></div>
+      <h1 class="reveal" data-i18n="pr.h1">Start free. <span class="grad-text">Pay only when you need more.</span></h1>
+      <p class="lead reveal" data-i18n="pr.lead">CodeFlux is free to download and works with a local model or your own API key. Upgrade for parallel agents, project memory and team features.</p>
+      <div class="bill-toggle reveal" role="group" aria-label="Billing period">
+        <button type="button" data-cycle="month" aria-pressed="false" data-i18n="pr.t.m">Monthly</button>
+        <button type="button" class="on" data-cycle="year" aria-pressed="true"><span data-i18n="pr.t.y">Yearly</span><span class="save" data-i18n="pr.t.save">Save 20%</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PLANS -->
+  <section class="block" style="padding-top:10px">
+    <div class="wrap">
+      <div class="plans" id="plans">
+
+        <!-- Free -->
+        <div class="plan reveal">
+          <h3 data-i18n="pr.free.n">Free</h3>
+          <p class="for" data-i18n="pr.free.for">For trying CodeFlux and personal side projects.</p>
+          <div class="price"><b>$0</b><span data-i18n="pr.forever">forever</span></div>
+          <div class="price-sub" data-i18n="pr.free.sub">No credit card required</div>
+          <div class="plan-cta"><a href="index.html#download" class="btn btn-ghost btn-lg" data-i18n="pr.free.cta">Download free</a></div>
+          <ul>
+            <li class="lead" data-i18n="pr.free.l0">Everything you need to get started</li>
+            <li data-i18n="pr.free.l1">Autonomous coding agent (1 agent)</li>
+            <li data-i18n="pr.free.l2">Whole-project understanding with a local index</li>
+            <li data-i18n="pr.free.l3">Built-in terminal and live preview</li>
+            <li data-i18n="pr.free.l4">Basic MCP support</li>
+            <li data-i18n="pr.free.l5">Bring your own API key, any provider</li>
+            <li data-i18n="pr.free.l6">2 active workspaces · last 20 sessions</li>
+            <li data-i18n="pr.free.l7">Community support</li>
+          </ul>
+        </div>
+
+        <!-- Pro -->
+        <div class="plan hot reveal">
+          <span class="flag" data-i18n="pr.pro.flag">Recommended</span>
+          <h3 data-i18n="pr.pro.n">Pro</h3>
+          <p class="for" data-i18n="pr.pro.for">For professional and independent developers who live in their agent.</p>
+          <div class="price">
+            <b class="m-only">$20</b><b class="y-only">$16</b><span data-i18n="pr.permo">/ month</span>
+          </div>
+          <div class="price-sub">
+            <span class="m-only" data-i18n="pr.pro.subm">Billed monthly · prepaid</span>
+            <span class="y-only"><span data-i18n="pr.pro.suby">$192 billed once a year</span> <s>$240</s></span>
+          </div>
+          <div class="plan-cta"><a href="register.html?plan=pro" id="ctaPro" class="btn btn-primary btn-lg" data-i18n="pr.pro.cta">Get Pro</a></div>
+          <ul>
+            <li class="lead" data-i18n="pr.pro.l0">Everything in Free, plus:</li>
+            <li data-i18n="pr.pro.l1">Parallel multi-agent collaboration (up to 5 agents)</li>
+            <li data-i18n="pr.pro.l2">Unlimited workspaces and full session history</li>
+            <li data-i18n="pr.pro.l3">Long-term project memory across sessions</li>
+            <li data-i18n="pr.pro.l4">Checkpoints and one-click rollback</li>
+            <li><span data-i18n="pr.pro.l5">Scheduled and background tasks</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.pro.l6">Premium skills and framework templates</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.pro.l7">Optional end-to-end encrypted cloud sync</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li data-i18n="pr.pro.l8">Priority email support</li>
+          </ul>
+        </div>
+
+        <!-- Team -->
+        <div class="plan reveal">
+          <h3 data-i18n="pr.team.n">Team</h3>
+          <p class="for" data-i18n="pr.team.for">For teams that want shared standards and unified billing.</p>
+          <div class="price">
+            <b class="m-only">$100</b><b class="y-only">$80</b><span data-i18n="pr.permo">/ month</span>
+          </div>
+          <div class="price-sub">
+            <span class="m-only" data-i18n="pr.team.subm">Includes 5 seats · extra seats $20 / seat / month</span>
+            <span class="y-only" data-i18n="pr.team.suby">Includes 5 seats · billed yearly ($960) · extra seats $16 / seat / month</span>
+          </div>
+          <div class="plan-cta"><a href="mailto:sales@routok.com?subject=CodeFlux%20Team%20plan" class="btn btn-ghost btn-lg" data-i18n="pr.cs">Contact Sales</a></div>
+          <ul>
+            <li class="lead" data-i18n="pr.team.l0">Everything in Pro, plus:</li>
+            <li><span data-i18n="pr.team.l1">Shared skills, rules and project memory</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.team.l2">Shared MCP configuration</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.team.l3">Seat management and unified billing</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.team.l4">Git platform integration: PRs and issue-to-task</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.team.l5">Usage and efficiency dashboard (never includes code)</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li data-i18n="pr.team.l6">Ticket-based support</li>
+          </ul>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="plan reveal">
+          <h3 data-i18n="pr.ent.n">Enterprise</h3>
+          <p class="for" data-i18n="pr.ent.for">For organizations that need control, compliance and private deployment.</p>
+          <div class="price"><b class="txt" data-i18n="pr.custom">Custom</b></div>
+          <div class="price-sub" data-i18n="pr.ent.sub">Annual agreement · quoted by seats</div>
+          <div class="plan-cta"><a href="mailto:sales@routok.com?subject=CodeFlux%20Enterprise" class="btn btn-ghost btn-lg" data-i18n="pr.cs">Contact Sales</a></div>
+          <ul>
+            <li class="lead" data-i18n="pr.ent.l0">Everything in Team, plus:</li>
+            <li><span data-i18n="pr.ent.l1">Private deployment on your own infrastructure</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.ent.l2">SSO (OIDC / SAML) and role-based permissions</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.ent.l3">Audit logs of every agent action</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.ent.l4">Policy controls: allowed models, command allowlist, protected paths</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.ent.l5">Offline licensing and offline update packages</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li data-i18n="pr.ent.l6">Custom development, training and SLA</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="pricing-note reveal" data-i18n="pr.note">All prices are in US dollars (USD) and prepaid for the period you choose. Plans do not renew automatically. We email you before your plan expires. Features marked <b>Soon</b> are in development and are added to your plan automatically at no extra cost when released. Team and Enterprise plans are provided under a written order or agreement. See our <a href="refund.html">Refund Policy</a> and <a href="terms.html">Terms of Service</a>.</p>
+    </div>
+  </section>
+
+  <!-- WHAT YOU PAY FOR -->
+  <section class="block" style="padding-top:30px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// Transparent</span>
+        <h2 data-i18n="pr.w.h2">Simple and transparent</h2>
+        <p data-i18n="pr.w.sub">Know exactly what you get before you pay.</p>
+      </div>
+      <div class="trust">
+        <div class="card reveal"><h3 data-i18n="pr.w1.t">Start free, no card needed</h3><p data-i18n="pr.w1.p">The core agent is free with no time limit. Upgrade only when your workflow needs parallel agents, project memory and checkpoints.</p></div>
+        <div class="card reveal"><h3 data-i18n="pr.w2.t">Your code stays on your machine</h3><p data-i18n="pr.w2.p">Projects, indexes and history are stored locally. An account only manages your plan, devices and optional sync. Read the <a href="privacy.html" style="color:var(--accent2);text-decoration:underline">Privacy Policy</a>.</p></div>
+        <div class="card reveal"><h3 data-i18n="pr.w3.t">Prepaid, no auto-renewal</h3><p data-i18n="pr.w3.p">Pay for the period you want. There are no recurring charges to cancel, and a clear refund window if CodeFlux is not right for you.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="block" style="padding-top:30px" id="compare">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// Compare</span>
+        <h2 data-i18n="pr.c.h2">Compare plans in detail</h2>
+      </div>
+      <div class="cmp-wrap reveal">
+        <table class="cmp">
+          <thead>
+            <tr><th></th><th data-i18n="pr.free.n">Free</th><th class="hot" data-i18n="pr.pro.n">Pro</th><th data-i18n="pr.team.n">Team</th><th data-i18n="pr.ent.n">Enterprise</th></tr>
+          </thead>
+          <tbody>
+            <tr class="grp"><td colspan="5" data-i18n="pr.g1">Agent</td></tr>
+            <tr><td data-i18n="pr.r.par">Parallel agents</td><td>1</td><td class="hot">5</td><td>5</td><td data-i18n="pr.v.custom">Custom</td></tr>
+            <tr><td data-i18n="pr.r.ws">Active workspaces</td><td>2</td><td class="hot" data-i18n="pr.v.unl">Unlimited</td><td data-i18n="pr.v.unl">Unlimited</td><td data-i18n="pr.v.unl">Unlimited</td></tr>
+            <tr><td data-i18n="pr.r.hist">Session history</td><td data-i18n="pr.v.20">Last 20</td><td class="hot" data-i18n="pr.v.full">Full</td><td data-i18n="pr.v.full">Full</td><td data-i18n="pr.v.full">Full</td></tr>
+            <tr><td data-i18n="pr.r.term">Built-in terminal and preview</td><td class="yes">✓</td><td class="yes hot">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td data-i18n="pr.r.mcp">MCP integrations</td><td data-i18n="pr.v.basic">Basic</td><td class="hot" data-i18n="pr.v.full2">Full</td><td data-i18n="pr.v.shared">Full + shared</td><td data-i18n="pr.v.managed">Full + managed</td></tr>
+            <tr><td data-i18n="pr.r.byok">Bring your own API key / local models</td><td class="yes">✓</td><td class="yes hot">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr class="grp"><td colspan="5" data-i18n="pr.g2">Productivity</td></tr>
+            <tr><td data-i18n="pr.r.mem">Long-term project memory</td><td class="no">—</td><td class="yes hot">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td data-i18n="pr.r.ckpt">Checkpoints and rollback</td><td class="no">—</td><td class="yes hot">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.sched">Scheduled and background tasks</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="yes hot">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.skills">Premium skills and templates</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="yes hot">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.sync">Encrypted cloud sync (optional)</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="yes hot">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr class="grp"><td colspan="5" data-i18n="pr.g3">Collaboration</td></tr>
+            <tr><td><span data-i18n="pr.r.shared">Shared skills, rules and memory</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.git">Git platform integration</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.dash">Usage and efficiency dashboard</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.seat">Seat management and unified billing</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr class="grp"><td colspan="5" data-i18n="pr.g4">Security and governance</td></tr>
+            <tr><td><span data-i18n="pr.r.sso">SSO (OIDC / SAML) and role permissions</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.audit">Audit logs</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.policy">Policy controls (models, commands, paths)</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td><span data-i18n="pr.r.priv">Private deployment and offline licensing</span><span class="soon" data-i18n="pr.soon">Soon</span></td><td class="no">—</td><td class="no hot">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr class="grp"><td colspan="5" data-i18n="pr.g5">Support</td></tr>
+            <tr><td data-i18n="pr.r.sup">Support channel</td><td data-i18n="pr.v.comm">Community</td><td class="hot" data-i18n="pr.v.prio">Priority email</td><td data-i18n="pr.v.tick">Tickets</td><td data-i18n="pr.v.sla">Dedicated + SLA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq" style="padding-top:30px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// FAQ</span>
+        <h2 data-i18n="pr.q.h2">Pricing questions</h2>
+      </div>
+      <div class="faq reveal">
+        <details open><summary data-i18n="pr.q1.q">Do I need my own AI model?</summary><p data-i18n="pr.q1.a">CodeFlux connects to the model you choose: a local model, or an API key from any provider you already use. Model usage is billed by that provider. Your CodeFlux plan covers the agent features listed above.</p></details>
+        <details><summary data-i18n="pr.q2.q">Will my plan renew automatically?</summary><p data-i18n="pr.q2.a">No. Plans are prepaid for the period you pick (one month or one year). We never charge you again unless you choose to buy another period, and we send a reminder email before your plan expires.</p></details>
+        <details><summary data-i18n="pr.q3.q">What happens when Pro expires?</summary><p data-i18n="pr.q3.a">Your account returns to the Free plan. Your projects, history and settings stay on your computer. Pro-only features simply pause until you renew.</p></details>
+        <details><summary data-i18n="pr.q4.q">Can I get a refund?</summary><p data-i18n="pr.q4.a">Yes. If you are not satisfied, you can request a full refund within 7 days of your first purchase. See the <a href="refund.html" style="color:var(--accent2);text-decoration:underline">Refund Policy</a> for details.</p></details>
+        <details><summary data-i18n="pr.q5.q">How do I pay, and can I get an invoice?</summary><p data-i18n="pr.q5.a">Available payment methods are shown at checkout, and payment is handled by our licensed payment partner, so we never see or store your card details. Receipts are available in your account, and company invoices can be requested at sales@routok.com.</p></details>
+        <details><summary data-i18n="pr.q6.q">How do Team and Enterprise plans work?</summary><p data-i18n="pr.q6.a">Contact us with your team size and needs. For Team we set up seats and unified billing. For Enterprise we quote an annual agreement that can include SSO, audit logs, policy controls and private deployment.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="block" style="padding-top:20px">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2 data-i18n="pr.cta.h2">Try CodeFlux free today</h2>
+        <p data-i18n="pr.cta.p">No credit card needed. Upgrade whenever your workflow outgrows the Free plan.</p>
+        <div class="hero-cta">
+          <a href="index.html#download" class="btn btn-primary btn-lg" data-i18n="pr.free.cta">Download free</a>
+          <a href="register.html?plan=pro" class="btn btn-ghost btn-lg" data-i18n="pr.pro.cta">Get Pro</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a href="index.html" class="logo"><img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36"><span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span></a>
+          <p data-i18n="ft.p">Your desktop AI coding agent. Helping everyone turn ideas into running software.</p>
+        </div>
+        <div><h5 data-i18n="ft.prod">Product</h5><ul><li><a href="index.html#features" data-i18n="nav.features">Features</a></li><li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li><li><a href="index.html#download" data-i18n="ft.dl">Download</a></li></ul></div>
+        <div><h5 data-i18n="ft.res">Resources</h5><ul><li><a href="docs.html" data-i18n="ft.docs">Documentation</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux/releases" target="_blank" rel="noopener" data-i18n="ft.log">Release notes</a></li><li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li></ul></div>
+        <div><h5 data-i18n="ft.contact">Contact</h5><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="mailto:sales@routok.com">sales@routok.com</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+      </div>
+      <div class="copy"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a> · <a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a> · <a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n-zh-hant.js"></script>
+  <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n-about.js"></script>
+  <script src="assets/i18n-pricing.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/pages.js"></script>
+  <script src="assets/auth.js"></script>
+</body>
+</html>

@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/style-sections.css">
   <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-commerce.css">
 </head>
 <body>
   <div class="glow"></div>
@@ -36,8 +37,7 @@
       <div class="nav-links" id="navLinks">
         <a href="#features" data-i18n="nav.features">Features</a>
         <a href="#how" data-i18n="nav.how">How it works</a>
-        <a href="#contact" data-i18n="nav.contact">Contact Sales</a>
-        <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
         <a href="docs.html" data-i18n="nav.docs">Docs</a>
         <a href="about.html" data-i18n="nav.about">About</a>
@@ -55,6 +55,7 @@
             <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
           </div>
         </div>
+        <a href="login.html" id="navAuth" class="btn btn-ghost btn-sm"><span class="t-in" data-i18n="nav.login">Sign in</span><span class="t-acct" data-i18n="nav.account">Account</span></a>
         <a href="#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
         <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
       </div>
@@ -75,7 +76,7 @@
         </a>
         <a href="#how" class="btn btn-ghost btn-lg" data-i18n="hero.demo">See how it works →</a>
       </div>
-      <div class="hero-meta reveal" data-i18n="hero.meta">macOS (Apple Silicon) · Windows (x64) · Linux (x86_64) · Free trial for new users</div>
+      <div class="hero-meta reveal" data-i18n="hero.meta">macOS (Apple Silicon) · Windows (x64) · Linux (x86_64) · Free to download</div>
 
       <div class="motto" aria-label="Reach Out Universal, Transfer Of Knowledge">
         <svg class="motto-svg" viewBox="0 0 1000 70" aria-hidden="true">
@@ -135,6 +136,7 @@
       <div class="models">
         <span class="chip">DeepSeek</span><span class="chip" data-i18n="chip.qwen">Qwen</span><span class="chip">Kimi</span><span class="chip" data-i18n="chip.glm">Zhipu GLM</span><span class="chip" data-i18n="chip.doubao">Doubao</span><span class="chip">Claude</span><span class="chip">GPT</span><span class="chip">Gemini</span><span class="chip" data-i18n="chip.ollama">Local Ollama</span>
       </div>
+      <p class="strip-note" data-i18n="strip.note">Model and company names are trademarks of their respective owners. CodeFlux is not affiliated with or endorsed by them.</p>
     </div>
   </div>
 
@@ -181,7 +183,7 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 7l3-3 3 3-3 3M10 17l-3 3-3-3 3-3M17 4v6a4 4 0 01-4 4h-2a4 4 0 00-4 4v2"/></svg></div>
           <h3 data-i18n="f6.t">MCP &amp; plugin ecosystem</h3>
           <p data-i18n="f6.p">Connect databases, GitHub, Figma, browsers and more through the MCP protocol. Capabilities scale without limit.</p>
-          <div class="tags"><span class="tag">GitHub</span><span class="tag">MySQL</span><span class="tag">Figma</span><span class="tag">Browser</span><span class="tag">Docker</span><span class="tag">+120</span></div>
+          <div class="tags"><span class="tag">GitHub</span><span class="tag">MySQL</span><span class="tag">Figma</span><span class="tag">Browser</span><span class="tag">Docker</span></div>
         </div>
         <div class="card span-3 reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
@@ -214,60 +216,62 @@
   <section class="block" style="padding-top:0">
     <div class="wrap">
       <div class="stats reveal">
-        <div class="stat"><div class="v grad-text">10x</div><div class="l" data-i18n="s.1">Avg. development speed-up</div></div>
+        <div class="stat"><div class="v grad-text">3</div><div class="l" data-i18n="s.1">Desktop platforms</div></div>
         <div class="stat"><div class="v grad-text">50+</div><div class="l" data-i18n="s.2">Model providers supported</div></div>
         <div class="stat"><div class="v grad-text">30+</div><div class="l" data-i18n="s.3">Programming languages</div></div>
-        <div class="stat"><div class="v grad-text">100%</div><div class="l" data-i18n="s.4">Code stored locally</div></div>
+        <div class="stat"><div class="v grad-text">Local</div><div class="l" data-i18n="s.4">Code and sessions stored on your device by default</div></div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT SALES -->
-  <section class="block" id="contact">
+  <!-- PLANS -->
+  <section class="block" id="plans">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="eyebrow">// Get CodeFlux</span>
-        <h2 data-i18n="c.h2">Try it free first. Talk to us when it fits.</h2>
-        <p data-i18n="c.sub">Download the app and start right away. New users get exclusive in-app benefits and a free trial. If it works for you, talk to us about purchase and customization.</p>
+        <span class="eyebrow">// Pricing</span>
+        <h2 data-i18n="c.h2">Start free. Upgrade when you're ready.</h2>
+        <p data-i18n="c.sub">Download CodeFlux and use the core agent for free. Go Pro for parallel agents and project memory, or bring it to your whole team.</p>
       </div>
-      <div class="contact reveal">
-        <div class="contact-steps">
-          <div class="cs"><b>01</b><div><h4 data-i18n="c1.t">Download &amp; try for free</h4><p data-i18n="c1.p">Install CodeFlux, claim your new-user benefits and experience the full power on a real project.</p></div></div>
-          <div class="cs"><b>02</b><div><h4 data-i18n="c2.t">Tell us what you need</h4><p data-i18n="c2.p">Individual, team or enterprise: different scenarios and scales call for different plans.</p></div></div>
-          <div class="cs"><b>03</b><div><h4 data-i18n="c3.t">Get a tailored plan</h4><p data-i18n="c3.p">Custom model access, permission management and private deployment, quoted to your actual needs.</p></div></div>
-        </div>
-        <div class="contact-card">
-          <h3 data-i18n="cc.t">Contact Sales</h3>
-          <p data-i18n="cc.p">Customized plans for teams and enterprises:</p>
+      <div class="plans plans-3">
+        <div class="plan reveal">
+          <h3 data-i18n="pr.free.n">Free</h3>
+          <p class="for" data-i18n="pr.free.for">For trying CodeFlux and personal side projects.</p>
+          <div class="price"><b>$0</b><span data-i18n="pr.forever">forever</span></div>
+          <div class="price-sub" data-i18n="pr.free.sub">No credit card required</div>
+          <div class="plan-cta"><a href="#download" class="btn btn-ghost btn-lg" data-i18n="pr.free.cta">Download free</a></div>
           <ul>
-            <li data-i18n="cc.l1">Unified management of models, members and permissions</li>
-            <li data-i18n="cc.l2">Private deployment and intranet model access</li>
-            <li data-i18n="cc.l3">SSO single sign-on · Corporate invoicing</li>
-            <li data-i18n="cc.l4">Dedicated technical support and training</li>
+            <li data-i18n="pr.free.l1">Autonomous coding agent (1 agent)</li>
+            <li data-i18n="pr.free.l2">Whole-project understanding with a local index</li>
+            <li data-i18n="pr.free.l5">Bring your own API key, any provider</li>
           </ul>
-          <a href="mailto:sales@routok.com" id="salesBtn" class="btn btn-primary btn-lg" data-i18n="cc.btn">Contact Sales</a>
-          <a href="#download" class="contact-sub" data-i18n="cc.sub">Haven't tried it yet? Download free first →</a>
+        </div>
+        <div class="plan hot reveal">
+          <span class="flag" data-i18n="pr.pro.flag">Recommended</span>
+          <h3 data-i18n="pr.pro.n">Pro</h3>
+          <p class="for" data-i18n="pr.pro.for">For professional and independent developers who live in their agent.</p>
+          <div class="price"><b>$20</b><span data-i18n="pr.permo">/ month</span></div>
+          <div class="price-sub" data-i18n="hp.pro.sub">or $16 / month billed yearly ($192)</div>
+          <div class="plan-cta"><a href="register.html?plan=pro" class="btn btn-primary btn-lg" data-i18n="pr.pro.cta">Get Pro</a></div>
+          <ul>
+            <li data-i18n="pr.pro.l1">Parallel multi-agent collaboration (up to 5 agents)</li>
+            <li data-i18n="pr.pro.l3">Long-term project memory across sessions</li>
+            <li data-i18n="pr.pro.l4">Checkpoints and one-click rollback</li>
+          </ul>
+        </div>
+        <div class="plan reveal">
+          <h3 data-i18n="hp.team.n">Team &amp; Enterprise</h3>
+          <p class="for" data-i18n="hp.team.for">For teams that need shared standards, unified billing and governance.</p>
+          <div class="price"><span class="from" data-i18n="hp.from">From</span><b>$100</b><span data-i18n="pr.permo">/ month</span></div>
+          <div class="price-sub" data-i18n="hp.team.sub">Team includes 5 seats · Enterprise is quoted to your needs</div>
+          <div class="plan-cta"><a href="mailto:sales@routok.com?subject=CodeFlux%20Team%20or%20Enterprise" class="btn btn-ghost btn-lg" data-i18n="pr.cs">Contact Sales</a></div>
+          <ul>
+            <li><span data-i18n="pr.team.l1">Shared skills, rules and project memory</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li><span data-i18n="pr.ent.l2">SSO (OIDC / SAML) and role-based permissions</span><span class="soon" data-i18n="pr.soon">Soon</span></li>
+            <li data-i18n="pr.ent.l6">Custom development, training and SLA</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- REVIEWS -->
-  <section class="block" id="reviews" style="padding-top:20px">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">// Loved by developers</span>
-        <h2 data-i18n="r.h2">What developers say</h2>
-        <p data-i18n="r.sub">Real feedback from early beta users</p>
-      </div>
-      <div class="quotes">
-        <div class="quote reveal"><div class="stars">★★★★★</div><p data-i18n="r1.q">"A CRUD module used to take me an afternoon. Now I describe it clearly and get code with tests in ten minutes. I just review."</p><div class="who"><span class="avatar" style="background:#6d5cff" data-i18n="r1.a">L</span><div><b data-i18n="r1.n">Leo Lin</b><span data-i18n="r1.r">Full-stack engineer · Indie developer</span></div></div></div>
-        <div class="quote reveal"><div class="stars">★★★★★</div><p data-i18n="r2.q">"What won me over is local-first. Company code never leaves our network, and with an intranet model our security team finally signed off."</p><div class="who"><span class="avatar" style="background:#0891b2" data-i18n="r2.a">C</span><div><b data-i18n="r2.n">Jing Chen</b><span data-i18n="r2.r">Tech lead, a fintech company</span></div></div></div>
-        <div class="quote reveal"><div class="stars">★★★★★</div><p data-i18n="r3.q">"Multi-agent mode is great. The planner drafts the approach and the tester fills in cases automatically, more thorough than I'd write myself."</p><div class="who"><span class="avatar" style="background:#9333ea" data-i18n="r3.a">W</span><div><b data-i18n="r3.n">Zihao Wang</b><span data-i18n="r3.r">Backend developer · Go</span></div></div></div>
-        <div class="quote reveal"><div class="stars">★★★★★</div><p data-i18n="r4.q">"As a product manager, I built several internal tool prototypes with CodeFlux myself. No more waiting in the engineering queue."</p><div class="who"><span class="avatar" style="background:#db2777" data-i18n="r4.a">Y</span><div><b data-i18n="r4.n">Yutong Zhou</b><span data-i18n="r4.r">Product manager</span></div></div></div>
-        <div class="quote reveal"><div class="stars">★★★★★</div><p data-i18n="r5.q">"I use it on both a Mac and a Windows machine. The experience is consistent, it starts fast and keeps memory use modest."</p><div class="who"><span class="avatar" style="background:#059669" data-i18n="r5.a">Y</span><div><b data-i18n="r5.n">Yiming Zhao</b><span data-i18n="r5.r">Frontend engineer · React</span></div></div></div>
-        <div class="quote reveal"><div class="stars">★★★★★</div><p data-i18n="r6.q">"Legacy migration is a nightmare. CodeFlux upgraded 300+ files to the new framework for me, and the build passed on the first try."</p><div class="who"><span class="avatar" style="background:#ea580c" data-i18n="r6.a">H</span><div><b data-i18n="r6.n">Hao Sun</b><span data-i18n="r6.r">Architect</span></div></div></div>
-      </div>
+      <p class="pricing-note reveal"><a href="pricing.html" data-i18n="hp.all">Compare all plans in detail →</a></p>
     </div>
   </section>
 
@@ -324,11 +328,11 @@
       </div>
       <div class="faq reveal">
         <details open><summary data-i18n="q1.q">What is CodeFlux? How is it different from ordinary AI code completion?</summary><p data-i18n="q1.a">CodeFlux is an AI coding agent for macOS, Windows and Linux. Unlike tools that only complete a few lines, it understands the whole project, plans tasks on its own, reads and writes multiple files, runs terminal commands and tests, and fixes errors automatically, finishing the whole job like a real engineer.</p></details>
-        <details><summary data-i18n="q2.q">How do I try it for free?</summary><p data-i18n="q2.a">Just download and install CodeFlux. New users can claim exclusive benefits in the app and try the core features for free, with no upfront payment.</p></details>
+        <details><summary data-i18n="q2.q">How do I try it for free?</summary><p data-i18n="q2.a">Just download and install CodeFlux. The Free plan has no time limit and needs no credit card. Connect your own API key or a local model to start.</p></details>
         <details><summary data-i18n="q3.q">Is my code uploaded? Is it safe?</summary><p data-i18n="q3.a">Nothing is uploaded proactively. Project files, indexes and session history are stored locally. Only when you call a cloud model is the context relevant to the current task sent to the model provider you chose. You can also use local models to work fully offline.</p></details>
         <details><summary data-i18n="q4.q">Which models are supported?</summary><p data-i18n="q4.a">50+ providers including DeepSeek, Qwen, Kimi, Zhipu GLM, Doubao, Claude, GPT and Gemini, plus local models via Ollama / LM Studio. Switch freely per task.</p></details>
-        <details><summary data-i18n="q5.q">How do I purchase? Can it be customized?</summary><p data-i18n="q5.a">If you're happy after the trial, reach us through "Contact Sales". We'll offer a customized plan based on your scale and needs, with invoicing supported. It is especially suited to teams and enterprises.</p></details>
-        <details><summary data-i18n="q6.q">How do I get help?</summary><p data-i18n="q6.a">Read the official docs, join the user community, or email support@routok.com. Enterprise customers can contact sales for dedicated support.</p></details>
+        <details><summary data-i18n="q5.q">How much does CodeFlux cost?</summary><p data-i18n="q5.a">Downloading CodeFlux and using the core agent is free. Pro is $20 per month (or $192 per year) and adds parallel agents, project memory and checkpoints. It is prepaid, does not renew automatically and is refundable within 7 days. For Team and Enterprise, <a href="mailto:sales@routok.com" style="text-decoration:underline">contact us</a>. See the <a href="pricing.html" style="text-decoration:underline">Pricing</a> page for details.</p></details>
+        <details><summary data-i18n="q6.q">How do I get help?</summary><p data-i18n="q6.a">Read the official docs or email support@routok.com. Pro includes priority email support, and Enterprise customers get dedicated support.</p></details>
       </div>
     </div>
   </section>
@@ -351,32 +355,19 @@
           <a href="#" class="logo"><img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36"><span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span></a>
           <p data-i18n="ft.p">Your desktop AI coding agent. Helping everyone turn ideas into running software.</p>
         </div>
-        <div><h5 data-i18n="ft.prod">Product</h5><ul><li><a href="#features" data-i18n="nav.features">Features</a></li><li><a href="#download" data-i18n="ft.dl">Download</a></li><li><a href="#contact" data-i18n="nav.contact">Contact Sales</a></li></ul></div>
+        <div><h5 data-i18n="ft.prod">Product</h5><ul><li><a href="#features" data-i18n="nav.features">Features</a></li><li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li><li><a href="#download" data-i18n="ft.dl">Download</a></li></ul></div>
         <div><h5 data-i18n="ft.res">Resources</h5><ul><li><a href="docs.html" data-i18n="ft.docs">Documentation</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux/releases" target="_blank" rel="noopener" data-i18n="ft.log">Release notes</a></li><li><a href="#faq" data-i18n="nav.faq">FAQ</a></li></ul></div>
         <div><h5 data-i18n="ft.contact">Contact</h5><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="mailto:sales@routok.com">sales@routok.com</a></li><li><a href="https://github.com/ContessaIntelligence/codeflux" target="_blank" rel="noopener">GitHub</a></li></ul></div>
       </div>
-      <div class="copy"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span></div>
+      <div class="copy"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a> · <a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a> · <a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
     </div>
   </footer>
 
-  <!-- Contact Sales dialog -->
-  <div class="modal" id="salesModal" hidden>
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="smT">
-      <button type="button" class="modal-x" id="smClose" aria-label="Close">&times;</button>
-      <h3 id="smT" data-i18n="sm.t">Contact Sales</h3>
-      <p data-i18n="sm.p">Email us your scenario, team size and customization needs. We'll get back to you soon.</p>
-      <div class="sm-mail">
-        <span>sales@routok.com</span>
-        <button type="button" id="smCopy"><span class="t-copy" data-i18n="sm.copy">Copy</span><span class="t-done" data-i18n="sm.done">Copied</span></button>
-      </div>
-      <a href="mailto:sales@routok.com" class="btn btn-primary btn-lg" data-i18n="sm.open">Open mail app</a>
-      <p class="sm-hint" data-i18n="sm.hint">No mail app? Just copy the address and email us from any mailbox.</p>
-    </div>
-  </div>
-
   <script src="assets/i18n-zh-hant.js"></script>
   <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n-pricing.js"></script>
   <script src="assets/i18n.js"></script>
   <script src="assets/main.js"></script>
+  <script src="assets/auth.js"></script>
 </body>
 </html>

@@ -16,6 +16,15 @@
   });
   links.addEventListener('click', function (e) { if (e.target.tagName === 'A') closeMenu(); });
 
+  // Per-page <title> for pages that share one i18n dictionary
+  // (body[data-title-zh-cn] / body[data-title-zh-hant]); runs after i18n.js has set the title.
+  var TT = { 'zh-CN': document.body.getAttribute('data-title-zh-cn'), 'zh-Hant': document.body.getAttribute('data-title-zh-hant') };
+  if (TT['zh-CN'] || TT['zh-Hant']) {
+    var setTitle = function () { var v = TT[document.documentElement.lang]; if (v) document.title = v; };
+    setTitle();
+    if ('MutationObserver' in window) new MutationObserver(setTitle).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+
   // Scroll reveal
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {

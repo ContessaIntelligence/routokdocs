@@ -1,0 +1,10 @@
+# IDE
+.idea/
+
+# Internal working notes and deployment docs - this repository is public
+scratchpad.md
+docs-internal/
+
+# Scratch files
+*.tmp
+.*.tmp.js

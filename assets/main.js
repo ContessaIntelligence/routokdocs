@@ -14,30 +14,6 @@
   });
   links.addEventListener('click', function (e) { if (e.target.tagName === 'A') closeMenu(); });
 
-  // Contact Sales dialog: always gives feedback, even when no mail app is configured
-  var modal = document.getElementById('salesModal');
-  var salesBtn = document.getElementById('salesBtn');
-  var copyBtn = document.getElementById('smCopy');
-  var EMAIL = 'sales@routok.com';
-  function openModal() { modal.hidden = false; document.body.style.overflow = 'hidden'; }
-  function closeModal() { modal.hidden = true; document.body.style.overflow = ''; }
-  salesBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
-  document.getElementById('smClose').addEventListener('click', closeModal);
-  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
-  copyBtn.addEventListener('click', function () {
-    function done() { copyBtn.classList.add('copied'); setTimeout(function () { copyBtn.classList.remove('copied'); }, 1800); }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(EMAIL).then(done, fallback);
-    } else { fallback(); }
-    function fallback() {
-      var t = document.createElement('textarea');
-      t.value = EMAIL; document.body.appendChild(t); t.select();
-      try { document.execCommand('copy'); done(); } catch (err) {}
-      document.body.removeChild(t);
-    }
-  });
-
   // Scroll reveal
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
