@@ -102,9 +102,16 @@
             <div class="upg" id="planCards"></div>
             <div class="upg-actions">
               <button type="button" class="btn btn-primary btn-lg" id="checkoutBtn" disabled data-i18n="ac.u.btn">Continue to payment</button>
-              <span class="hint" data-i18n="ac.u.hint">By continuing you agree to the <a href="terms.html" target="_blank" rel="noopener" style="color:var(--accent2)">Terms of Service</a> and <a href="refund.html" target="_blank" rel="noopener" style="color:var(--accent2)">Refund Policy</a>. Need Team or Enterprise? <a href="mailto:sales@routok.com" style="color:var(--accent2)">Contact Sales</a>.</span>
+              <span class="hint" data-i18n="ac.u.hint">By continuing you agree to the <a href="terms.html" target="_blank" rel="noopener" style="color:var(--accent2)">Terms of Service</a> and <a href="refund.html" target="_blank" rel="noopener" style="color:var(--accent2)">Refund Policy</a>. Need Team or Enterprise? <a href="contact-sales.html" style="color:var(--accent2)">Contact Sales</a>.</span>
             </div>
             <div class="msg-box" id="checkoutMsg" role="alert" aria-live="polite" style="margin-top:16px"></div>
+          </div>
+
+          <!-- Orders -->
+          <div class="panel">
+            <h2 data-i18n="ac.od.h">Orders</h2>
+            <p class="sub" data-i18n="ac.od.sub">Your orders and receipts. Need a refund? Use the link on the order.</p>
+            <div id="ordersBody"></div>
           </div>
 
           <!-- Subscriptions -->
@@ -153,7 +160,7 @@
   <!-- FOOTER -->
   <footer class="site">
     <div class="wrap">
-      <div class="copy" style="margin-top:0;border-top:0;padding-top:0"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a> · <a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a> · <a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
+      <div class="copy" style="margin-top:0;border-top:0;padding-top:0"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a><span class="sep">·</span><a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a><span class="sep">·</span><a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
     </div>
   </footer>
 
@@ -163,6 +170,8 @@
   <script src="assets/i18n-auth.js"></script>
   <script src="assets/i18n.js"></script>
   <script src="assets/pages.js"></script>
+  <script src="assets/config.js"></script>
   <script src="assets/auth.js"></script>
+  <script src="assets/checkout.js"></script>
 </body>
 </html>

@@ -4,19 +4,19 @@ window.CF_I18N['zh-CN'] = Object.assign(window.CF_I18N['zh-CN'] || {}, {
   'meta.title': '文档 · CodeFlux',
   'meta.desc': 'CodeFlux 使用文档：安装方法，通过地址、模型 ID 和 API 密钥接入本地或远程模型，协议格式，厂商配置参考，项目使用、MCP、隐私与故障排查。',
   'dc.h1': 'CodeFlux <span class="grad-text">使用文档</span>',
-  'dc.lead': '从安装 CodeFlux、接入本地或远程模型，到用好这位智能体，你需要的内容都在这里。',
+  'dc.lead': '从安装 CodeFlux、接入本地或远程模型，到用好这位智⁠能⁠体，你需要的内容都在这里。',
   'dc.ver': '适用于 CodeFlux v0.1.1',
   'sd.title': '本页目录',
   'sd.g1': '快速入门', 'sd.g2': '模型', 'sd.g3': '使用 CodeFlux', 'sd.g4': '参考',
   'sd.overview': '概述', 'sd.quickstart': '快速开始', 'sd.install': '安装', 'sd.verify': '校验安装包',
   'sd.models': '接入模型', 'sd.fields': '配置项说明', 'sd.protocols': '协议格式', 'sd.remote': '远程厂商 API', 'sd.local': '本地模型', 'sd.vendors': '厂商配置参考', 'sd.switching': '管理与切换',
   'sd.use': '日常使用', 'sd.workspace': '项目与会话', 'sd.tasks': '下达任务', 'sd.commands': '命令与引用', 'sd.review': '审阅改动',
-  'sd.advanced': '进阶', 'sd.agents': '多智能体模式',
+  'sd.advanced': '进阶', 'sd.agents': '多智⁠能⁠体模式',
   'sd.privacy': '隐私与安全', 'sd.trouble': '故障排查', 'sd.support': '获取帮助',
 
   'dc.overview.h': '概述',
   'dc.overview.b': `
-          <p>CodeFlux 是一款<strong>本地化的智能体工具</strong>。它以桌面应用的形式运行在你的电脑上，直接在你的项目文件夹中工作，借助大语言模型理解需求、规划步骤、修改文件、运行命令并检查结果。</p>
+          <p>CodeFlux 是一款<strong>本地化的智⁠能⁠体工具</strong>。它以桌面应用的形式运行在你的电脑上，直接在你的项目文件夹中工作，借助大语言模型理解需求、规划步骤、修改文件、运行命令并检查结果。</p>
           <p>用哪个模型，完全由你决定。CodeFlux 既可以使用<strong>部署在你本机或内网的模型</strong>，也可以使用<strong>云端模型厂商的 API</strong>，并且已经适配国内外主流厂商。使用时只需填写厂商的地址、模型 ID 和密钥，再选择该厂商使用的协议格式即可。</p>
           <div class="doc-cards">
             <div><b>本地优先</b><span>应用、项目索引和会话记录都保存在你的电脑上。</span></div>
@@ -30,7 +30,7 @@ window.CF_I18N['zh-CN'] = Object.assign(window.CF_I18N['zh-CN'] || {}, {
               <tr><td>服务商（Provider）</td><td>模型的来源：可以是云端厂商（如 DeepSeek、OpenAI），也可以是本地运行时（如 Ollama）。每个服务商包含地址、协议，通常还有密钥。</td></tr>
               <tr><td>模型 ID</td><td>模型在该服务商处的准确标识，例如 <code>deepseek-chat</code>。</td></tr>
               <tr><td>协议格式</td><td>与服务商通信所使用的接口规范。大多数厂商使用 OpenAI 兼容格式。</td></tr>
-              <tr><td>项目 / 工作区</td><td>允许智能体读取和修改的本地文件夹。</td></tr>
+              <tr><td>项目 / 工作区</td><td>允许智⁠能⁠体读取和修改的本地文件夹。</td></tr>
               <tr><td>会话</td><td>一条对话与任务线索。可以同时打开多个会话并行推进。</td></tr>
             </tbody>
           </table></div>
@@ -161,7 +161,7 @@ curl http://localhost:11434/v1/models</code></pre>
             <div><dt>模型 ID</dt><dd><code>qwen2.5-coder:7b</code>（以 <code>ollama list</code> 显示的名称为准）</dd></div>
           </dl>
           <p>部署在内网其他机器上的模型用法相同：把 <code>localhost</code> 换成那台机器的地址，并确保其服务监听了网络接口、防火墙放行了对应端口。</p>
-          <div class="callout tip"><p><strong>如何选择本地模型：</strong>智能体依赖工具调用和较长的上下文。请选择支持函数 / 工具调用、上下文窗口不少于 32K tokens 的模型。参数量很小的模型聊天表现可能不错，但处理多步骤任务时往往力不从心。</p></div>
+          <div class="callout tip"><p><strong>如何选择本地模型：</strong>智⁠能⁠体依赖工具调用和较长的上下文。请选择支持函数 / 工具调用、上下文窗口不少于 32K tokens 的模型。参数量很小的模型聊天表现可能不错，但处理多步骤任务时往往力不从心。</p></div>
 
           <h3 id="vendors">厂商配置参考</h3>
           <p>下表列出常用的接入地址，帮助你快速上手。模型 ID 更新频繁，请始终以厂商当前的模型列表为准。</p>
@@ -195,7 +195,7 @@ curl http://localhost:11434/v1/models</code></pre>
   'dc.use.h': '日常使用',
   'dc.use.b': `
           <h3 id="workspace">项目与会话</h3>
-          <p>选择项目文件夹即可打开项目。智能体只会读取和修改该文件夹内的文件，因此始终基于你的真实代码工作。每个任务都在各自的<strong>会话</strong>中进行，会话以标签页形式展示。你可以同时运行多个会话并随时切换，互不干扰。</p>
+          <p>选择项目文件夹即可打开项目。智⁠能⁠体只会读取和修改该文件夹内的文件，因此始终基于你的真实代码工作。每个任务都在各自的<strong>会话</strong>中进行，会话以标签页形式展示。你可以同时运行多个会话并随时切换，互不干扰。</p>
 
           <h3 id="tasks">下达任务</h3>
           <p>描述你想要的结果，而不是具体的操作步骤。好的需求会说明目标、范围，以及你将如何判断完成。</p>
@@ -216,18 +216,18 @@ curl http://localhost:11434/v1/models</code></pre>
           </table></div>
 
           <h3 id="review">审阅改动</h3>
-          <p>每一处改动都以 diff 形式展示，你可以逐行查看具体修改了什么，然后选择接受、回滚或提交到 Git。由于每一步都可以撤销，即使智能体做了大量修改，你也始终掌握主动权。</p>
+          <p>每一处改动都以 diff 形式展示，你可以逐行查看具体修改了什么，然后选择接受、回滚或提交到 Git。由于每一步都可以撤销，即使智⁠能⁠体做了大量修改，你也始终掌握主动权。</p>
           <div class="callout"><p>建议在项目中使用 Git。执行大型任务前保持工作区干净，便于对比、审阅和还原。</p></div>
         `,
 
   'dc.advanced.h': '进阶',
   'dc.advanced.b': `
           <h3 id="mcp">MCP</h3>
-          <p>模型上下文协议（MCP）让 CodeFlux 能够使用外部工具和数据源，例如 GitHub、数据库、Figma、浏览器或 Docker。每一种集成都是一个 <strong>MCP 服务</strong>，添加一次后，智能体就可以在需要时调用。</p>
+          <p>模型上下文协议（MCP）让 CodeFlux 能够使用外部工具和数据源，例如 GitHub、数据库、Figma、浏览器或 Docker。每一种集成都是一个 <strong>MCP 服务</strong>，添加一次后，智⁠能⁠体就可以在需要时调用。</p>
           <ol>
             <li>找到你需要的 MCP 服务，记下它的启动命令或 URL。</li>
             <li>在 CodeFlux 的 MCP 设置中添加它，并填写命令、参数以及所需的环境变量（例如访问令牌）。</li>
-            <li>确认该服务的工具已出现，然后让智能体使用它们。</li>
+            <li>确认该服务的工具已出现，然后让智⁠能⁠体使用它们。</li>
           </ol>
           <p>大多数服务的文档都会给出类似这样的配置：</p>
 <pre data-lang="json"><code>{
@@ -241,7 +241,7 @@ curl http://localhost:11434/v1/models</code></pre>
 }</code></pre>
           <div class="callout warn"><p>MCP 服务可以读取数据并代表你执行操作。请只安装你信任的服务，并为令牌授予所需的最小权限。</p></div>
 
-          <h3 id="agents">多智能体模式</h3>
+          <h3 id="agents">多智⁠能⁠体模式</h3>
           <p>面对复杂任务，CodeFlux 可以把工作分配给不同角色并行推进：由<strong>规划者</strong>起草方案，<strong>编码者</strong>负责实现，<strong>测试者</strong>编写并运行测试，<strong>审查者</strong>检查结果。每个角色都可以使用最适合自己的模型，因此你可以把强大的规划模型和速度快的编码模型搭配使用。</p>
         `,
 
@@ -277,7 +277,7 @@ curl http://localhost:11434/v1/models</code></pre>
               <tr><td><code>429</code></td><td>触发限流或额度用尽。</td><td>稍后重试，到厂商控制台检查余额与限额，或切换到其他模型。</td></tr>
               <tr><td>超时 / 连接被拒绝</td><td>网络、代理或防火墙问题；本地服务未启动。</td><td>用浏览器或 <code>curl</code> 访问 Base URL。使用本地模型时，确认运行时已启动且端口正确。</td></tr>
               <tr><td>格式错误或「不支持的参数」</td><td>协议格式与服务商不匹配。</td><td>把协议切换为厂商文档所描述的那一种。不确定时可尝试 OpenAI 兼容。</td></tr>
-              <tr><td>智能体能回复，但不会修改文件或调用工具</td><td>模型不支持工具调用，或上下文窗口太小。</td><td>选择支持工具 / 函数调用、上下文不少于 32K tokens 的模型。</td></tr>
+              <tr><td>智⁠能⁠体能回复，但不会修改文件或调用工具</td><td>模型不支持工具调用，或上下文窗口太小。</td><td>选择支持工具 / 函数调用、上下文不少于 32K tokens 的模型。</td></tr>
             </tbody>
           </table></div>
 
@@ -310,19 +310,19 @@ window.CF_I18N['zh-Hant'] = Object.assign(window.CF_I18N['zh-Hant'] || {}, {
   'meta.title': '文件 · CodeFlux',
   'meta.desc': 'CodeFlux 使用文件：安裝方法，透過位址、模型 ID 與 API 金鑰接入本機或遠端模型，協定格式，廠商設定參考，專案使用、MCP、隱私與疑難排解。',
   'dc.h1': 'CodeFlux <span class="grad-text">使用文件</span>',
-  'dc.lead': '從安裝 CodeFlux、接入本機或遠端模型，到用好這位智慧體，你需要的內容都在這裡。',
+  'dc.lead': '從安裝 CodeFlux、接入本機或遠端模型，到用好這位智⁠慧⁠體，你需要的內容都在這裡。',
   'dc.ver': '適用於 CodeFlux v0.1.1',
   'sd.title': '本頁目錄',
   'sd.g1': '快速入門', 'sd.g2': '模型', 'sd.g3': '使用 CodeFlux', 'sd.g4': '參考',
   'sd.overview': '概述', 'sd.quickstart': '快速開始', 'sd.install': '安裝', 'sd.verify': '驗證安裝檔',
   'sd.models': '接入模型', 'sd.fields': '設定項說明', 'sd.protocols': '協定格式', 'sd.remote': '遠端廠商 API', 'sd.local': '本機模型', 'sd.vendors': '廠商設定參考', 'sd.switching': '管理與切換',
   'sd.use': '日常使用', 'sd.workspace': '專案與工作階段', 'sd.tasks': '下達任務', 'sd.commands': '指令與引用', 'sd.review': '審閱改動',
-  'sd.advanced': '進階', 'sd.agents': '多智慧體模式',
+  'sd.advanced': '進階', 'sd.agents': '多智⁠慧⁠體模式',
   'sd.privacy': '隱私與安全', 'sd.trouble': '疑難排解', 'sd.support': '取得協助',
 
   'dc.overview.h': '概述',
   'dc.overview.b': `
-          <p>CodeFlux 是一款<strong>本機化的智慧體工具</strong>。它以桌面應用程式的形式運行在你的電腦上，直接在你的專案資料夾中工作，借助大型語言模型理解需求、規劃步驟、修改檔案、執行指令並檢查結果。</p>
+          <p>CodeFlux 是一款<strong>本機化的智⁠慧⁠體工具</strong>。它以桌面應用程式的形式運行在你的電腦上，直接在你的專案資料夾中工作，借助大型語言模型理解需求、規劃步驟、修改檔案、執行指令並檢查結果。</p>
           <p>用哪個模型，完全由你決定。CodeFlux 既可以使用<strong>部署在你本機或內網的模型</strong>，也可以使用<strong>雲端模型廠商的 API</strong>，並且已經適配國內外主流廠商。使用時只需填寫廠商的位址、模型 ID 與金鑰，再選擇該廠商使用的協定格式即可。</p>
           <div class="doc-cards">
             <div><b>本機優先</b><span>應用程式、專案索引與工作階段記錄都保存在你的電腦上。</span></div>
@@ -336,7 +336,7 @@ window.CF_I18N['zh-Hant'] = Object.assign(window.CF_I18N['zh-Hant'] || {}, {
               <tr><td>服務商（Provider）</td><td>模型的來源：可以是雲端廠商（如 DeepSeek、OpenAI），也可以是本機執行環境（如 Ollama）。每個服務商包含位址、協定，通常還有金鑰。</td></tr>
               <tr><td>模型 ID</td><td>模型在該服務商處的準確識別名稱，例如 <code>deepseek-chat</code>。</td></tr>
               <tr><td>協定格式</td><td>與服務商通訊所使用的介面規範。大多數廠商使用 OpenAI 相容格式。</td></tr>
-              <tr><td>專案 / 工作區</td><td>允許智慧體讀取與修改的本機資料夾。</td></tr>
+              <tr><td>專案 / 工作區</td><td>允許智⁠慧⁠體讀取與修改的本機資料夾。</td></tr>
               <tr><td>工作階段</td><td>一條對話與任務線索。可以同時開啟多個工作階段並行推進。</td></tr>
             </tbody>
           </table></div>
@@ -467,7 +467,7 @@ curl http://localhost:11434/v1/models</code></pre>
             <div><dt>模型 ID</dt><dd><code>qwen2.5-coder:7b</code>（以 <code>ollama list</code> 顯示的名稱為準）</dd></div>
           </dl>
           <p>部署在內網其他機器上的模型用法相同：把 <code>localhost</code> 換成那台機器的位址，並確保其服務監聽了網路介面、防火牆放行了對應連接埠。</p>
-          <div class="callout tip"><p><strong>如何選擇本機模型：</strong>智慧體依賴工具呼叫與較長的上下文。請選擇支援函式 / 工具呼叫、上下文視窗不少於 32K tokens 的模型。參數量很小的模型聊天表現可能不錯，但處理多步驟任務時往往力不從心。</p></div>
+          <div class="callout tip"><p><strong>如何選擇本機模型：</strong>智⁠慧⁠體依賴工具呼叫與較長的上下文。請選擇支援函式 / 工具呼叫、上下文視窗不少於 32K tokens 的模型。參數量很小的模型聊天表現可能不錯，但處理多步驟任務時往往力不從心。</p></div>
 
           <h3 id="vendors">廠商設定參考</h3>
           <p>下表列出常用的接入位址，幫助你快速上手。模型 ID 更新頻繁，請始終以廠商目前的模型清單為準。</p>
@@ -501,7 +501,7 @@ curl http://localhost:11434/v1/models</code></pre>
   'dc.use.h': '日常使用',
   'dc.use.b': `
           <h3 id="workspace">專案與工作階段</h3>
-          <p>選擇專案資料夾即可開啟專案。智慧體只會讀取與修改該資料夾內的檔案，因此始終基於你的真實程式碼工作。每個任務都在各自的<strong>工作階段</strong>中進行，並以分頁形式呈現。你可以同時執行多個工作階段並隨時切換，互不干擾。</p>
+          <p>選擇專案資料夾即可開啟專案。智⁠慧⁠體只會讀取與修改該資料夾內的檔案，因此始終基於你的真實程式碼工作。每個任務都在各自的<strong>工作階段</strong>中進行，並以分頁形式呈現。你可以同時執行多個工作階段並隨時切換，互不干擾。</p>
 
           <h3 id="tasks">下達任務</h3>
           <p>描述你想要的結果，而不是具體的操作步驟。好的需求會說明目標、範圍，以及你將如何判斷完成。</p>
@@ -522,18 +522,18 @@ curl http://localhost:11434/v1/models</code></pre>
           </table></div>
 
           <h3 id="review">審閱改動</h3>
-          <p>每一處改動都以 diff 形式呈現，你可以逐行查看具體修改了什麼，然後選擇接受、還原或提交到 Git。由於每一步都可以復原，即使智慧體做了大量修改，你也始終掌握主動權。</p>
+          <p>每一處改動都以 diff 形式呈現，你可以逐行查看具體修改了什麼，然後選擇接受、還原或提交到 Git。由於每一步都可以復原，即使智⁠慧⁠體做了大量修改，你也始終掌握主動權。</p>
           <div class="callout"><p>建議在專案中使用 Git。執行大型任務前保持工作區乾淨，便於比對、審閱與還原。</p></div>
         `,
 
   'dc.advanced.h': '進階',
   'dc.advanced.b': `
           <h3 id="mcp">MCP</h3>
-          <p>模型上下文協定（MCP）讓 CodeFlux 能夠使用外部工具與資料來源，例如 GitHub、資料庫、Figma、瀏覽器或 Docker。每一種整合都是一個 <strong>MCP 服務</strong>，新增一次後，智慧體就可以在需要時呼叫。</p>
+          <p>模型上下文協定（MCP）讓 CodeFlux 能夠使用外部工具與資料來源，例如 GitHub、資料庫、Figma、瀏覽器或 Docker。每一種整合都是一個 <strong>MCP 服務</strong>，新增一次後，智⁠慧⁠體就可以在需要時呼叫。</p>
           <ol>
             <li>找到你需要的 MCP 服務，記下它的啟動指令或 URL。</li>
             <li>在 CodeFlux 的 MCP 設定中新增它，並填寫指令、參數以及所需的環境變數（例如存取權杖）。</li>
-            <li>確認該服務的工具已出現，然後讓智慧體使用它們。</li>
+            <li>確認該服務的工具已出現，然後讓智⁠慧⁠體使用它們。</li>
           </ol>
           <p>大多數服務的文件都會給出類似這樣的設定：</p>
 <pre data-lang="json"><code>{
@@ -547,7 +547,7 @@ curl http://localhost:11434/v1/models</code></pre>
 }</code></pre>
           <div class="callout warn"><p>MCP 服務可以讀取資料並代表你執行操作。請只安裝你信任的服務，並為權杖授予所需的最小權限。</p></div>
 
-          <h3 id="agents">多智慧體模式</h3>
+          <h3 id="agents">多智⁠慧⁠體模式</h3>
           <p>面對複雜任務，CodeFlux 可以把工作分配給不同角色並行推進：由<strong>規劃者</strong>草擬方案，<strong>編碼者</strong>負責實作，<strong>測試者</strong>撰寫並執行測試，<strong>審查者</strong>檢查結果。每個角色都可以使用最適合自己的模型，因此你可以把強大的規劃模型和速度快的編碼模型搭配使用。</p>
         `,
 
@@ -583,7 +583,7 @@ curl http://localhost:11434/v1/models</code></pre>
               <tr><td><code>429</code></td><td>觸發限流或額度用盡。</td><td>稍後重試，到廠商控制台檢查餘額與限額，或切換到其他模型。</td></tr>
               <tr><td>逾時 / 連線被拒絕</td><td>網路、代理或防火牆問題；本機服務未啟動。</td><td>用瀏覽器或 <code>curl</code> 存取 Base URL。使用本機模型時，確認執行環境已啟動且連接埠正確。</td></tr>
               <tr><td>格式錯誤或「不支援的參數」</td><td>協定格式與服務商不符。</td><td>把協定切換為廠商文件所描述的那一種。不確定時可嘗試 OpenAI 相容。</td></tr>
-              <tr><td>智慧體能回覆，但不會修改檔案或呼叫工具</td><td>模型不支援工具呼叫，或上下文視窗太小。</td><td>選擇支援工具 / 函式呼叫、上下文不少於 32K tokens 的模型。</td></tr>
+              <tr><td>智⁠慧⁠體能回覆，但不會修改檔案或呼叫工具</td><td>模型不支援工具呼叫，或上下文視窗太小。</td><td>選擇支援工具 / 函式呼叫、上下文不少於 32K tokens 的模型。</td></tr>
             </tbody>
           </table></div>
 

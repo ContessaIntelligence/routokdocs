@@ -25,10 +25,15 @@ function proxy(req, res) {
   req.pipe(p);
 }
 
-function serveFile(file, res) {
+function serveFile(file, res, lang) {
   fs.readFile(file, (err, buf) => {
     if (err) { res.writeHead(404, { 'content-type': 'text/plain' }); return res.end('404 Not Found'); }
-    res.writeHead(200, { 'content-type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream', 'cache-control': 'no-store' });
+    const type = TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream';
+    // dev convenience: /page.html?lang=zh-CN opens the page in that language (used for screenshots)
+    if (lang && /^(en|zh-CN|zh-Hant)$/.test(lang) && type.startsWith('text/html')) {
+      buf = Buffer.from(buf.toString('utf8').replace('<head>', "<head><script>try{localStorage.setItem('cf-lang','" + lang + "')}catch(e){}</script>"));
+    }
+    res.writeHead(200, { 'content-type': type, 'cache-control': 'no-store' });
     res.end(buf);
   });
 }
@@ -39,9 +44,9 @@ http.createServer((req, res) => {
   if (p.startsWith('/api/')) return proxy(req, res);
   if (/^\/oauth\/[a-z0-9_-]+$/i.test(p)) p = '/oauth-callback.html';
   else if (p === '/user/reset') p = '/reset.html';
-  else if (p === '/wallet') { res.writeHead(302, { location: '/account.html' }); return res.end(); }
+  else if (p === '/wallet') { res.writeHead(302, { location: '/checkout-result.html' }); return res.end(); } // where the payment partner sends people back
   else if (p === '/') p = '/index.html';
   const file = path.normalize(path.join(ROOT, p));
   if (!file.startsWith(ROOT) || /[\\/]\.git[\\/]|[\\/]node_modules[\\/]/.test(file)) { res.writeHead(403); return res.end('403'); }
-  serveFile(file, res);
+  serveFile(file, res, u.searchParams.get('lang'));
 }).listen(PORT, () => console.log('CodeFlux site  http://localhost:' + PORT + '   (API -> ' + BACKEND.origin + ')'));

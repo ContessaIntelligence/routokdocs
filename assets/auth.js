@@ -317,12 +317,18 @@
     return p ? Math.max(s, 1) : 0;
   }
   function nextUrl() {
-    if (q.get('plan') === 'pro') return 'account.html?plan=pro#upgrade';
     var n = q.get('next');
     if (n && /^[a-z0-9_-]+\.html(\?[\w=&-]*)?(#[\w-]*)?$/i.test(n)) return n; // same-site pages only
+    if (q.get('plan') === 'pro') return 'checkout.html?plan=pro&cycle=year';
     return 'account.html';
   }
-  function keepPlan(href) { var p = q.get('plan'); return p ? href + (href.indexOf('?') < 0 ? '?' : '&') + 'plan=' + encodeURIComponent(p) : href; }
+  // carry the purchase intent (plan / next page) across login <-> register
+  function keepPlan(href) {
+    var parts = [];
+    if (q.get('plan')) parts.push('plan=' + encodeURIComponent(q.get('plan')));
+    if (q.get('next')) parts.push('next=' + encodeURIComponent(q.get('next')));
+    return parts.length ? href + (href.indexOf('?') < 0 ? '?' : '&') + parts.join('&') : href;
+  }
   function fmtTime(sec) {
     if (!sec) return t('none');
     var d = new Date(sec * 1000);
@@ -428,7 +434,7 @@
   if (page === 'register') {
     var ts = null, sendBtn = $('sendBtn'), regMsg = $('formMsg');
     if ($('toLogin')) $('toLogin').setAttribute('href', keepPlan('login.html'));
-    if (q.get('plan') === 'pro' && $('planChip')) $('planChip').hidden = false;
+    if ((q.get('plan') === 'pro' || /^checkout\.html/.test(q.get('next') || '')) && $('planChip')) $('planChip').hidden = false;
     me().then(function (u) { if (u) location.replace(nextUrl()); });
     makeTurnstile($('turnstile')).then(function (x) { ts = x; });
     var pwInput = $('password'), meter = $('pwMeter');
@@ -547,15 +553,19 @@
   /* ---------------- ACCOUNT ---------------- */
   if (page === 'account') {
     var state = { user: null, plans: [], subs: [], sessions: null, loaded: false };
+    var CO = window.CF_CO; // purchase flow helpers (assets/checkout.js)
 
     function money(amount, cur) {
       var c = (cur || 'USD').toUpperCase();
-      try { return new Intl.NumberFormat(lang() === 'en' ? 'en-US' : lang(), { style: 'currency', currency: c, maximumFractionDigits: amount % 1 ? 2 : 0 }).format(amount); }
+      try { return new Intl.NumberFormat(lang() === 'en' ? 'en-US' : lang(), { style: 'currency', currency: c, currencyDisplay: 'narrowSymbol', maximumFractionDigits: amount % 1 ? 2 : 0 }).format(amount); }
       catch (e) { return c + ' ' + amount; }
     }
     function months(p) { return p.duration_unit === 'year' ? 12 * p.duration_value : p.duration_unit === 'month' ? p.duration_value : p.duration_unit === 'day' ? p.duration_value / 30 : 1; }
+    // Prices are always listed (published price list); real backend plans replace them once payments are open.
     function proPlans() {
-      return state.plans.filter(function (p) { return PRO_PLAN.test(p.title || ''); }).sort(function (a, b) { return months(a) - months(b); });
+      if (CO && state.user && CO.isBypass(state.user.email)) return CO.catalogPlans();
+      var live = state.plans.filter(function (p) { return PRO_PLAN.test(p.title || ''); }).sort(function (a, b) { return months(a) - months(b); });
+      return live.length ? live : (CO ? CO.catalogPlans() : []);
     }
     function activePro() {
       var ids = {}, now = Date.now() / 1000, best = 0;
@@ -564,11 +574,13 @@
         var x = s.subscription; if (!x) return;
         if (ids[x.plan_id] && x.status === 'active' && x.end_time > now && x.end_time > best) best = x.end_time;
       });
+      if (CO && state.user && CO.isBypass(state.user.email)) best = Math.max(best, CO.activeProEnd(state.user.email) / 1000);
       return best;
     }
     var selectedPlan = null;
     function render() {
       var u = state.user; if (!u) return;
+      CO = window.CF_CO; // loaded after this file, so read it at render time
       var proEnd = activePro(), pro = proEnd > 0;
       var nm = u.email || u.username || '?';
       $('avatar').textContent = nm.charAt(0).toUpperCase();
@@ -589,12 +601,13 @@
         cards.innerHTML = ''; $('checkoutBtn').disabled = true;
         if (state.loaded) show($('checkoutMsg'), 'info', t('pay_unavailable'));
       } else {
-        if (!selectedPlan || !plans.some(function (p) { return p.id === selectedPlan; })) selectedPlan = plans[plans.length - 1].id;
+        if (!selectedPlan || !plans.some(function (p) { return String(p.id) === String(selectedPlan); })) selectedPlan = plans[plans.length - 1].id;
         cards.innerHTML = plans.map(function (p) {
           var per = months(p) >= 12 ? t('per_year') : t('per_month');
-          return '<label><input type="radio" name="plan" value="' + p.id + '"' + (p.id === selectedPlan ? ' checked' : '') + '><b>' + esc(p.title) + '</b><span class="p">' + esc(money(p.price_amount, p.currency)) + ' <small>' + esc(per) + '</small></span><span class="s">' + esc(p.subtitle || '') + '</span></label>';
+          return '<label><input type="radio" name="plan" value="' + p.id + '"' + (String(p.id) === String(selectedPlan) ? ' checked' : '') + '><b>' + esc(p.title) + '</b><span class="p">' + esc(money(p.price_amount, p.currency)) + ' <small>' + esc(per) + '</small></span><span class="s">' + esc(p.subtitle || '') + '</span></label>';
         }).join('');
         $('checkoutBtn').disabled = false;
+        hide($('checkoutMsg'));
       }
 
       var sb = $('subsBody'), byId = {};
@@ -606,6 +619,21 @@
           return '<tr><td>' + esc(byId[x.plan_id] ? byId[x.plan_id].title : '#' + x.plan_id) + '</td><td>' + esc(t('st_' + st) === 'st_' + st ? st : t('st_' + st)) + '</td><td>' + esc(fmtTime(x.start_time)) + '</td><td>' + esc(fmtTime(x.end_time)) + '</td></tr>';
         }).join('') + '</tbody></table></div>' : '<div class="empty">' + esc(t('no_subs')) + '</div>';
 
+      // orders: only locally recorded (complimentary) orders appear here; the backend has no per-user order list yet
+      var ob = $('ordersBody');
+      if (ob && CO) {
+        var list = CO.ordersFor(u.email); // the backend has no per-user order list yet; only locally recorded orders appear here
+        ob.parentNode.hidden = !list.length;
+        ob.innerHTML = list.length ? '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + esc(CO.t('col_order')) + '</th><th>' + esc(CO.t('col_plan')) + '</th><th>' + esc(CO.t('col_amount')) + '</th><th>' + esc(CO.t('col_status')) + '</th><th>' + esc(CO.t('col_date')) + '</th><th></th></tr></thead><tbody>' +
+          list.map(function (o) {
+            var info = o.status === 'paid' ? CO.refundInfo(o) : null;
+            var acts = o.status === 'paid'
+              ? '<a class="linkbtn" href="receipt.html?order=' + encodeURIComponent(o.id) + '">' + esc(CO.t('act_receipt')) + '</a>' + (info.eligible ? ' · <a class="linkbtn" href="refund-request.html?order=' + encodeURIComponent(o.id) + '">' + esc(CO.t('act_refund')) + '</a>' : '')
+              : '';
+            return '<tr><td>' + esc(o.id) + '</td><td>' + esc(CO.planTitle(o.cycle)) + '</td><td>' + esc(CO.fmtMoney(CO.paidAmount(o), o.currency)) + (o.complimentary ? ' <span class="hint">· ' + esc(CO.t('rc_comp')) + '</span>' : '') + '</td><td><span class="pill ' + esc(o.status) + '">' + esc(CO.t('st_' + o.status)) + '</span></td><td>' + esc(CO.fmtDate(o.paidAt || o.createdAt)) + '</td><td style="white-space:nowrap">' + acts + '</td></tr>';
+          }).join('') + '</tbody></table></div>' : '<div class="empty">' + esc(CO.t('orders_empty')) + '</div>';
+      }
+
       var db = $('devicesBody');
       if (state.sessions && state.sessions.length) {
         db.innerHTML = '<div class="tbl-wrap"><table class="tbl"><tbody>' + state.sessions.map(function (d) {
@@ -616,6 +644,8 @@
       } else db.innerHTML = '<div class="empty">' + esc(t('no_devices')) + '</div>';
     }
     new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    // checkout.js (orders, demo plan state) loads after this file: draw again once every script is in
+    window.addEventListener('load', function () { render(); });
 
     me().then(function (u) {
       if (!u) return location.replace('login.html?next=account.html');
@@ -635,7 +665,7 @@
       });
     });
 
-    $('planCards').addEventListener('change', function (e) { if (e.target.name === 'plan') selectedPlan = Number(e.target.value); });
+    $('planCards').addEventListener('change', function (e) { if (e.target.name === 'plan') selectedPlan = e.target.value; });
     $('devicesBody').addEventListener('click', function (e) {
       var sid = e.target.getAttribute && e.target.getAttribute('data-rm');
       if (!sid) return;
@@ -643,19 +673,11 @@
         if (n.ok) { state.sessions = state.sessions.filter(function (d) { return d.sid !== sid; }); render(); }
       });
     });
+    // Purchasing happens on the checkout page (order summary, billing details, terms, payment).
     $('checkoutBtn').addEventListener('click', function () {
-      var btn = this, box = $('checkoutMsg'), plan = proPlans().filter(function (p) { return p.id === selectedPlan; })[0];
-      hide(box);
-      if (!plan) return show(box, 'info', t('pay_unavailable'));
-      var path = plan.stripe_price_id ? '/subscription/stripe/pay' : plan.creem_product_id ? '/subscription/creem/pay' : '';
-      if (!path) return show(box, 'info', t('pay_unavailable'));
-      busy(btn, true);
-      authed(path, { method: 'POST', body: { plan_id: plan.id } }).then(function (n) {
-        var url = n.ok && n.data && (n.data.pay_link || n.data.checkout_url);
-        if (url) { show(box, 'info', t('redirecting')); location.href = url; return; }
-        busy(btn, false);
-        show(box, 'err', errText(n));
-      });
+      CO = window.CF_CO;
+      var plan = proPlans().filter(function (p) { return String(p.id) === String(selectedPlan); })[0];
+      location.href = 'checkout.html?plan=pro&cycle=' + (plan && months(plan) >= 12 ? 'year' : 'month');
     });
     // Change password: prove the current password to get a one-time security proof, then submit the new one with it.
     var pwForm = $('pwForm');
@@ -701,6 +723,21 @@
       });
     });
     document.body.setAttribute('data-cycle', 'year');
-    me().then(function (u) { var pro = $('ctaPro'); if (u && pro) pro.setAttribute('href', 'account.html?plan=pro#upgrade'); });
   }
+
+  // The pricing page "Get Pro" buttons follow the selected billing period.
+  if (page === 'pricing') {
+    var cta = document.querySelectorAll('[data-cta-pro]');
+    Array.prototype.forEach.call(document.querySelectorAll('.bill-toggle button'), function (b) {
+      b.addEventListener('click', function () {
+        Array.prototype.forEach.call(cta, function (a) { a.setAttribute('href', 'checkout.html?plan=pro&cycle=' + b.getAttribute('data-cycle')); });
+      });
+    });
+  }
+
+  // used by the purchase-flow pages (assets/checkout.js)
+  window.CF_AUTH = {
+    me: me, authed: authed, status: status,
+    logout: function () { return authed('/user/auth/logout', { method: 'POST' }).then(function () { clearAuth(); }); }
+  };
 })();

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout · CodeFlux</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="Review your CodeFlux order and pay securely.">
+  <meta name="robots" content="noindex">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('cf-lang');
+        if (l === 'zh-Hant' || l === 'zh-CN') {
+          document.documentElement.lang = l;
+          document.documentElement.className += ' i18n-wait';
+          setTimeout(function () { document.documentElement.className = document.documentElement.className.replace(' i18n-wait', ''); }, 2500);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-sections.css">
+  <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-pages.css">
+  <link rel="stylesheet" href="assets/style-commerce.css">
+</head>
+<body data-page="checkout" data-title-zh-cn="结算 · CodeFlux" data-title-zh-hant="結帳 · CodeFlux">
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36">
+        <span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="docs.html" data-i18n="nav.docs">Docs</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang" id="lang">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg>
+            <span id="lang-cur">English</span>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="zh-Hant">繁體中文</button>
+            <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
+          </div>
+        </div>
+        <a href="account.html" id="navAuth" class="btn btn-ghost btn-sm"><span class="t-in" data-i18n="nav.login">Sign in</span><span class="t-acct" data-i18n="nav.account">Account</span></a>
+        <a href="index.html#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-hero" style="padding:48px 0 8px">
+    <div class="wrap">
+      <ol class="stepbar"><li class="on" data-ct="co.s1">Plan</li><li class="on" data-ct="co.s2">Payment</li><li class="" data-ct="co.s3">Confirmation</li></ol>
+      <h1 style="font-size:clamp(30px,4vw,44px);margin-top:18px" data-ct="co.h1">Checkout</h1>
+    </div>
+  </header>
+
+  <section class="block" style="padding-top:10px">
+    <div class="wrap">
+      <div class="proc-overlay" id="coProc" hidden><div class="proc-box"><div class="rt-icon pend"></div><b data-ct="co.proc">Processing your payment…</b></div></div>
+      <div class="loading-card" id="coLoading" data-ct="common.loading">Loading…</div>
+
+      <div class="co-wrap" id="coMain" hidden>
+        <div class="co-left">
+          <div class="panel">
+            <h2 data-ct="co.acct.h">Account</h2>
+            <p class="sub" style="margin-bottom:0"><span data-ct="co.acct.as">Signed in as</span> <b id="coEmail"></b> · <button type="button" class="linkbtn" id="coSwitch" data-ct="co.acct.switch">Use a different account</button></p>
+            <div class="msg-box" id="coNotice" style="margin-top:14px"></div>
+          </div>
+
+          <div class="panel">
+            <h2 data-ct="co.per.h">Billing period</h2>
+            <div class="upg" id="coCycle" style="margin-top:14px">
+              <label><input type="radio" name="cycle" value="month"><b data-ct="co.per.m">Monthly</b><span class="p" id="coPm"></span><span class="s" id="coPmS"></span></label>
+              <label><input type="radio" name="cycle" value="year"><b data-ct="co.per.y">Yearly</b><span class="p" id="coPy"></span><span class="s" id="coPyS"></span></label>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 data-ct="co.bill.h">Billing details</h2>
+            <div class="form" style="margin-top:14px">
+              <div class="field"><label for="coName" data-ct="co.bill.name">Full name</label><input class="input" id="coName" autocomplete="name"></div>
+              <div class="field"><label for="coCountry" data-ct="co.bill.country">Country or region</label><input class="input" id="coCountry" autocomplete="country-name"></div>
+              <div class="field-row">
+                <div class="field"><label for="coCompany" data-ct="co.bill.company">Company name (optional)</label><input class="input" id="coCompany" autocomplete="organization"></div>
+                <div class="field"><label for="coTax" data-ct="co.bill.tax">Tax ID (optional)</label><input class="input" id="coTax"></div>
+              </div>
+              <p class="hint" data-ct="co.bill.hint">Shown on your receipt. Need a tax invoice? Email sales@routok.com after payment.</p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 data-ct="co.pay.h">Payment method</h2>
+            <div class="methods" id="coMethods"></div>
+            <p class="hint" style="margin-top:12px" data-ct="co.pay.note">You will complete payment on our payment partner’s secure page.</p>
+          </div>
+        </div>
+
+        <aside class="co-right">
+          <div class="panel co-sum">
+            <h2 data-ct="co.sum.h">Order summary</h2>
+            <div class="sum-plan"><b id="sumTitle"></b><span id="sumPeriod"></span></div>
+            <div class="sum-row"><span data-ct="co.sum.sub">Subtotal</span><span id="sumSub"></span></div>
+            <div class="sum-row"><span data-ct="co.sum.tax">Taxes</span><span class="muted" data-ct="co.sum.taxv">Calculated at payment, if applicable</span></div>
+            <div class="sum-row total"><span data-ct="co.sum.total">Total due today</span><b id="sumTotal"></b></div>
+            <label class="check"><input type="checkbox" id="coTerms"><span data-ct="co.terms">I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="refund.html" target="_blank" rel="noopener">Refund Policy</a>. I understand this is a prepaid purchase and my plan does not renew automatically.</span></label>
+            <div class="msg-box" id="coMsg" role="alert" aria-live="polite"></div>
+            <button class="btn btn-primary btn-lg" id="coPay" type="button"></button>
+            <ul class="sum-points">
+              <li data-ct="co.sum.l1">Pro access starts right after payment</li>
+              <li data-ct="co.sum.l2">Prepaid for the period shown, no automatic renewal</li>
+              <li data-ct="co.sum.l3">Full refund within 7 days of your first purchase</li>
+            </ul>
+            <p class="secure" data-ct="co.sec">Payments are processed by our licensed payment partner. CodeFlux never sees or stores your card details.</p>
+            <p class="co-need"><span data-ct="co.need">Need Team or Enterprise?</span> <a href="contact-sales.html" data-ct="co.need.a">Contact Sales</a></p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="copy" style="margin-top:0;border-top:0;padding-top:0"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a><span class="sep">·</span><a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a><span class="sep">·</span><a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n-zh-hant.js"></script>
+  <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/pages.js"></script>
+  <script src="assets/config.js"></script>
+  <script src="assets/auth.js"></script>
+  <script src="assets/checkout.js"></script>
+</body>
+</html>

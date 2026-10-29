@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a refund · CodeFlux</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="Request a refund for a CodeFlux order.">
+  <meta name="robots" content="noindex">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem('cf-lang');
+        if (l === 'zh-Hant' || l === 'zh-CN') {
+          document.documentElement.lang = l;
+          document.documentElement.className += ' i18n-wait';
+          setTimeout(function () { document.documentElement.className = document.documentElement.className.replace(' i18n-wait', ''); }, 2500);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style-sections.css">
+  <link rel="stylesheet" href="assets/style-more.css">
+  <link rel="stylesheet" href="assets/style-pages.css">
+  <link rel="stylesheet" href="assets/style-commerce.css">
+</head>
+<body data-page="refund" data-title-zh-cn="申请退款 · CodeFlux" data-title-zh-hant="申請退款 · CodeFlux">
+  <div class="glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img class="logo-img" src="assets/logo.png" alt="CodeFlux Studio" width="36" height="36">
+        <span class="logo-text">CodeFlux<span class="logo-studio">Studio</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="docs.html" data-i18n="nav.docs">Docs</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </div>
+      <div class="nav-cta">
+        <div class="lang" id="lang">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg>
+            <span id="lang-cur">English</span>
+            <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" role="menuitem" data-lang="en">English</button>
+            <button type="button" role="menuitem" data-lang="zh-Hant">繁體中文</button>
+            <button type="button" role="menuitem" data-lang="zh-CN">简体中文</button>
+          </div>
+        </div>
+        <a href="account.html" id="navAuth" class="btn btn-ghost btn-sm"><span class="t-in" data-i18n="nav.login">Sign in</span><span class="t-acct" data-i18n="nav.account">Account</span></a>
+        <a href="index.html#download" class="btn btn-primary btn-sm" data-i18n="nav.download">Free Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="block" style="padding:56px 0 90px">
+    <div class="wrap" style="max-width:680px">
+      <h1 class="pg-h" data-ct="rq.h">Request a refund</h1>
+      <p class="lead-sm" data-ct="rq.sub">Tell us about your order and we will reply within 3 business days.</p>
+      <div class="panel">
+        <dl class="kv" id="rqOrderRow"><div><dt data-ct="rq.order">Order</dt><dd id="rqOrder">—</dd></div></dl>
+        <div class="msg-box" id="rqElig" style="margin-top:12px"></div>
+        <div id="rqBox">
+          <form class="form" id="rqForm" novalidate>
+            <input type="hidden" id="rqUser">
+            <div class="field" id="rqNoWrap" hidden><label for="rqNo" data-ct="rq.orderno">Order number</label><input class="input" id="rqNo" placeholder="CF-20260101-ABC123" autocomplete="off"></div>
+            <div class="field"><label for="rqReason" data-ct="rq.reason">Reason</label>
+              <select class="input" id="rqReason">
+                <option data-ct="rq.r1">Not what I expected</option>
+                <option data-ct="rq.r2">Missing a feature I need</option>
+                <option data-ct="rq.r3">Bought by mistake or charged twice</option>
+                <option data-ct="rq.r4">Technical problems</option>
+                <option data-ct="rq.r5">Other</option>
+              </select>
+            </div>
+            <div class="field"><label for="rqDetails" data-ct="rq.details">Details (optional)</label><textarea class="input" id="rqDetails" rows="4"></textarea></div>
+            <button class="btn btn-primary btn-lg" type="submit" data-ct="rq.btn">Prepare refund request</button>
+            <p class="hint" data-ct="rq.note">This opens your email app with the request filled in. Nothing is sent until you press Send in your mail app.</p>
+            <p class="hint" data-ct="rq.policy">Read the <a href="refund.html">Refund Policy</a></p>
+          </form>
+          <div id="rqSent" hidden>
+            <h2 data-ct="rq.sent.h" style="margin-top:20px">Your request is ready</h2>
+            <p class="sub" data-ct="rq.sent.p">If your email app did not open, send the message below to support@routok.com.</p>
+            <textarea class="input" id="rqText" rows="9" readonly></textarea>
+            <div class="rt-actions"><button type="button" class="btn btn-ghost" id="rqCopy" data-ct="copy">Copy message</button><a class="btn btn-primary" href="account.html" data-ct="rq.back">Back to my account</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="copy" style="margin-top:0;border-top:0;padding-top:0"><span data-i18n="ft.copy">© 2026 Contessa Intelligence Tech Limited · CodeFlux by routok · Reach Out Universal, Transfer Of Knowledge</span><span><a href="terms.html" data-i18n="ft.terms">Terms of Service</a><span class="sep">·</span><a href="privacy.html" data-i18n="ft.priv">Privacy Policy</a><span class="sep">·</span><a href="refund.html" data-i18n="ft.refund">Refund Policy</a></span></div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n-zh-hant.js"></script>
+  <script src="assets/i18n-zh-cn.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/pages.js"></script>
+  <script src="assets/config.js"></script>
+  <script src="assets/auth.js"></script>
+  <script src="assets/checkout.js"></script>
+</body>
+</html>

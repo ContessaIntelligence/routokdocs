@@ -8,3 +8,4 @@ docs-internal/
 # Scratch files
 *.tmp
 .*.tmp.js
+.shots/
