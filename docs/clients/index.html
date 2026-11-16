@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>连接聊天软件与应用 · RouTok 文档</title><meta name="description" content="准备 API 地址、模型 API 密钥、模型 ID，即可配置支持自定义接口的软件。建议先完成一次在线测试，再验证客户端连接。">
+<title>连接聊天软件与应用 · RouTok 文档</title><meta name="description" content="配置 RouTok API 地址与密钥，下载并上手 CC Switch、Codex CLI、Claude Code，以及聊天软件。">
 <link rel="canonical" href="https://docs.routok.com/docs/clients/index.html">
 <link rel="icon" type="image/png" sizes="1024x1024" href="/assets/images/routok-icon.png">
 <link rel="apple-touch-icon" href="/assets/images/routok-icon.png">
@@ -49,7 +49,7 @@
 <p>服务商名称可填写“RouTok”。Provider／接口类型应选择模型支持的协议，例如 OpenAI 兼容。</p>
 
 <h2 id="地址是否需要-v1">地址是否需要 /v1</h2>
-<p>以根地址 <code>https://gateway.example.com</code> 为例：</p>
+<p>RouTok 的 API 根地址为 <code>https://api.routok.com</code>，按客户端要求填写：</p>
 
 <table>
 <thead>
@@ -60,19 +60,37 @@
 </thead>
 <tbody><tr>
 <td>OpenAI SDK 的 base_url／baseURL</td>
-<td><code>https://gateway.example.com/v1</code></td>
+<td><code>https://api.routok.com/v1</code></td>
 </tr>
 <tr>
 <td>自动添加 /v1 的服务商模板</td>
-<td><code>https://gateway.example.com</code></td>
+<td><code>https://api.routok.com</code></td>
 </tr>
 <tr>
 <td>明确要求完整 Chat Completions 地址</td>
-<td><code>https://gateway.example.com/v1/chat/completions</code></td>
+<td><code>https://api.routok.com/v1/chat/completions</code></td>
 </tr>
 </tbody></table>
 
-<p>示例域名需要替换。若本站提供独立 API 域名，请使用 <strong>API 地址</strong> 中的值，而非直接复制控制台网址。</p>
+<p>以上为可直接使用的 RouTok API 地址。控制台和账户管理请访问 <a href="https://routok.com">routok.com</a>；调用接口请使用 <code>api.routok.com</code>。</p>
+
+<h2 id="coding-tools">CC Switch、Codex 与 Claude Code</h2>
+<p>初次使用建议按“安装编程工具 → 用 CC Switch 配置 → 发消息验证”的顺序操作。<a href="/tools/index.html">工具配置速查</a>提供可复制的安装命令和配置示例。</p>
+<h3 id="cc-switch">CC Switch：图形化切换配置</h3>
+<p>CC Switch 用来管理 Codex、Claude Code 等工具的服务地址与密钥；实际对话仍在对应编程工具中进行。打开 <a href="https://github.com/farion1231/cc-switch/releases/latest">CC Switch 官方下载页</a>，选择自己系统的安装包：Windows 通常选择 Windows.msi，ARM 设备选择 arm64 包，macOS 选择 macOS 安装包，Linux 按发行版选择。</p>
+<ol>
+<li>先安装下方的 Codex CLI 或 Claude Code，再打开 CC Switch，选择对应工具标签。</li>
+<li>点击“添加供应商”；如果列表没有 RouTok，使用自定义配置，名称填写 RouTok，密钥填写在 RouTok 创建的模型 API 密钥。</li>
+<li>Codex 的 Base URL 填 <code>https://api.routok.com/v1</code>，协议选择 Responses；Claude Code 的 Base URL 填 <code>https://api.routok.com</code>。模型填写该密钥可用的完整模型 ID。</li>
+<li>保存并启用该供应商，重新打开编程工具。不同版本的按钮名称可能略有不同，详见 <a href="https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/2-providers/2.1-add.md">官方添加供应商说明</a>。</li>
+</ol>
+<h3 id="codex">Codex：在项目中使用 AI 编程</h3>
+<p>Codex 是 OpenAI 的编程助手。接入 RouTok 可先使用终端中的 Codex CLI：安装 <a href="https://nodejs.org/">Node.js LTS</a>，重新打开终端，运行 <code>npm install -g @openai/codex</code>，再用 <code>codex --version</code> 检查。也可从 <a href="https://github.com/openai/codex/releases/latest">官方 Releases</a> 下载对应系统的 CLI，其他产品入口见 <a href="https://developers.openai.com/codex/cli">Codex 官方说明</a>。</p>
+<p>用 CC Switch 配好 RouTok 后，在项目文件夹打开终端并输入 <code>codex</code>，发送“请介绍这个项目的目录结构”。手动配置见<a href="/tools/index.html#codex"> Codex 配置示例</a>。</p>
+<h3 id="claude-code">Claude Code：在终端中阅读和修改代码</h3>
+<p>这里使用 Claude Code 命令行工具。打开 <a href="https://code.claude.com/docs/en/setup">Claude Code 官方安装页</a>，按系统安装；Windows 在 PowerShell 运行 <code>irm https://claude.ai/install.ps1 | iex</code>，macOS / Linux 运行 <code>curl -fsSL https://claude.ai/install.sh | bash</code>。安装完成后重新打开终端，运行 <code>claude --version</code> 验证。</p>
+<p>用 CC Switch 配好 RouTok 后，在项目文件夹打开终端并输入 <code>claude</code>，完成首次启动提示，再发送“请介绍这个项目的目录结构”。手动配置与选择模型见<a href="/tools/index.html#claude-code"> Claude Code 配置示例</a>。</p>
+<p>收到回复后，到 <a href="https://routok.com/usage-logs">RouTok 用量日志</a>核对记录。若提示找不到命令，重新打开终端并检查安装结果；若出现 401 或模型不存在，核对密钥、分组、模型 ID 和当前启用的供应商。</p>
 
 <h2 id="cherry-studio">Cherry Studio</h2>
 <ol>
@@ -119,5 +137,5 @@
 <p>其他情况见<a href="/docs/troubleshooting/index.html">错误排查</a>。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/security/index.html">← 上一篇<br>账号安全与访问管理</a><a href="/docs/quickstart/index.html">下一篇 →<br>完成第一次 API 调用</a></nav></article>
 <footer><p>内容核验：2026-10-21 · 简体中文</p><p><a href="https://github.com/QuantumNous/new-api">New API · QuantumNous</a> · <a href="https://docs.newapi.ai/zh/docs">官方文档</a> · <a href="https://github.com/QuantumNous/new-api/tree/058c8231b68c51ee02abee15befcd720fee9f4a2">依据源码版本</a> · <a href="https://github.com/ContessaIntelligence/routokdocs">文档源码</a> · <a href="/tools/index.html">工具配置速查</a> · <a href="/LICENSE">AGPL-3.0</a></p></footer></main>
-<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#准备三个配置值">准备三个配置值</a><a class="depth-2" href="#地址是否需要-v1">地址是否需要 /v1</a><a class="depth-2" href="#cherry-studio">Cherry Studio</a><a class="depth-2" href="#dify-与工作流应用">Dify 与工作流应用</a><a class="depth-2" href="#确认连接成功">确认连接成功</a></nav></aside></div>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#准备三个配置值">准备三个配置值</a><a class="depth-2" href="#地址是否需要-v1">地址是否需要 /v1</a><a class="depth-2" href="#coding-tools">CC Switch、Codex 与 Claude Code</a><a class="depth-2" href="#cherry-studio">Cherry Studio</a><a class="depth-2" href="#dify-与工作流应用">Dify 与工作流应用</a><a class="depth-2" href="#确认连接成功">确认连接成功</a></nav></aside></div>
 </body></html>

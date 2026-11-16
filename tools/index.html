@@ -72,28 +72,33 @@
 
     <section>
       <h2>二、配置 AI 工具</h2>
-      <p>先安装 <a href="https://nodejs.org/" target="_blank" rel="noreferrer">Node.js 22 或更高版本</a>，再按所用工具配置。</p>
+      <p>Codex 的 npm 安装方式和 Gemini CLI 需要先安装 <a href="https://nodejs.org/" target="_blank" rel="noreferrer">Node.js 22 或更高版本（建议 LTS）</a>，安装后重新打开终端。Claude Code 可使用下方原生安装命令。新手也可用 <a href="#cc-switch">CC Switch</a> 管理配置。</p>
 
-      <h3>Codex</h3>
+      <h3 id="codex">Codex CLI</h3>
+      <p>OpenAI 的终端编程助手，可阅读项目、修改代码和运行命令。<a href="https://github.com/openai/codex/releases/latest">官方下载</a> · <a href="https://developers.openai.com/codex/cli">官方使用说明</a>。以下示例使用 CLI 接入 RouTok。</p>
       <p>安装并验证：</p>
-      <pre>npm install -g @openai/codex --registry=https://registry.npmmirror.com
+      <pre>npm install -g @openai/codex
 codex --version</pre>
       <p>编辑 <code>~/.codex/config.toml</code>：</p>
       <pre>model_provider = "routok"
-model = "gpt-5.4"
+model = "your-enabled-model"
 
 [model_providers.routok]
 name = "routok"
 wire_api = "responses"
-requires_openai_auth = true
-base_url = "https://routok.com/v1"</pre>
-      <p>编辑 <code>~/.codex/auth.json</code>，将令牌填入：</p>
-      <pre>{ "OPENAI_API_KEY": "你的令牌" }</pre>
+env_key = "ROUTOK_API_KEY"
+base_url = "https://api.routok.com/v1"</pre>
+      <p>将 <code>your-enabled-model</code> 替换为密钥可用且支持 Responses 的完整模型 ID。然后在当前终端设置密钥：</p>
+      <p>Windows PowerShell：</p><pre>$env:ROUTOK_API_KEY = '你的令牌'</pre>
+      <p>macOS / Linux：</p><pre>export ROUTOK_API_KEY='你的令牌'</pre>
+      <p>在同一个终端进入项目文件夹，运行 <code>codex</code>，输入“请介绍这个项目的目录结构”。环境变量仅对当前终端及其启动的程序生效，新终端需要重新设置；通过 CC Switch 管理时可在工具中保存密钥。字段说明见 <a href="https://developers.openai.com/codex/config-reference">Codex 官方配置参考</a>。</p>
 
-      <h3>Claude</h3>
-      <p>安装并验证：</p>
-      <pre>npm install -g @anthropic-ai/claude-code
-claude --version</pre>
+      <h3 id="claude-code">Claude Code</h3>
+      <p>Anthropic 的终端编程助手，可用自然语言阅读和修改项目。<a href="https://code.claude.com/docs/en/setup">官方下载与安装说明</a>。Windows PowerShell 安装：</p>
+      <pre>irm https://claude.ai/install.ps1 | iex</pre>
+      <p>macOS / Linux 安装：</p>
+      <pre>curl -fsSL https://claude.ai/install.sh | bash</pre>
+      <p>安装后重新打开终端，运行 <code>claude --version</code> 验证。Windows 可安装 <a href="https://git-scm.com/downloads/win">Git for Windows</a> 以使用 Git Bash。</p>
       <p>在 <code>~/.claude/settings.json</code> 中填入令牌和服务地址：</p>
       <pre>{
   "env": {
@@ -101,6 +106,8 @@ claude --version</pre>
     "ANTHROPIC_BASE_URL": "https://api.routok.com"
   }
 }</pre>
+      <p>在项目文件夹打开终端，运行 <code>claude --model your-enabled-claude-model</code>，将占位名称替换为密钥可用的 Claude 模型 ID。完成首次启动提示后，发送“请介绍这个项目的目录结构”。接口需支持 Anthropic Messages，参见 <a href="https://code.claude.com/docs/en/llm-gateway">Claude Code 网关接入说明</a>。</p>
+      <p>上面的 <code>~</code> 表示当前用户的主目录：Windows 为 <code>C:\Users\你的用户名</code>，macOS 为 <code>/Users/你的用户名</code>，Linux 通常为 <code>/home/你的用户名</code>。文件或目录不存在时可自行新建；已有配置请合并对应字段，保留其他设置。</p>
 
       <h3>Gemini CLI</h3>
       <p>安装并验证：</p>
@@ -108,19 +115,25 @@ claude --version</pre>
 gemini --version</pre>
       <p>在 <code>~/.gemini/.env</code> 中填入：</p>
       <pre>GEMINI_API_KEY="你的令牌"
-GOOGLE_GEMINI_BASE_URL="https://routok.com"</pre>
+GOOGLE_GEMINI_BASE_URL="https://api.routok.com"</pre>
     </section>
 
-    <section>
-      <h2>三、图形化工具（可选）</h2>
-      <p>不熟悉命令行时，可以使用一键配置工具或 CC-Switch，按工具提示选择 routok 并粘贴令牌。</p>
+    <section id="cc-switch">
+      <h2>三、CC Switch 图形化配置</h2>
+      <p>CC Switch 帮你管理 Codex、Claude Code 等工具的供应商、服务地址和密钥。先安装对应编程工具，再用它配置 RouTok。</p>
       <div class="links">
-        <a class="button" href="#" target="_blank" rel="noreferrer">一键配置工具</a>
-        <a class="button" href="#" target="_blank" rel="noreferrer">CC-Switch 下载</a>
-        <a class="button" href="#" target="_blank" rel="noreferrer">下载 Claude Code</a>
-        <a class="button" href="https://apps.microsoft.com/detail/9plm9xgg6vks?hl=zh-CN&amp;gl=CN" target="_blank" rel="noreferrer">下载 Codex</a>
-        <a class="button" href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">下载 VS Code</a>
+        <a class="button" href="https://github.com/farion1231/cc-switch/releases/latest" target="_blank" rel="noreferrer">下载 CC Switch</a>
+        <a class="button" href="https://github.com/openai/codex/releases/latest" target="_blank" rel="noreferrer">下载 Codex CLI</a>
+        <a class="button" href="https://code.claude.com/docs/en/setup" target="_blank" rel="noreferrer">安装 Claude Code</a>
       </div>
+      <ol>
+        <li>打开 CC Switch 下载页。Windows 选择 Windows.msi（ARM 设备选择 arm64），macOS 选择 macOS 安装包，Linux 根据发行版选择安装包并安装。</li>
+        <li>启动 CC Switch，选择 Codex 或 Claude Code 标签，点击“添加供应商”。没有 RouTok 预设时使用自定义配置，名称填写 RouTok，并粘贴本站模型 API 密钥。</li>
+        <li>Codex 填写 <code>https://api.routok.com/v1</code>，协议选择 Responses；Claude Code 填写 <code>https://api.routok.com</code>。选择密钥可用的模型；自定义编辑器可参考上方对应配置。</li>
+        <li>保存并启用 RouTok，再重新打开对应工具，进入项目文件夹运行 <code>codex</code> 或 <code>claude</code>，发送一条短消息。收到回复后，在 <a href="https://routok.com/usage-logs">用量日志</a>核对调用记录。</li>
+      </ol>
+      <p>不同版本的按钮名称可能略有差异，详见 <a href="https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/2-providers/2.1-add.md">CC Switch 官方添加供应商说明</a>。完整密钥请自行填写，分享配置或截图时遮挡密钥。</p>
+      <p><a href="/docs/clients/index.html#coding-tools">返回客户端接入指南 →</a></p>
     </section>
 
     <section>
