@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>接入前需要了解的概念 · RouTok 文档</title><meta name="description" content="一次模型调用通常经过：你的应用 → RouTok→ 模型服务商。先理解地址、密钥、模型和额度，接入时就更容易定位问题。">
+<title>接入前需要了解的概念 · RouTok 文档</title><meta name="description" content="一次模型调用通常经过：你的应用 → RouTok → 模型服务商。先理解地址、密钥、模型和额度，接入时就更容易定位问题。">
 <link rel="canonical" href="https://static.routok.com/docs/concepts/index.html">
 <link rel="icon" type="image/png" sizes="1024x1024" href="/assets/images/routok-icon.png">
 <link rel="apple-touch-icon" href="/assets/images/routok-icon.png">
@@ -18,33 +18,14 @@
 <main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
 <section id="results" aria-label="搜索结果" hidden></section>
 <article><h1 id="接入前需要了解的概念">接入前需要了解的概念</h1>
-<p>一次模型调用通常经过：<strong>你的应用 → RouTok→ 模型服务商</strong>。先理解地址、密钥、模型和额度，接入时就更容易定位问题。</p>
+<p>一次模型调用通常经过：<strong>你的应用 → RouTok → 模型服务商</strong>。先理解地址、密钥、模型和额度，接入时就更容易定位问题。</p>
 
-<h2 id="三种凭据">三种凭据</h2>
+<h2 id="登录账号与模型密钥">登录账号与模型密钥</h2>
 <table>
-<thead>
-<tr>
-<th>凭据</th>
-<th>签发方</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>上游 API Key</td>
-<td>模型服务商</td>
-<td>管理员配置渠道</td>
-</tr>
-<tr>
-<td>模型 API 密钥</td>
-<td>RouTok</td>
-<td>应用调用聊天、图片等模型接口</td>
-</tr>
-<tr>
-<td>个人访问令牌 PAT</td>
-<td>RouTok</td>
-<td>自动化调用管理 API，受 scope 和账号权限限制</td>
-</tr>
-</tbody></table>
+<thead><tr><th>凭据</th><th>获取方式</th><th>用途</th></tr></thead>
+<tbody><tr><td>账号与登录密码</td><td>注册或由管理员开通</td><td>登录控制台，查看余额和管理自己的密钥</td></tr>
+<tr><td>模型 API 密钥</td><td>在 API 密钥页面创建</td><td>在客户端或应用中调用模型</td></tr></tbody>
+</table>
 
 <p>浏览器登录凭据用于控制台会话，不应作为应用的长期 API Key。普通客户端使用本站的模型 API 密钥。</p>
 
@@ -76,22 +57,20 @@
 
 <p>部分软件会自动添加版本路径。请按<a href="/docs/clients/index.html">客户端配置说明</a>填写，避免重复出现 <code>/v1/v1</code>。</p>
 
-<h2 id="模型-渠道与分组">模型、渠道与分组</h2>
+<h2 id="模型与分组">模型与分组</h2>
 <ul>
-<li><strong>模型 ID</strong>：请求中的模型标识，通常填写在 <code>model</code> 字段。以本站提供的 ID 为准。</li>
-<li><strong>渠道</strong>：网站通往上游服务的配置，包含地址、凭据和支持的模型。</li>
-<li><strong>分组</strong>：影响密钥可访问的渠道和价格。模型存在，但所选分组没有可用渠道时，仍无法调用。</li>
-<li><strong>模型映射</strong>：管理员可把本站模型名映射为上游模型名或部署 ID。</li>
-<li><strong>优先级与权重</strong>：网站用于选择渠道的配置，通常由管理员维护。</li>
+<li><strong>模型 ID</strong>：请求中的模型标识，通常填写在 <code>model</code> 字段。请从模型广场或当前密钥返回的模型列表复制完整 ID。</li>
+<li><strong>分组</strong>：密钥页面可选的使用范围，不同分组的可用模型和价格可能不同。请选择支持目标模型的可用分组。</li>
 </ul>
+<p>模型无法调用时，先核对模型 ID、密钥的模型限制和所选分组。仍无法解决时，请提供脱敏错误信息并联系管理员。</p>
 
 <h2 id="额度与-token">额度与 Token</h2>
 <p><strong>额度是预算，Token 是用量，API Token 是凭据。</strong> 三者名称接近，含义不同。</p>
 
-<p>账户余额、密钥额度、套餐限制和上游余额分别生效。某一层不足都可能阻止调用，排查时应结合具体错误，而不是只看账户余额。</p>
+<p>账户余额、密钥额度和套餐限制分别生效。调用提示额度不足时，先核对自己的钱包、密钥状态和套餐周期；仍无法解决时联系管理员。</p>
 
 <p>下一步：<a href="/docs/quickstart/index.html">完成首次调用</a>。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/console/index.html">← 上一篇<br>认识控制台</a><a href="/docs/playground/index.html">下一篇 →<br>在线测试模型</a></nav></article>
 </main>
-<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#三种凭据">三种凭据</a><a class="depth-2" href="#api-地址与完整路径">API 地址与完整路径</a><a class="depth-2" href="#模型-渠道与分组">模型、渠道与分组</a><a class="depth-2" href="#额度与-token">额度与 Token</a></nav></aside></div>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#登录账号与模型密钥">登录账号与模型密钥</a><a class="depth-2" href="#api-地址与完整路径">API 地址与完整路径</a><a class="depth-2" href="#模型与分组">模型与分组</a><a class="depth-2" href="#额度与-token">额度与 Token</a></nav></aside></div>
 </body></html>

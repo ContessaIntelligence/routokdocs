@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>协议与兼容性 · RouTok 文档</title><meta name="description" content="RouTok 支持多种客户端协议，部分文本协议可通过网关转换。选择协议时，应同时确认客户端、模型和渠道的支持范围。">
+<title>协议与兼容性 · RouTok 文档</title><meta name="description" content="选择接入协议时，请确认客户端支持该协议，并在模型广场核对目标模型的接口与能力。">
 <link rel="canonical" href="https://static.routok.com/docs/protocols/index.html">
 <link rel="icon" type="image/png" sizes="1024x1024" href="/assets/images/routok-icon.png">
 <link rel="apple-touch-icon" href="/assets/images/routok-icon.png">
@@ -18,7 +18,7 @@
 <main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
 <section id="results" aria-label="搜索结果" hidden></section>
 <article><h1 id="协议与兼容性">协议与兼容性</h1>
-<p>RouTok 支持多种客户端协议，部分文本协议可通过网关转换。选择协议时，应同时确认客户端、模型和渠道的支持范围。</p>
+<p>选择接入协议时，请确认客户端支持该协议，并在模型广场核对目标模型的接口与能力。</p>
 
 <h2 id="接口地址对照">接口地址对照</h2>
 <p>下列路径相对于 API 根地址，例如 <code>https://api.routok.com</code>。</p>
@@ -108,7 +108,7 @@
 <td>字段被接受，用量分类可以解释</td>
 </tr>
 <tr>
-<td>后台任务</td>
+<td>异步任务</td>
 <td>返回任务标识，能够查询终态和获取结果</td>
 </tr>
 <tr>
@@ -117,15 +117,15 @@
 </tr>
 </tbody></table>
 
-<p>一次聊天成功，不能替代这些能力的单独验证。跨协议转换可能丢失上游特有字段；管理员的映射和参数覆盖也可能影响实际请求。</p>
+<p>一次聊天成功，不能替代这些能力的单独验证。同一模型在不同协议下支持的字段和返回格式可能不同，请按实际使用方式测试。</p>
 
 <h2 id="当前未开放的标准接口">当前未开放的标准接口</h2>
-<p>当前源码中，<code>/v1/files</code>、<code>/v1/fine-tunes</code>、<code>/v1/images/variations</code> 和模型删除属于占位接口。Anthropic <code>count_tokens</code> 路由未启用，Gemini <code>countTokens</code> 未实现。</p>
+<p>本站暂不提供文件管理、微调、图片变体和独立 Token 计数接口。请使用本指南列出的接口，并按模型说明传入文件和其他输入。</p>
 
-<p>后台 Responses 的创建和检索依赖支持该模式的任务插件路径；普通 relay 请求不能据此推断支持后台检索。</p>
+<p>需要异步创建和查询 Responses 时，请先确认目标模型支持该模式。仅获得响应 ID，不代表一定可以通过查询接口重新获取结果。</p>
 
 <h2 id="上线前保留一份验证记录">上线前保留一份验证记录</h2>
-<p>记录平台版本、模型 ID、分组、协议、客户端／SDK 版本、已验证能力和日期。升级后优先复测实际使用的能力。本文版本依据见<a href="/docs/overview/index.html#%E6%96%87%E6%A1%A3%E7%89%88%E6%9C%AC%E4%B8%8E%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4">文档范围</a>。</p>
+<p>记录模型 ID、密钥分组、协议、客户端／SDK 版本、已验证能力和日期。更换模型或升级客户端后，复测实际使用的能力。适用范围见<a href="/docs/overview/index.html#%E6%96%87%E6%A1%A3%E7%89%88%E6%9C%AC%E4%B8%8E%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4">文档范围</a>。</p>
 
 <p>字段与响应示例见<a href="/docs/api-reference/index.html">API 参考</a>。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/sdk/index.html">← 上一篇<br>Python 与 JavaScript SDK</a><a href="/docs/streaming/index.html">下一篇 →<br>读取流式响应</a></nav></article>

@@ -114,16 +114,14 @@ console.log(response.choices[0].message.content)</code></pre></div>
 </tr>
 </tbody></table>
 
-<p>示例关闭自动重试，便于观察原始错误。生产应用可以对可恢复错误采用有上限的退避，同时评估 SDK、应用和网关的重试叠加。</p>
+<p>示例关闭自动重试，便于观察原始错误。生产应用可以对可恢复错误采用有上限的退避，同时检查 SDK 与应用的重试设置，避免重复请求。</p>
 
 <h2 id="用于实际应用">用于实际应用</h2>
 <p>密钥保存在服务端或可信客户端中。网页前端和移动端资源不能安全保存长期密钥，浏览器业务请求应通过自己的服务端进行受控转发。</p>
 
-<p>本页示例在 Python 3.12、Node.js 24／Bun 1.4 环境中进行本地模拟响应验证，不能替代真实模型的兼容性测试。流式用法见<a href="/docs/streaming/index.html">流式响应</a>，其他协议见<a href="/docs/api-reference/index.html">API 参考</a>。</p>
+<p>先用一条短消息确认实际模型能够正常返回回复，再接入应用。流式用法见<a href="/docs/streaming/index.html">流式响应</a>，其他协议见<a href="/docs/api-reference/index.html">API 参考</a>。</p>
 
-<p>本地验证覆盖请求路径、鉴权头、模型与消息参数、回复读取，以及服务端错误不自动重试、根地址误含 <code>/v1</code> 时阻止发送。这里使用模拟服务，不会产生真实模型调用费用。</p>
-
-<p>SDK 用法可参考 <a href="https://developers.openai.com/api/reference/python">OpenAI Python 文档</a>和 <a href="https://developers.openai.com/api/reference/typescript">JavaScript 文档</a>。上游文档描述的完整能力不代表本站全部开放。</p>
+<p>SDK 用法可参考 <a href="https://developers.openai.com/api/reference/python">OpenAI Python 文档</a>和 <a href="https://developers.openai.com/api/reference/typescript">JavaScript 文档</a>。SDK 官方文档中的功能仍需所选模型和本站接口支持。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/quickstart/index.html">← 上一篇<br>完成第一次 API 调用</a><a href="/docs/protocols/index.html">下一篇 →<br>协议与兼容性</a></nav></article>
 </main>
 <aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#python">Python</a><a class="depth-2" href="#javascript">JavaScript</a><a class="depth-2" href="#确认结果与处理错误">确认结果与处理错误</a><a class="depth-2" href="#用于实际应用">用于实际应用</a></nav></aside></div>

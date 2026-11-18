@@ -104,7 +104,7 @@
 <p>OpenAI 模板和不同客户端版本的补路径规则可能不同，以字段提示为准。配置入口可参考 <a href="https://cherryai.com.cn/docs/zh-cn/pre-basic/settings/providers/">Cherry Studio 官方说明</a>。</p>
 
 <h2 id="dify-与工作流应用">Dify 与工作流应用</h2>
-<p>由工作区管理员添加支持自定义地址的模型服务商，再在工作流节点中选择对应模型。聊天、向量和重排序节点分别需要支持该任务的模型。配置入口见 <a href="https://docs.dify.ai/en/cloud/use-dify/workspace/model-providers">Dify 官方说明</a>。</p>
+<p>在工作流节点中选择工作区已提供的 RouTok 模型。聊天、向量和重排序节点分别需要支持该任务的模型。找不到 RouTok 模型时，请联系工作区负责人确认接入情况。配置入口见 <a href="https://docs.dify.ai/en/cloud/use-dify/workspace/model-providers">Dify 官方说明</a>。</p>
 
 <h2 id="确认连接成功">确认连接成功</h2>
 <p>完成一条消息，收到回复，并在 RouTok <a href="https://api.routok.com/usage-logs">用量日志</a>找到对应记录。客户端的“连接成功”提示有时只验证密钥或模型列表，仍需实际生成一次内容。</p>
@@ -118,7 +118,7 @@
 </thead>
 <tbody><tr>
 <td>401</td>
-<td>核对完整密钥及有效期，确认未填写密码或 PAT</td>
+<td>核对完整密钥及有效期，确认未填写网站登录密码或其他平台的密钥</td>
 </tr>
 <tr>
 <td>404</td>

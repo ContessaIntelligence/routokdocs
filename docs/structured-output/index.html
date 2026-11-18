@@ -80,7 +80,7 @@
 <p>将请求发送到 <code>POST /v1/responses</code>。从 output 中的 output_text 内容项读取文本，或使用 SDK 提供的便利属性。</p>
 
 <h2 id="接收结果后">接收结果后</h2>
-<p>先检查完成状态，再解析 JSON、验证 Schema 和业务约束。拒答、截断、空内容或上游错误应作为独立分支处理，不能通过补括号把不完整结果当成成功。</p>
+<p>先检查完成状态，再解析 JSON、验证 Schema 和业务约束。拒答、截断、空内容或模型服务错误应作为独立分支处理，不能通过补括号把不完整结果当成成功。</p>
 
 <table>
 <thead>
@@ -104,7 +104,7 @@
 
 <p>即使 JSON 能解析，也要验证字段是否符合业务要求；格式正确不代表内容准确。</p>
 
-<p>上游拒绝格式字段时，先确认模型能力与转换路径，避免静默删除约束后继续接受未校验结果。协议细节见 <a href="https://developers.openai.com/api/docs/guides/structured-outputs">OpenAI 结构化输出文档</a>。</p>
+<p>格式字段被拒绝时，先核对模型和当前协议是否支持该格式。请使用受支持的配置，并继续校验返回结果。协议细节见 <a href="https://developers.openai.com/api/docs/guides/structured-outputs">OpenAI 结构化输出文档</a>。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/tools/index.html">← 上一篇<br>完成一轮工具调用</a><a href="/docs/reasoning-cache/index.html">下一篇 →<br>推理模型与提示缓存</a></nav></article>
 </main>
 <aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#json-模式">JSON 模式</a><a class="depth-2" href="#json-schema">JSON Schema</a><a class="depth-2" href="#使用-responses">使用 Responses</a><a class="depth-2" href="#接收结果后">接收结果后</a></nav></aside></div>

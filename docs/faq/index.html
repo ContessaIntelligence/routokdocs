@@ -25,7 +25,7 @@
 <p>OpenAI SDK 通常使用“API 根地址 + /v1”；部分客户端模板会自动追加。填写方法见<a href="/docs/clients/index.html#%E5%9C%B0%E5%9D%80%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81-v1">客户端接入</a>。</p>
 
 <h2 id="模型-id-在哪里找">模型 ID 在哪里找</h2>
-<p>从<a href="https://api.routok.com/pricing">模型广场</a>复制完整 ID，或使用当前密钥查询 <code>GET /v1/models</code>。展示名称和上游名称不一定就是本站调用 ID。</p>
+<p>从<a href="https://api.routok.com/pricing">模型广场</a>复制完整 ID，或使用当前密钥查询 <code>GET /v1/models</code>。请使用从本站复制的完整 ID，避免填写模型的展示名称。</p>
 
 <h2 id="为什么账户有余额仍提示额度不足">为什么账户有余额仍提示额度不足</h2>
 <p>账户余额、密钥额度和套餐限制分别生效。请核对密钥状态、有效期及套餐周期，见<a href="/docs/wallet/index.html#%E4%BD%99%E9%A2%9D%E4%B8%8D%E8%B6%B3%E6%97%B6%E6%A3%80%E6%9F%A5%E4%BB%80%E4%B9%88">钱包说明</a>。</p>
@@ -43,7 +43,7 @@
 <p>基础聊天可能如此，但上下文、输出参数、工具和多模态能力仍需重新验证。建议先用代表性请求测试。</p>
 
 <h2 id="关闭网页会停止生成吗">关闭网页会停止生成吗</h2>
-<p>不保证。上游请求或异步任务可能继续运行，先查询<a href="/docs/tasks/index.html">任务状态</a>和用量记录，再决定是否重发。</p>
+<p>不保证。生成请求或异步任务可能继续运行，先查询<a href="/docs/tasks/index.html">任务状态</a>和用量记录，再决定是否重发。</p>
 
 <h2 id="忘记密码或丢失验证设备怎么办">忘记密码或丢失验证设备怎么办</h2>
 <p>忘记密码可使用<a href="https://api.routok.com/forgot-password">找回密码</a>。验证设备丢失时，使用页面提供的恢复方式；无法完成时联系管理员了解核验流程。</p>

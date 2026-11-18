@@ -55,12 +55,12 @@ print()</code></pre></div>
 
 <p>Responses、Messages 和 Gemini 使用不同的事件结构。工具调用参数也可能分片到达，需要完整收集并校验后执行。</p>
 
-<p>应用应区分正常结束、输出截断、上游错误和连接中断。HTTP 已返回成功状态后，流中仍可能发生错误。</p>
+<p>应用应区分正常结束、输出截断、模型服务错误和连接中断。HTTP 已返回成功状态后，流中仍可能发生错误。</p>
 
 <h2 id="用量与排查">用量与排查</h2>
-<p>仅在渠道及上游支持时，流中才会返回用量；缺少 usage 不能解释为零费用。</p>
+<p>流式响应是否包含用量取决于模型与接口支持情况；缺少 <code>usage</code> 不能解释为零费用，请在用量日志核对实际消耗。</p>
 
-<p>若所有文字最后一次性出现，先对比命令行与客户端。若长回复中断，核对超时设置和代理链路，见<a href="/docs/troubleshooting/index.html">错误排查</a>。取消连接后重新请求前，先检查日志，避免重复消耗。</p>
+<p>若所有文字最后一次性出现，先对比命令行与客户端。若长回复中断，核对客户端超时设置和本地网络，见<a href="/docs/troubleshooting/index.html">错误排查</a>。取消连接后重新请求前，先检查日志，避免重复消耗。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/protocols/index.html">← 上一篇<br>协议与兼容性</a><a href="/docs/tools/index.html">下一篇 →<br>完成一轮工具调用</a></nav></article>
 </main>
 <aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#发起请求">发起请求</a><a class="depth-2" href="#使用-sdk-读取">使用 SDK 读取</a><a class="depth-2" href="#解析与完成判断">解析与完成判断</a><a class="depth-2" href="#用量与排查">用量与排查</a></nav></aside></div>

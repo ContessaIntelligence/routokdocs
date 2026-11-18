@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>推理模型与提示缓存 · RouTok 文档</title><meta name="description" content="推理能力帮助模型处理复杂任务；提示缓存用于复用符合上游条件的输入。两者的参数、返回内容和用量分类需要分别验证。">
+<title>推理模型与提示缓存 · RouTok 文档</title><meta name="description" content="推理能力帮助模型处理复杂任务；提示缓存用于复用符合模型条件的输入。两者的参数、返回内容和用量分类需要分别验证。">
 <link rel="canonical" href="https://static.routok.com/docs/reasoning-cache/index.html">
 <link rel="icon" type="image/png" sizes="1024x1024" href="/assets/images/routok-icon.png">
 <link rel="apple-touch-icon" href="/assets/images/routok-icon.png">
@@ -18,7 +18,7 @@
 <main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
 <section id="results" aria-label="搜索结果" hidden></section>
 <article><h1 id="推理模型与提示缓存">推理模型与提示缓存</h1>
-<p>推理能力帮助模型处理复杂任务；提示缓存用于复用符合上游条件的输入。两者的参数、返回内容和用量分类需要分别验证。</p>
+<p>推理能力帮助模型处理复杂任务；提示缓存用于复用符合模型条件的输入。两者的参数、返回内容和用量分类需要分别验证。</p>
 
 <h2 id="接入推理模型">接入推理模型</h2>
 <ol>
@@ -31,14 +31,14 @@
 <p>部分模型不支持温度参数，或对输出上限有独立要求。字段被拒绝时，先查模型说明，再逐项调整。</p>
 
 <h2 id="使用提示缓存">使用提示缓存</h2>
-<p>缓存命中通常由上游决定，可能依赖相同前缀、模型、缓存标记和有效期。网关提供缓存计量和费用处理，并不意味着所有请求都会自动缓存。</p>
+<p>是否命中缓存与模型的缓存规则有关，可能需要相同前缀、指定标记或满足有效期要求。请按模型说明设置请求，并在用量日志核对缓存用量和费用。</p>
 
 <p>对采用前缀缓存的模型，可将稳定的系统提示和参考内容放在前面，将变化的问题放在后面。需要显式缓存标记的模型，应按相应协议设置。</p>
 
 <h2 id="核对用量">核对用量</h2>
 <p>在<a href="https://api.routok.com/usage-logs">用量日志</a>查看实际记录的缓存读取、写入和其他分类，并结合<a href="https://api.routok.com/pricing">模型价格</a>核对费用。</p>
 
-<p>不同上游的总输入是否包含缓存输入并不一致，不能把全部分类再次相加。缺少缓存字段也不足以证明没有命中。</p>
+<p>不同模型的总输入是否包含缓存输入并不一致，不能把全部分类再次相加。缺少缓存字段也不足以证明没有命中。</p>
 
 <h2 id="评估是否适合你的场景">评估是否适合你的场景</h2>
 <p>使用同一模型和代表性输入，分别观察质量、延迟和费用。缓存折扣、命中条件和推理消耗均以本站配置及实际记录为准，见<a href="/docs/costs/index.html">费用说明</a>。</p>

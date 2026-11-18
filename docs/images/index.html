@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>图片生成与编辑 · RouTok 文档</title><meta name="description" content="先在模型广场确认图片模型、支持的接口和计费单位。图片请求可能由普通 relay 或任务插件处理，参数范围和等待方式依模型而定。">
+<title>图片生成与编辑 · RouTok 文档</title><meta name="description" content="先在模型广场确认图片模型、支持的接口和计费单位。参数范围、返回格式和等待时间依模型而定。">
 <link rel="canonical" href="https://static.routok.com/docs/images/index.html">
 <link rel="icon" type="image/png" sizes="1024x1024" href="/assets/images/routok-icon.png">
 <link rel="apple-touch-icon" href="/assets/images/routok-icon.png">
@@ -18,7 +18,7 @@
 <main id="content"><form role="search"><label for="search">搜索文档</label><div class="search-input"><input id="search" name="q" type="search" placeholder="搜索密钥、模型、错误信息…" autocomplete="off"><button type="submit">搜索</button></div><p id="search-status" role="status"></p></form>
 <section id="results" aria-label="搜索结果" hidden></section>
 <article><h1 id="图片生成与编辑">图片生成与编辑</h1>
-<p>先在<a href="https://api.routok.com/pricing">模型广场</a>确认图片模型、支持的接口和计费单位。图片请求可能由普通 relay 或任务插件处理，参数范围和等待方式依模型而定。</p>
+<p>先在<a href="https://api.routok.com/pricing">模型广场</a>确认图片模型、支持的接口和计费单位。参数范围、返回格式和等待时间依模型而定。</p>
 
 <h2 id="生成图片">生成图片</h2>
 <p>先完成<a href="/docs/quickstart/index.html#%E5%87%86%E5%A4%87%E6%8E%A5%E5%85%A5%E4%BF%A1%E6%81%AF">环境变量设置</a>，将模型 ID 替换后在 Bash 中执行：</p>
@@ -51,9 +51,9 @@
 <p>打开生成文件，并在<a href="https://api.routok.com/usage-logs">用量日志</a>核对模型与费用。某些下载地址会过期，重要结果请及时保存。</p>
 
 <h2 id="请求等待较长或失败">请求等待较长或失败</h2>
-<p>部分插件会等待上游任务完成后返回。超时不代表生成任务已停止，先查<a href="/docs/tasks/index.html">任务状态</a>和日志，再决定是否重发。</p>
+<p>部分图片生成请求需要等待较长时间。超时不代表生成任务已停止，先查<a href="/docs/tasks/index.html">任务状态</a>和日志，再决定是否重发。</p>
 
-<p>生成数量、质量和尺寸可能影响费用。首次测试建议单张生成；<code>/v1/images/variations</code> 当前未实现。</p>
+<p>生成数量、质量和尺寸可能影响费用。首次测试建议单张生成；<code>/v1/images/variations</code> 当前不可用。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/multimodal/index.html">← 上一篇<br>图片理解与多模态输入</a><a href="/docs/audio-embeddings/index.html">下一篇 →<br>音频、向量与重排序</a></nav></article>
 </main>
 <aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#生成图片">生成图片</a><a class="depth-2" href="#编辑图片">编辑图片</a><a class="depth-2" href="#确认结果">确认结果</a><a class="depth-2" href="#请求等待较长或失败">请求等待较长或失败</a></nav></aside></div>

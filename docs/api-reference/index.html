@@ -54,7 +54,7 @@
 </tr>
 </tbody></table>
 
-<p>以下 JSON 为最小结构示例，模型名和 ID 均需替换。可选字段是否受支持，取决于模型、渠道和协议转换路径。</p>
+<p>以下 JSON 为最小结构示例，模型名和 ID 均需替换。可选字段是否受支持，取决于所选模型和接口。</p>
 
 <h2 id="模型列表">模型列表</h2>
 <p><code>GET /v1/models</code></p>
@@ -160,7 +160,7 @@
 }</code></pre></div>
 <p>遍历 output 中的 message 及 output_text 内容项，不要按 Chat 的 choices 解析。SDK 可能提供 output_text 便利属性。格式约束使用 text.format，流式使用命名事件。</p>
 
-<p><code>background: true</code> 和 <code>GET /v1/responses/{response_id}</code> 仅在支持该模式的任务插件路径下适用；普通 relay 返回的响应 ID 不保证可由本站检索。保留原始返回 ID，并使用对应协议的查询入口。</p>
+<p>仅在目标模型明确支持异步创建与查询时，使用 <code>background: true</code> 和 <code>GET /v1/responses/{response_id}</code>。请保存接口返回的原始 ID；收到普通响应 ID 不代表支持后续查询。</p>
 
 <h2 id="anthropic-messages">Anthropic Messages</h2>
 <p><code>POST /v1/messages</code></p>
@@ -170,7 +170,7 @@
   &quot;max_tokens&quot;: 256,
   &quot;messages&quot;: [{ &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello!&quot; }]
 }</code></pre></div>
-<p>max_tokens 为正整数输出上限，需符合模型及网关限制。兼容 Anthropic 客户端时，使用本站密钥填写 x-api-key，并按客户端协议发送 anthropic-version；直接 HTTP 调用也可使用本站支持的 Bearer 鉴权。</p>
+<p>max_tokens 为正整数输出上限，需符合该模型支持的范围。兼容 Anthropic 客户端时，使用本站密钥填写 x-api-key，并按客户端协议发送 anthropic-version；直接 HTTP 调用也可使用本站支持的 Bearer 鉴权。</p>
 
 <p>简化响应：</p>
 
@@ -182,7 +182,7 @@
   &quot;stop_reason&quot;: &quot;end_turn&quot;,
   &quot;usage&quot;: { &quot;input_tokens&quot;: 10, &quot;output_tokens&quot;: 3 }
 }</code></pre></div>
-<p>按 content 块类型处理文本、工具等结果。<code>/v1/messages/count_tokens</code> 当前未启用。</p>
+<p>按 content 块类型处理文本、工具等结果。<code>/v1/messages/count_tokens</code> 当前不可用。</p>
 
 <h2 id="gemini">Gemini</h2>
 <p><code>POST /v1beta/models/{model}:generateContent</code></p>
@@ -204,7 +204,7 @@
 }</code></pre></div>
 <p>读取 candidates 中的 content.parts，按类型处理。流式 action 为 streamGenerateContent，SSE 客户端通常使用 ?alt=sse。</p>
 
-<p>鉴权可使用本站支持的 Bearer 或兼容客户端的 x-goog-api-key。优先使用请求头，避免密钥进入 URL 日志。countTokens 当前未实现。</p>
+<p>鉴权可使用本站支持的 Bearer 或兼容客户端的 x-goog-api-key。优先使用请求头，避免密钥进入 URL 日志。countTokens 当前不可用。</p>
 
 <h2 id="媒体与任务">媒体与任务</h2>
 <table>
@@ -252,7 +252,7 @@
 </tr>
 <tr>
 <td>POST /v1/videos</td>
-<td>兼容插件的视频任务提交</td>
+<td>提交视频生成任务</td>
 <td><a href="/docs/tasks/index.html">完整任务流程</a></td>
 </tr>
 <tr>
@@ -264,11 +264,6 @@
 <td>GET /v1/videos/{taskId}/content</td>
 <td>获取视频内容</td>
 <td><a href="/docs/tasks/index.html#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E4%B8%8B%E8%BD%BD%E7%BB%93%E6%9E%9C">下载结果</a></td>
-</tr>
-<tr>
-<td>POST /v1/tasks/{pluginKey}</td>
-<td>通用提交，请求体由插件定义</td>
-<td><a href="/docs/tasks/index.html">任务说明</a></td>
 </tr>
 <tr>
 <td>GET /v1/tasks/{taskId}</td>
@@ -283,7 +278,7 @@
 </tbody></table>
 
 <h2 id="错误响应">错误响应</h2>
-<p>错误可能由网关、上游或代理返回。OpenAI 兼容错误通常具有 error 对象，例如：</p>
+<p>请求失败时，先查看 HTTP 状态码与响应正文。OpenAI 兼容错误通常具有 error 对象，例如：</p>
 
 <div class="code"><div class="code-bar"><span>json</span><button type="button" data-copy>复制代码</button></div><pre><code class="language-json">{
   &quot;error&quot;: {
@@ -292,12 +287,12 @@
     &quot;code&quot;: &quot;example_code&quot;
   }
 }</code></pre></div>
-<p>以上为结构示意，不是固定错误文案。Messages、Gemini 和插件接口可能使用各自格式；message、type、code 也不保证全部存在。</p>
+<p>以上为结构示意，不是固定错误文案。Messages、Gemini 和生成任务接口可能使用各自格式；message、type、code 也不保证全部存在。</p>
 
 <p>保留 HTTP 状态、协议错误字段和实际返回的请求标识。HTML 错误页通常需要进一步检查代理或接入地址。具体处理见<a href="/docs/troubleshooting/index.html">调用失败排查</a>。</p>
 
 <h2 id="能力边界与补充资料">能力边界与补充资料</h2>
-<p>文件管理、微调、图片 variations 和模型删除等占位接口不属于可用能力。上游完整字段应参考对应服务商官方协议，同时核对本站模型与渠道支持范围。</p>
+<p>本站暂不提供文件管理、微调和图片变体接口。其他参数请按本站模型说明和所用协议的官方文档核对，并先用最小请求验证。</p>
 
 
 <nav class="pagination" aria-label="文章导航"><a href="/docs/support/index.html">← 上一篇<br>联系管理员</a></nav></article>
