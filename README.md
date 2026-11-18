@@ -1,6 +1,6 @@
 # RouTok 文档
 
-RouTok 的静态使用文档与图片资源，访问地址：[docs.routok.com](https://docs.routok.com)。
+RouTok 的静态使用文档与图片资源，访问地址：[static.routok.com](https://static.routok.com)。
 
 文档涵盖账号与控制台、API 密钥、模型接入、SDK 示例、用量与费用，以及常见问题排查。
 
