@@ -24,12 +24,44 @@
 <ol>
 <li>打开<a href="https://api.routok.com/keys">API 密钥</a>，点击 <strong>创建 API 密钥</strong>。</li>
 <li>填写便于识别的名称，例如“个人聊天”或“开发测试”。</li>
-<li>选择可用分组，并设置符合用途的额度、有效期和模型范围。</li>
+<li>选择分组。不确定如何选择时，建议先选 <code>auto</code>（自动）；具体规则见下方<a href="#选择可用分组">选择可用分组</a>。</li>
+<li>设置符合用途的额度、有效期和模型范围。</li>
 <li>保存后，使用 <strong>复制 API 密钥</strong> 或行菜单中的 <strong>复制密钥</strong>。</li>
 <li>将完整密钥填入可信客户端的 API Key 字段，或保存在应用服务端的环境变量中。</li>
 </ol>
 
 <p>密钥名称和隐藏后的星号不能用于调用。复制后检查首尾空格与换行；首次测试建议使用较小预算。</p>
+
+<h2 id="选择可用分组">选择可用分组</h2>
+<p>分组决定这把密钥可以使用哪些模型，也可能影响调用价格。创建或编辑密钥时，先在第一个 <strong>分组</strong> 下拉框中选择 <code>auto</code> 或一个指定分组：</p>
+<table>
+<thead><tr><th>选择</th><th>如何使用模型</th><th>适合什么情况</th></tr></thead>
+<tbody>
+<tr><td><code>auto</code>（自动，推荐）</td><td>根据本次请求的模型，按自动分组顺序查找支持该模型的可用分组</td><td>需要使用多个分组的模型，或希望自动选择分组</td></tr>
+<tr><td>指定分组，例如 <code>claude-kiro</code></td><td>这把密钥只能调用该分组支持的模型，不会自动改用其他分组</td><td>已经确认目标模型所在分组，希望固定使用该分组</td></tr>
+</tbody></table>
+<p>例如，固定选择 <code>claude-kiro</code> 后，即使某个模型在其他分组可用，只要它不在 <code>claude-kiro</code> 中，这把密钥就无法调用它。可先在<a href="https://api.routok.com/pricing">模型广场</a>按分组筛选，确认目标模型及价格。</p>
+
+<h3 id="设置自动分组顺序">设置自动分组顺序</h3>
+<p>选择 <code>auto</code> 后，下方会显示 <strong>自动分组顺序</strong>。未自定义时，使用页面提示的完整全局 Auto 顺序，覆盖当前账号可用的分组；也可以通过 <strong>添加 Auto 分组</strong> 自己选择参与自动分配的分组。</p>
+<ol>
+<li>在 <strong>添加 Auto 分组</strong> 中依次添加需要的分组。</li>
+<li>通过拖动或每行的上下箭头调整顺序。列表从上到下优先级递减。</li>
+<li>删除不希望使用的分组，确认列表后保存密钥。自定义后，自动选择只在这份列表内进行；需要恢复默认范围与顺序时，点击 <strong>恢复全局 Auto</strong>。</li>
+</ol>
+<p>推荐按以下顺序添加当前账号可选的分组；暂不可选的分组可跳过：</p>
+<ol>
+<li><code>claude-kiro</code></li>
+<li><code>claude-max</code></li>
+<li><code>claude-aws</code></li>
+<li><code>gpt-pro</code></li>
+<li><code>openai-aws</code></li>
+</ol>
+<p>每次调用都会根据你填写的模型 ID，从列表顶部开始查找：第一个分组支持该模型，就优先使用它；不支持，则继续向下查找，直到找到支持该模型的可用分组。例如，某个模型同时在 <code>claude-kiro</code> 和 <code>claude-max</code> 中可用时，按上述顺序优先选择 <code>claude-kiro</code>；如果该模型只在 <code>gpt-pro</code> 中可用，则跳过前面不支持它的分组，选择 <code>gpt-pro</code>。列表内都不支持时，这次调用无法完成。</p>
+<p>这个顺序表示分组选择的优先级，不代表自动选择最低价格，也不会替你更换请求中的模型。实际模型范围、分组和价格以当前账号页面为准；密钥设置的模型限制、额度和有效期仍然生效。</p>
+
+<h3 id="跨分组重试">跨分组重试</h3>
+<p><strong>跨分组重试</strong> 是另一个独立开关。在 <code>auto</code> 模式下开启后，当前分组调用失败时，会按顺序尝试后续支持同一模型的可用分组；关闭时，不会因本次调用失败而跨分组重试。前面“不支持所请求模型就继续向下查找”的自动选择，与这里的失败重试是两回事。重试是否能成功取决于后续分组的实际可用情况。</p>
 
 <h2 id="获取-api-地址">获取 API 地址</h2>
 <p>在同一页面点击 <strong>API 地址</strong>，复制适合当前网络的接入地址。是否需要追加 <code>/v1</code>，取决于客户端的协议配置，见<a href="/docs/clients/index.html">客户端接入</a>。</p>
@@ -66,7 +98,7 @@
 <tr>
 <td>分组</td>
 <td>影响该密钥可调用的模型及价格</td>
-<td>与目标模型的可用分组一致</td>
+<td>选择 <code>auto</code> 按顺序自动选择，或固定一个支持目标模型的分组，见<a href="#选择可用分组">分组说明</a></td>
 </tr>
 </tbody></table>
 
@@ -81,5 +113,5 @@
 <p>完整密钥不应出现在截图、公开仓库、网页源码或反馈信息中。聊天软件和应用应使用本页创建的模型 API 密钥。</p>
 <nav class="pagination" aria-label="文章导航"><a href="/docs/models/index.html">← 上一篇<br>查询和选择模型</a><a href="/docs/wallet/index.html">下一篇 →<br>余额、充值与套餐</a></nav></article>
 </main>
-<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#创建密钥">创建密钥</a><a class="depth-2" href="#获取-api-地址">获取 API 地址</a><a class="depth-2" href="#设置访问范围">设置访问范围</a><a class="depth-2" href="#确认密钥可用">确认密钥可用</a><a class="depth-2" href="#密钥泄露怎么办">密钥泄露怎么办</a></nav></aside></div>
+<aside class="toc"><nav aria-label="本页目录"><h2>本页目录</h2><a class="depth-2" href="#创建密钥">创建密钥</a><a class="depth-2" href="#选择可用分组">选择可用分组</a><a class="depth-3" href="#设置自动分组顺序">设置自动分组顺序</a><a class="depth-3" href="#跨分组重试">跨分组重试</a><a class="depth-2" href="#获取-api-地址">获取 API 地址</a><a class="depth-2" href="#设置访问范围">设置访问范围</a><a class="depth-2" href="#确认密钥可用">确认密钥可用</a><a class="depth-2" href="#密钥泄露怎么办">密钥泄露怎么办</a></nav></aside></div>
 </body></html>
